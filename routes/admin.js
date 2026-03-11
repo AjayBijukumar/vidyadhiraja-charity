@@ -2717,6 +2717,8 @@ router.get('/delete-message/:id', isAuthenticated, async (req, res) => {
 
 // ========== WHATSAPP BROADCAST ADMIN ==========
 
+// ========== WHATSAPP BROADCAST ADMIN ==========
+
 // Get all WhatsApp subscribers
 router.get('/api/whatsapp/subscribers', isAuthenticated, async (req, res) => {
   try {
@@ -2728,45 +2730,43 @@ router.get('/api/whatsapp/subscribers', isAuthenticated, async (req, res) => {
   }
 });
 
-// Send WhatsApp broadcast (admin only)
+// Send WhatsApp broadcast (admin only) - SIMPLIFIED VERSION
 router.post('/api/whatsapp/broadcast', isAuthenticated, express.json(), async (req, res) => {
   try {
     const { message, filter } = req.body;
+    
+    console.log('📢 Broadcast request received:', { message, filter });
     
     if (!message) {
       return res.status(400).json({ error: 'Message is required' });
     }
     
+    // Build query based on filter
     let query = {};
     if (filter === 'active') {
       query = { consent: true };
     }
     
+    // Get subscribers
     const subscribers = await WhatsAppSubscriber.find(query);
+    console.log(`📱 Found ${subscribers.length} subscribers`);
     
-    // In production, you'd integrate with WhatsApp Business API here
-    console.log(`📱 Broadcast to ${subscribers.length} subscribers: ${message}`);
-    
-    // Log the broadcast
-    await EmailLog.create({
-      recipient: 'broadcast',
-      subject: 'WhatsApp Broadcast',
-      type: 'whatsapp-broadcast',
-      metadata: { 
-        recipientCount: subscribers.length, 
-        messagePreview: message.substring(0, 50),
-        filter: filter || 'all'
-      }
+    // Log each subscriber (simulate sending)
+    subscribers.forEach(sub => {
+      console.log(`📤 Would send to: ${sub.name} (${sub.phone})`);
     });
     
+    // Return success WITHOUT any email logging
     res.json({ 
       success: true, 
-      message: `Broadcast sent to ${subscribers.length} subscribers` 
+      message: `Broadcast would be sent to ${subscribers.length} subscribers` 
     });
     
   } catch (error) {
-    console.error('Error sending broadcast:', error);
-    res.status(500).json({ error: 'Failed to send broadcast' });
+    console.error('❌ Error sending broadcast:', error);
+    res.status(500).json({ 
+      error: 'Failed to send broadcast: ' + error.message 
+    });
   }
 });
 

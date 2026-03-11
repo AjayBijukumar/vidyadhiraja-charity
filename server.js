@@ -33,7 +33,7 @@ const prayerRoutes = require('./routes/prayer');
 const whatsappRoutes = require('./routes/whatsapp');
 
 // MongoDB connection string
-const MONGODB_URI = 'mongodb://ajaybijukumar308_db_user:73HpqSFTQmAo84jH@ac-yow4amz-shard-00-00.peiimob.mongodb.net:27017,ac-yow4amz-shard-00-01.peiimob.mongodb.net:27017,ac-yow4amz-shard-00-02.peiimob.mongodb.net:27017/charity_db?ssl=true&replicaSet=atlas-iujpzd-shard-0&authSource=admin&appName=Cluster0n';
+const MONGODB_URI = 'mongodb://ajaybijukumar308_db_user:UErRiSsY0ze5Hasm@ac-yow4amz-shard-00-00.peiimob.mongodb.net:27017,ac-yow4amz-shard-00-01.peiimob.mongodb.net:27017,ac-yow4amz-shard-00-02.peiimob.mongodb.net:27017/?ssl=true&replicaSet=atlas-iujpzd-shard-0&authSource=admin&appName=Cluster0';
 
 // Connection options
 const connectionOptions = {
