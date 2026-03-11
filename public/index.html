@@ -1,0 +1,1258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Sree Vidyadhiraja Charity</title>
+
+  <meta name="description"
+    content="Sree Vidyadhiraja Charity  – Compassionate elderly care, shelter, and support. Charity elderly home under construction in Arumanai, Kanyakumari District, Tamil Nadu, India.">
+  <meta name="author" content="Sree Vidyadhiraja Charity">
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:title" content="Sree Vidyadhiraja Charity">
+  <meta property="og:description"
+    content="Compassionate elderly care home under construction in Perinchakonam, Kanyakumari District.">
+  <meta property="og:type" content="website">
+  <meta property="og:image"
+    content="https://images.unsplash.com/photo-1581090700227-1e37b418190e?auto=format&fit=crop&w=900&q=80">
+
+  <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="stylesheet" href="style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <!-- Hope Tree Styles -->
+  <style>
+    .hope-tree-container {
+      background: linear-gradient(135deg, #f0f9f0, #fff0d9);
+      border-radius: 24px;
+      padding: 30px;
+      margin-top: 40px;
+      border: 1px solid #c8e6c9;
+      box-shadow: 0 10px 30px rgba(46, 125, 50, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .hope-tree-container:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(46, 125, 50, 0.15);
+    }
+
+    #hope-tree {
+      font-size: 8rem;
+      line-height: 1;
+      transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      cursor: pointer;
+    }
+
+    #hope-tree:hover {
+      filter: drop-shadow(0 10px 10px rgba(0, 100, 0, 0.3));
+    }
+
+    #tree-growth-bar {
+      background: linear-gradient(90deg, #2e7d32, #81c784);
+      border-radius: 4px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #tree-growth-bar::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      animation: shimmer 2s infinite;
+    }
+
+    @keyframes shimmer {
+      0% {
+        transform: translateX(-100%);
+      }
+
+      100% {
+        transform: translateX(100%);
+      }
+    }
+
+    #tree-message {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      margin-top: 20px;
+      font-style: italic;
+      color: #2d5a2d;
+    }
+
+    /* Gallery subsection styles */
+    .gallery-subsection {
+      margin-bottom: 50px;
+    }
+
+    .gallery-subsection:last-child {
+      margin-bottom: 0;
+    }
+
+    .gallery-subtitle {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: #7c2d12;
+      margin-bottom: 30px;
+      text-align: center;
+      position: relative;
+      padding-bottom: 15px;
+    }
+
+    .gallery-subtitle::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(90deg, #d97706, #7c2d12);
+      border-radius: 2px;
+    }
+
+    .subtitle-icon {
+      margin-right: 10px;
+      font-size: 2rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header / Navigation -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="logo">
+        <img src="pics/logo.png" alt="Sree Vidyadhiraja Charity Logo" class="logo-image">
+        <div class="logo-text">
+          <span class="logo-title">Sree Vidyadhiraja Charity</span>
+          <span class="logo-subtitle"> ജീവകാരുണ്യം ജീവിതത്തിലൂടെ.</span>
+        </div>
+      </div>
+
+      <nav class="main-nav" id="mainNav">
+        <ul>
+          <li><a href="#home" class="active">Home</a></li>
+          <li><a href="#biography">Biography</a></li>
+          <li><a href="#mission">Our Mission</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#timeline">Timeline</a></li>
+          <li><a href="#activities">Activities</a></li>
+          <li><a href="#volunteer">Volunteer</a></li>
+          <li><a href="/prayer">Prayer Wall</a></li>
+          <li><a href="#donors">Land Donors</a></li>
+          <li><a href="#why">Why We Exist</a></li>
+          <li><a href="#donate" class="nav-highlight">Donate</a></li>
+          <li><a href="#contact" class="nav-outline">Contact</a></li>
+        </ul>
+      </nav>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false"
+        aria-controls="mainNav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="container hero-inner">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="badge-icon">🏠</span>
+          <span class="badge-text">Elderly Care Home · Perinchakonam, Kanyakumari District</span>
+        </div>
+
+        <h1>Serving Humanity with <span class="text-highlight">Compassion</span></h1>
+
+        <p class="hero-description">We are building a peaceful home for elderly people who need shelter, dignity, and
+          care in their later years. Inspired by the teachings of Chattambi Swamigal, our foundation turns compassion
+          into action.</p>
+
+        <div class="hero-actions">
+          <a href="#donate" class="btn btn-primary">Support the Mission</a>
+          <a href="#mission" class="btn btn-outline">Learn More</a>
+        </div>
+      </div>
+
+      <div class="hero-image-wrapper">
+        <div class="hero-image-card">
+          <img src="pics/WhatsApp Image 2026-03-09 at 2.01.18 PM.jpeg" alt="Construction of elderly care home"
+            loading="lazy">
+          <div class="hero-image-caption">
+            <span class="caption-title">Under Construction</span>
+            <span class="caption-sub">Phase 1 · 20-30 residents capacity</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Daily Wisdom Quote -->
+  <section class="quote-section">
+    <div class="container">
+      <div id="daily-quote" class="quote-card">
+        <div class="quote-icon">"</div>
+        <p id="quote-text" class="quote-text">Loading wisdom...</p>
+        <p id="quote-source" class="quote-source">Chattambi Swamigal</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission Cards -->
+  <section id="mission" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">Our Purpose</span>
+        <h2>What We Stand For</h2>
+        <p class="section-description">Guided by the principle "Jeevakaarunyam Jeevithathiloode" — Charity through Life
+        </p>
+      </div>
+
+      <div class="cards-grid">
+        <div class="mission-card">
+          <div class="card-icon">🕊️</div>
+          <h3>Compassionate Care</h3>
+          <p>Providing shelter, nutritious food, and medical attention to elderly people who have no family support.</p>
+        </div>
+
+        <div class="mission-card">
+          <div class="card-icon">🌿</div>
+          <h3>Spiritual Environment</h3>
+          <p>Creating a peaceful space for meditation, prayer, and spiritual well-being in the tradition of Chattambi
+            Swamigal.</p>
+        </div>
+
+        <div class="mission-card">
+          <div class="card-icon">🤝</div>
+          <h3>Community Support</h3>
+          <p>Building a family-like environment where every resident feels valued, respected, and never alone.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN GALLERY SECTION (MERGED) -->
+  <section id="gallery" class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">Our Journey in Media</span>
+        <h2>Construction Gallery</h2>
+        <p class="section-description">Watch our elderly home take shape through photos and videos</p>
+      </div>
+
+      <!-- Photo Gallery Subsection -->
+      <div class="gallery-subsection">
+        <h3 class="gallery-subtitle">
+          <span class="subtitle-icon">📸</span>
+          Construction Photos
+        </h3>
+        <div class="progress-grid">
+          <div class="progress-card">
+            <img src="pics/cons1.jpeg" alt="Land preparation" loading="lazy">
+            <div class="progress-content">
+              <span class="progress-phase">Phase 1</span>
+              <h4>Land Preparation</h4>
+              <p>Initial groundwork completed</p>
+            </div>
+          </div>
+
+          <div class="progress-card">
+            <img src="pics/cons2.jpeg" alt="Foundation work" loading="lazy">
+            <div class="progress-content">
+              <span class="progress-phase">Phase 2</span>
+              <h4>Foundation Work</h4>
+              <p>In progress</p>
+            </div>
+          </div>
+
+          <div class="progress-card">
+            <img src="pics/cons3.jpeg" alt="Structure planning" loading="lazy">
+            <div class="progress-content">
+              <span class="progress-phase">Phase 3</span>
+              <h4>Structure Planning</h4>
+              <p>Ready to begin</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="progress-message">
+          <p>With your continued support, we are moving forward step by step. The first phase will accommodate 20-30
+            residents with dining hall, meditation space, and medical facilities.</p>
+        </div>
+      </div>
+
+      <!-- Video Gallery Subsection -->
+      <div class="gallery-subsection">
+        <h3 class="gallery-subtitle">
+          <span class="subtitle-icon">🎥</span>
+          Construction Videos
+        </h3>
+
+        <div class="progress-grid">
+          <div class="progress-card">
+            <video controls style="width:100%; height:200px; object-fit:cover;">
+              <source src="videos/outtoin.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <div class="progress-content">
+              <span class="progress-phase">Video 1</span>
+              <h4>Site Visit</h4>
+              <p>March 2026</p>
+            </div>
+          </div>
+
+          <div class="progress-card">
+            <video controls style="width:100%; height:200px; object-fit:cover;">
+              <source src="videos/area.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <div class="progress-content">
+              <span class="progress-phase">Video 2</span>
+              <h4>Area Overview</h4>
+              <p>March 2026</p>
+            </div>
+          </div>
+
+          <div class="progress-card">
+            <video controls style="width:100%; height:200px; object-fit:cover;">
+              <source src="videos/temple.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <div class="progress-content">
+              <span class="progress-phase">Video 3</span>
+              <h4>Temple Construction</h4>
+              <p>March 2026</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Construction Timeline -->
+   <section id="timeline" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">Our Journey</span>
+        <h2>Construction Timeline</h2>
+        <p class="section-description">Watch our elderly home take shape, step by step</p>
+      </div>
+
+      <!-- Manual Timeline Grid - You can edit these paths directly -->
+      <div class="timeline-grid">
+        <!-- Timeline Item 1 -->
+        <div class="timeline-item left">
+          <div class="timeline-badge">1</div>
+          <div class="timeline-content">
+            <div class="timeline-date">January 2026</div>
+            <div class="timeline-phase">Phase 0: Foundation</div>
+            <img src="pics/cons1.jpeg" alt="Land Donation Ceremony" class="timeline-image">
+            <h3 class="timeline-title">Land Donation Ceremony</h3>
+            <p class="timeline-description">Two generous sisters, Smt. Kumari Sakuntala Bai and Smt. Satyabhama, donated the land for our elderly home.</p>
+          </div>
+        </div>
+
+        <!-- Timeline Item 2 -->
+        <div class="timeline-item right">
+          <div class="timeline-badge">2</div>
+          <div class="timeline-content">
+            <div class="timeline-date">February 2026</div>
+            <div class="timeline-phase">Phase 1: Preparation</div>
+            <img src="pics/cons1.jpeg" alt="Site Preparation" class="timeline-image">
+            <h3 class="timeline-title">Site Preparation Begins</h3>
+            <p class="timeline-description">Initial clearing and leveling of the land to prepare for construction.</p>
+          </div>
+        </div>
+
+        <!-- Timeline Item 3 -->
+        <div class="timeline-item left">
+          <div class="timeline-badge">3</div>
+          <div class="timeline-content">
+            <div class="timeline-date">March 2026</div>
+            <div class="timeline-phase">Phase 1: Preparation</div>
+            <img src="pics/cons2.jpeg" alt="Foundation Layout" class="timeline-image">
+            <h3 class="timeline-title">Foundation Layout</h3>
+            <p class="timeline-description">Marking the foundation and planning the layout of the building.</p>
+          </div>
+        </div>
+
+        <!-- Timeline Item 4 -->
+        <div class="timeline-item right">
+          <div class="timeline-badge">4</div>
+          <div class="timeline-content">
+            <div class="timeline-date">April 2026</div>
+            <div class="timeline-phase">Phase 2: Foundation</div>
+            <img src="pics/cons2.jpeg" alt="Foundation Work" class="timeline-image">
+            <h3 class="timeline-title">Foundation Work</h3>
+            <p class="timeline-description">Digging and pouring the foundation for the main building.</p>
+          </div>
+        </div>
+
+        <!-- Timeline Item 5 -->
+        <div class="timeline-item left">
+          <div class="timeline-badge">5</div>
+          <div class="timeline-content">
+            <div class="timeline-date">May 2026</div>
+            <div class="timeline-phase">Phase 2: Foundation</div>
+            <img src="pics/cons3.jpeg" alt="Groundbreaking Ceremony" class="timeline-image">
+            <h3 class="timeline-title">Groundbreaking Ceremony</h3>
+            <p class="timeline-description">Official groundbreaking ceremony with foundation members and well-wishers.</p>
+          </div>
+        </div>
+
+        <!-- Timeline Item 6 -->
+        <div class="timeline-item right">
+          <div class="timeline-badge">6</div>
+          <div class="timeline-content">
+            <div class="timeline-date">June 2026</div>
+            <div class="timeline-phase">Phase 3: Structure</div>
+            <img src="pics/cons3.jpeg" alt="Wall Construction" class="timeline-image">
+            <h3 class="timeline-title">Wall Construction Begins</h3>
+            <p class="timeline-description">Starting the construction of walls for the main hall.</p>
+          </div>
+        </div>
+
+        <!-- Timeline Item 7 -->
+        <div class="timeline-item left">
+          <div class="timeline-badge">7</div>
+          <div class="timeline-content">
+            <div class="timeline-date">July 2026</div>
+            <div class="timeline-phase">Phase 3: Structure</div>
+            <img src="pics\logo.png" alt="First Room Completed" class="timeline-image">
+            <h3 class="timeline-title">First Room Completed</h3>
+            <p class="timeline-description">The first resident room structure is completed.</p>
+          </div>
+        </div>
+
+        <!-- Timeline Item 8 -->
+        <div class="timeline-item right">
+          <div class="timeline-badge">8</div>
+          <div class="timeline-content">
+            <div class="timeline-date">August 2026</div>
+            <div class="timeline-phase">Phase 4: Roofing</div>
+            <img src="pics/cons2.jpeg" alt="Roof Work" class="timeline-image">
+            <h3 class="timeline-title">Roof Work</h3>
+            <p class="timeline-description">Beginning the roof construction for the main building.</p>
+          </div>
+        </div>
+        
+
+        <!-- Timeline Item 9 -->
+        <div class="timeline-item left">
+          <div class="timeline-badge">9</div>
+          <div class="timeline-content">
+            <div class="timeline-date">September 2026</div>
+            <div class="timeline-phase">Phase 4: Roofing</div>
+            <img src="pics/temple-placeholder.jpg" alt="Temple Construction" class="timeline-image" onerror="this.src='pics/cons1.jpeg'">
+            <h3 class="timeline-title">Temple Construction</h3>
+            <p class="timeline-description">Starting the construction of the small temple on the premises.</p>
+          </div>
+        </div>
+        <div class="timeline-item right">
+          <div class="timeline-badge">10</div>
+          <div class="timeline-content">
+            <div class="timeline-date">October 2026</div>
+            <div class="timeline-phase">Phase 5: Finishing</div>
+            <img src="pics\logo.png" alt="Description" class="timeline-image">
+            <h3 class="timeline-title">Your Title</h3>
+            <p class="timeline-description">Your description here.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LAND DONORS SECTION -->
+  <section id="donors" class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">Our Founders</span>
+        <h2>Land Donors</h2>
+        <p class="section-description">Two compassionate sisters who made this mission possible</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; margin-bottom: 40px;">
+        <!-- Donor 1 - Sakuntala Bai -->
+        <div class="progress-card" style="display: flex; flex-direction: column;">
+          <div
+            style="height: 250px; overflow: hidden; background: linear-gradient(135deg, var(--color-primary-soft), #fff);">
+            <img src="pics/donor-placeholder.jpg" alt="Smt. Kumari Sakuntala Bai"
+              style="width: 100%; height: 100%; object-fit: cover;"
+              onerror="this.style.display='none'; this.parentNode.innerHTML='<div style=\'height:100%; display:flex; align-items:center; justify-content:center; font-size:4rem;\'>👵</div>'">
+          </div>
+          <div class="progress-content">
+            <span class="progress-phase">Founding Donor</span>
+            <h4>Smt. Kumari Sakuntala Bai</h4>
+            <p style="margin: 15px 0; line-height: 1.6;">With immense generosity and compassion, Smt. Kumari Sakuntala
+              Bai donated her family land to establish a permanent home for elderly people in need. Her selfless act of
+              kindness laid the foundation for this charitable mission.</p>
+            <div
+              style="background: var(--color-primary-soft); padding: 15px; border-radius: var(--radius-md); margin-top: 10px; font-style: italic; color: var(--color-secondary);">
+              "May this land become a sanctuary of peace and dignity for those who have no one."
+            </div>
+          </div>
+        </div>
+
+        <!-- Donor 2 - Satyabhama -->
+        <div class="progress-card" style="display: flex; flex-direction: column;">
+          <div
+            style="height: 250px; overflow: hidden; background: linear-gradient(135deg, var(--color-primary-soft), #fff);">
+            <img src="pics/donor-placeholder2.jpg" alt="Smt. Satyabhama"
+              style="width: 100%; height: 100%; object-fit: cover;"
+              onerror="this.style.display='none'; this.parentNode.innerHTML='<div style=\'height:100%; display:flex; align-items:center; justify-content:center; font-size:4rem;\'>👵</div>'">
+          </div>
+          <div class="progress-content">
+            <span class="progress-phase">Founding Donor</span>
+            <h4>Smt. Satyabhama</h4>
+            <p style="margin: 15px 0; line-height: 1.6;">Following her sister's noble example, Smt. Satyabhama joined in
+              this sacred mission by contributing her share of family land. Her generosity reflects the true spirit of
+              "Jeevakaarunyam Jeevithathiloode" — Charity through Life.</p>
+            <div
+              style="background: var(--color-primary-soft); padding: 15px; border-radius: var(--radius-md); margin-top: 10px; font-style: italic; color: var(--color-secondary);">
+              "True wealth is not what we keep, but what we give for the welfare of others."
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="progress-message">
+        <p>The Sree Vidyadhiraja Charity stands on land donated by these two sisters. Their generosity
+          reminds us that even a single act of kindness can transform countless lives. We remain forever grateful for
+          their vision and compassion.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Biography Section -->
+  <section id="biography" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">Our Inspiration</span>
+        <h2>Chattambi Swamigal</h2>
+        <p class="section-description">Known as Sree Vidyadhiraja — The sage who taught compassion through wisdom</p>
+      </div>
+
+      <div class="bio-layout">
+        <div class="bio-image-wrapper">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a8/Chattampi_Swamikal_2014_stamp_of_India.jpg"
+            alt="Chattambi Swamigal" loading="lazy">
+          <p class="bio-image-caption">Chattambi Swamigal (1853–1924)</p>
+        </div>
+
+        <div class="bio-text-wrapper">
+          <p>Chattambi Swamigal occupies a special place in the spiritual history of Kerala. Emerging at a time when
+            society was weighed down by rigid customs and caste-based divisions, he stood as a powerful voice of inner
+            freedom and spiritual clarity.</p>
+
+          <p>He was not only a saint who immersed himself in meditation and scriptural study, but also a brilliant
+            thinker who questioned blind traditions and encouraged people to use reason in their search for truth. His
+            philosophy was rooted in compassion, equality, and respect for all.</p>
+
+          <p>Through his writings and personal example, he opened a new understanding of spirituality — one that was
+            accessible to ordinary people and expressed through kindness toward all beings.</p>
+
+          <div class="bio-quote-block">
+            <p>"True knowledge softens the heart and leads to service."</p>
+            <cite>— Chattambi Swamigal</cite>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why We Exist -->
+  <section id="why" class="section section-alt">
+    <div class="container">
+      <div class="why-layout">
+        <div class="why-content">
+          <span class="section-subtitle">Our Reason</span>
+          <h2>Why This Charity Exists</h2>
+
+          <p>In many communities, elderly people who have no family are left without shelter, care, or dignity. They
+            spend their final years in loneliness and struggle.</p>
+
+          <p>We believe that every person who has lived a lifetime deserves peace, respect, and compassion in their
+            later years. Our foundation exists to provide that — a home where they are not forgotten, but cherished.</p>
+
+          <p>The land for this home was donated by two sisters with generous hearts. Now we need your help to build the
+            shelter, dining hall, and medical facilities that will turn this vision into reality.</p>
+
+          <div class="donor-names">
+            <span>Smt. Kumari Sakuntala Bai</span>
+            <span>Smt. Satyabhama</span>
+          </div>
+        </div>
+
+        <div class="why-quote-wrapper">
+          <div class="why-quote-card">
+            <div class="quote-marker">"</div>
+            <p class="quote-text">ജീവകാരുണ്യം ജീവിതത്തിലൂടെ</p>
+            <p class="quote-translation">Jeevakaarunyam Jeevithathiloode</p>
+            <p class="quote-meaning">Charity through Life</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Activities & Services Section -->
+  <section id="activities" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">What We Do</span>
+        <h2>Our Activities & Services</h2>
+        <p class="section-description">Providing a secure, dignified, and nurturing environment for the elderly</p>
+      </div>
+
+      <div class="activities-grid">
+        <!-- Card 1: Residential Care -->
+        <div class="activity-card">
+          <div class="activity-icon">🏠</div>
+          <h3 class="activity-title">Residential Care & Essential Needs</h3>
+          <ul class="activity-list">
+            <li>Safe and comfortable living environment</li>
+            <li>Nutritious home-style meals daily</li>
+            <li>Clothing, blankets, and hygiene kits</li>
+            <li>24/7 security and housekeeping</li>
+          </ul>
+        </div>
+
+        <!-- Card 2: Medical Care -->
+        <div class="activity-card">
+          <div class="activity-icon">🩺</div>
+          <h3 class="activity-title">Medical & Healthcare Services</h3>
+          <ul class="activity-list">
+            <li>Regular health check-ups (BP, sugar, temperature)</li>
+            <li>24/7 bedside nursing care</li>
+            <li>Physiotherapy and geriatric care</li>
+            <li>Medicine distribution and emergency ambulance</li>
+          </ul>
+        </div>
+
+        <!-- Card 3: Recreational Activities -->
+        <div class="activity-card">
+          <div class="activity-icon">🎨</div>
+          <h3 class="activity-title">Recreational & Social Activities</h3>
+          <ul class="activity-list">
+            <li>Yoga, meditation, and light exercises</li>
+            <li>Puzzles, chess, and book reading</li>
+            <li>Festival celebrations and cultural events</li>
+            <li>Bhajans, movie nights, and outings</li>
+          </ul>
+        </div>
+
+        <!-- Card 4: Emotional Support -->
+        <div class="activity-card">
+          <div class="activity-icon">💝</div>
+          <h3 class="activity-title">Emotional & Psychological Support</h3>
+          <ul class="activity-list">
+            <li>Daily companionship to combat loneliness</li>
+            <li>Mental health counseling</li>
+            <li>Intergenerational activities with children</li>
+            <li>Support for loss and depression</li>
+          </ul>
+        </div>
+
+        <!-- Card 5: Empowerment Programs -->
+        <div class="activity-card">
+          <div class="activity-icon">🤝</div>
+          <h3 class="activity-title">Empowerment & Support Programs</h3>
+          <ul class="activity-list">
+            <li>Light vocational training for seniors</li>
+            <li>Awareness about elder rights</li>
+            <li>Community outreach and Annadhanam</li>
+            <li>Dignified last rites for residents</li>
+          </ul>
+        </div>
+
+        <!-- Card 6: Specialized Care -->
+        <div class="activity-card">
+          <div class="activity-icon">🕊️</div>
+          <h3 class="activity-title">Specialized Care Programs</h3>
+          <ul class="activity-list">
+            <li>Dementia and palliative care</li>
+            <li>Doctor-on-call services</li>
+            <li>Spiritual and bhajan sessions</li>
+            <li>Temple visits and spiritual guidance</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Volunteer Section with Form -->
+  <section id="volunteer" class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">Join Our Cause</span>
+        <h2>Type of Joining</h2>
+        <p class="section-description">Choose how you'd like to contribute to our mission of serving the elderly</p>
+      </div>
+
+      <div class="volunteer-layout">
+        <!-- Left Column: Registration Form -->
+        <div class="volunteer-form-container">
+          <h3 class="form-title">Join Our Team</h3>
+          
+          <form id="volunteerForm" class="volunteer-form">
+            <div class="form-group">
+              <label for="volunteer-name">Your Name *</label>
+              <input type="text" id="volunteer-name" name="name" required>
+            </div>
+
+            <div class="form-group">
+              <label for="volunteer-phone">Phone Number *</label>
+              <input type="tel" id="volunteer-phone" name="phone" required>
+            </div>
+
+            <div class="form-group">
+              <label for="volunteer-email">Email Address *</label>
+              <input type="email" id="volunteer-email" name="email" required>
+            </div>
+
+            <div class="form-group">
+              <label for="volunteer-type">Type of Joining *</label>
+              <select id="volunteer-type" name="type" required>
+                <option value="">Select an option</option>
+                <option value="volunteer">Volunteer</option>
+                <option value="partner">Partner</option>
+                <option value="fundraising">Fundraising Events</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="volunteer-message">Message (Optional)</label>
+              <textarea id="volunteer-message" name="message" rows="3" placeholder="Tell us how you'd like to help..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-full">Submit Application</button>
+            <p id="volunteerFormStatus" class="form-status"></p>
+          </form>
+        </div>
+
+        <!-- Right Column: Information Text -->
+        <div class="volunteer-info-container">
+          <h3 class="info-title">Join Us & Make a Difference</h3>
+          
+          <p class="info-text">We welcome passionate individuals and organizations to join hands with us. Become a volunteer, partner with us in our initiatives, or help us organize fundraising events that bring real change to elderly and marginalized communities. Together, we can build a more compassionate and empowered society.</p>
+          
+          <div class="info-points">
+            <div class="info-point">
+              <span class="info-icon">🤝</span>
+              <div class="info-point-content">
+                <h4>Volunteer with Us</h4>
+                <p>Give your time and skills to empower elderly lives and bring smiles to their faces.</p>
+              </div>
+            </div>
+            
+            <div class="info-point">
+              <span class="info-icon">🌍</span>
+              <div class="info-point-content">
+                <h4>Partner with Us</h4>
+                <p>Collaborate to create sustainable impact and help us reach more elderly in need.</p>
+              </div>
+            </div>
+            
+            <div class="info-point">
+              <span class="info-icon">💙</span>
+              <div class="info-point-content">
+                <h4>Organize Fundraising Events</h4>
+                <p>Help us raise resources to support our elderly home construction and daily care.</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="info-quote">
+            <p>✨ Be a Changemaker – Together, we can build an equal and empowered society.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Section -->
+  <section id="team" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">Leadership</span>
+        <h2>Our Team</h2>
+        <p class="section-description">Dedicated individuals serving with compassion</p>
+      </div>
+
+      <div class="team-grid">
+        <!-- Team Member 1 - Amsi Madhu -->
+        <div class="team-card">
+          <div class="team-image-frame">
+            <img src="pics/amsi.jpeg" alt="Amsi Madhu - Founder" class="team-photo">
+          </div>
+          <div class="team-content">
+            <h4>Amsi Madhu</h4>
+            <span class="team-role">Founder</span>
+            <p class="team-location">📍 Amsi</p>
+            <div class="team-details">
+              <p class="team-phone">📞 9443275096</p>
+              <p class="team-email">✉️ amsimadhu@gmail.com</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Team Member 2 - Ramachandran -->
+        <div class="team-card">
+          <div class="team-image-frame">
+            <img src="pics/ramach.jpeg" alt="Ramachandran - President" class="team-photo">
+          </div>
+          <div class="team-content">
+            <h4>Ramachandran</h4>
+            <span class="team-role">President</span>
+            <p class="team-location">📍 Arumanai</p>
+            <div class="team-details">
+              <p class="team-phone">📞 9443559710</p>
+              <p class="team-email">✉️ ramcatering2011@gmail.com</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Team Member 3 - K. Surendran -->
+        <div class="team-card">
+          <div class="team-image-frame">
+            <img src="pics/suren.jpeg" alt="K. Surendran - Secretary" class="team-photo">
+          </div>
+          <div class="team-content">
+            <h4>K. Surendran</h4>
+            <span class="team-role">Secretary</span>
+            <p class="team-location">📍 Kulashekaram</p>
+            <div class="team-details">
+              <p class="team-phone">📞 9443791336</p>
+              <p class="team-email">✉️ surendrank20@gmail.com</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Team Member 4 - M. Rajendran -->
+        <div class="team-card">
+          <div class="team-image-frame">
+            <img src="pics/raju.jpeg" alt="M. Rajendran - Treasurer" class="team-photo">
+          </div>
+          <div class="team-content">
+            <h4>M. Rajendran</h4>
+            <span class="team-role">Treasurer</span>
+            <p class="team-location">📍 Perinchakonam</p>
+            <div class="team-details">
+              <p class="team-phone">📞 9487449699</p>
+              <p class="team-email">✉️ rajendran1025@gmail.com</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Donation Section -->
+  <section id="donate" class="section donate-section">
+    <div class="container">
+      <div class="donate-layout">
+        <div class="donate-content">
+          <span class="section-subtitle light">Support Us</span>
+          <h2>Help Build a Home</h2>
+          <p class="donate-intro">Your contribution helps us provide shelter, food, and dignity to elderly people in
+            need.</p>
+
+          <div class="tax-info">
+            <p class="tax-label">80G Tax Exemption Available</p>
+            <p class="tax-number">ABFTS5003BF20231AY2023-26</p>
+          </div>
+
+          <div class="donate-methods">
+            <h4>Ways to Give</h4>
+            <ul>
+              <li><span>📱</span> Bank Transfer</li>
+              <li><span>💵</span> Cash Donations</li>
+              <li><span>📝</span> Cheque</li>
+            </ul>
+          </div>
+
+          <a href="#contact" class="btn btn-primary btn-large">Contact Us to Donate</a>
+        </div>
+
+        <div class="donate-message">
+          <div class="message-card">
+            <p class="message-quote">"Service to humanity is service to the Divine."</p>
+            <p class="message-text">Every contribution — whether financial, material, or through volunteering — helps us
+              provide care to those who have no one.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 🌳 HOPE TREE SECTION (WORKING VERSION) 🌳 -->
+      <div
+        style="margin:40px auto; max-width:1200px; background:linear-gradient(135deg,#f0f9f0,#fff0d9); padding:30px; border-radius:24px; text-align:center; border:2px solid #2d5a2d;">
+        <h3 style="font-family:Playfair Display; color:#2d5a2d; font-size:2rem; margin-bottom:10px;">🌳 Hope Tree</h3>
+        <p style="color:#7c6a5a; margin-bottom:20px;">Watch our tree of compassion grow with every donation</p>
+        <div id="hope-tree" style="font-size:8rem; line-height:1; margin:20px 0;">🌱</div>
+        <div style="display:flex; justify-content:space-between; align-items:center; margin:20px 0;">
+          <span style="font-size:1.5rem;">🌱</span>
+          <div style="flex-grow:1; height:8px; background:#e0e0e0; border-radius:4px; margin:0 10px;">
+            <div id="tree-growth-bar" style="width:0%; height:100%; background:linear-gradient(90deg,#2d5a2d,#4caf50);">
+            </div>
+          </div>
+          <span style="font-size:1.5rem;">🌳</span>
+        </div>
+        <div style="display: flex; justify-content: center; gap: 30px; margin-top: 20px;">
+          <div>
+            <div style="font-size: 1.5rem; font-weight: 700; color: #2d5a2d;" id="total-donors">0</div>
+            <div style="font-size: 0.9rem; color: #7c6a5a;">Kind Souls</div>
+          </div>
+          <div>
+            <div style="font-size: 1.5rem; font-weight: 700; color: #2d5a2d;" id="growth-percentage">0%</div>
+            <div style="font-size: 0.9rem; color: #7c6a5a;">Growth</div>
+          </div>
+        </div>
+        <p id="tree-message" style="margin-top:20px; font-style:italic; color:#2d5a2d;">Every donation plants a seed of
+          hope 🌱</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Contact Section -->
+  <section id="contact" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">Get in Touch</span>
+        <h2>Contact Us</h2>
+        <p class="section-description">We welcome your questions, support, and involvement</p>
+      </div>
+
+      <div class="contact-layout">
+        <div class="contact-info-card">
+          <h3>Ramachandran</h3>
+          <p class="info-role">President</p>
+
+          <div class="info-item">
+            <span class="info-icon">📞</span>
+            <a href="tel:+919443559710">+91 94435 59710</a>
+          </div>
+
+          <div class="info-item">
+            <span class="info-icon">✉️</span>
+            <a href="mailto:ramcatering2011@gmail.com">ramcatering2011@gmail.com</a>
+          </div>
+
+          <div class="info-item">
+            <span class="info-icon">📍</span>
+            <address>
+              Sree Vidyadhiraja Charity<br>
+              Perinchakonam, Kanyakumari District<br>
+              Tamil Nadu, India
+            </address>
+          </div>
+        </div>
+
+        <div class="contact-form-card">
+          <form id="contactForm" class="contact-form" data-api="/contact" novalidate>
+            <div class="form-group">
+              <label for="name">Full Name *</label>
+              <input type="text" id="name" name="name" autocomplete="name" required>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email Address *</label>
+              <input type="email" id="email" name="email" autocomplete="email" required>
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" autocomplete="tel">
+            </div>
+
+            <div class="form-group">
+              <label for="message">Your Message *</label>
+              <textarea id="message" name="message" rows="4" autocomplete="off" required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-full">Send Message</button>
+            <p id="formStatus" class="form-status"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+ <!-- Footer -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-main">
+      <div class="footer-col">
+        <h4>Sree Vidyadhiraja Charity</h4>
+        <p class="footer-quote">“ജീവകാരുണ്യം ജീവിതത്തിലൂടെ”</p>
+        <p class="footer-quote-en">Charity through Life</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <!-- Broadcast Link - 1st position -->
+          <li><a href="/whatsapp-broadcast.html">📱 WhatsApp Broadcast</a></li>
+          <!-- Social Media Links -->
+          <li><a href="https://instagram.com/sreevidyadhirajacharity" target="_blank">📸 Instagram</a></li>
+          <li><a href="https://youtube.com/@sreevidyadhirajacharity" target="_blank">▶️ YouTube</a></li>
+          <li><a href="https://facebook.com/sreevidyadhirajacharity" target="_blank">📘 Facebook</a></li>
+        </ul>
+        <p style="color: #7c6a5a; font-size: 0.8rem; margin-top: 10px;">(You can update these links in admin)</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <p>Ramachandran - President<br>
+          <a href="tel:+919443559710">+91 94435 59710</a>
+        </p>
+        <p class="footer-80g">80G: ABFTS5003BF20231AY2023-26</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 Sree Vidyadhiraja Charity. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+  <script src="script.js"></script>
+  
+  <!-- Hope Tree JavaScript -->
+  <script>
+    // Hope Tree - Dynamic Growth Based on Donations
+    async function updateHopeTree() {
+      try {
+        // Fetch donation data
+        const response = await fetch('/api/donations/total');
+        const data = await response.json();
+        const totalAmount = data.total || 0;
+
+        // Get donation count for donor numbers
+        const countResponse = await fetch('/api/donations/count');
+        const countData = await countResponse.json();
+        const donorCount = countData.count || 0;
+
+        // Set target amount (adjust based on your construction cost)
+        const targetAmount = 2000000; // ₹20,00,000
+        const percentage = Math.min((totalAmount / targetAmount) * 100, 200);
+
+        // Update tree visualization based on percentage
+        const treeElement = document.getElementById('hope-tree');
+        const messageElement = document.getElementById('tree-message');
+        const growthBar = document.getElementById('tree-growth-bar');
+
+        // Tree growth stages
+        if (percentage < 10) {
+          treeElement.innerHTML = '🌱';
+          messageElement.innerHTML = 'A seed of hope has been planted 🌱';
+        } else if (percentage < 25) {
+          treeElement.innerHTML = '🌿';
+          messageElement.innerHTML = 'A tiny sprout reaches for the sun 🌿';
+        } else if (percentage < 40) {
+          treeElement.innerHTML = '🪴';
+          messageElement.innerHTML = 'Our tree is taking root 🪴';
+        } else if (percentage < 55) {
+          treeElement.innerHTML = '🌱🌿';
+          messageElement.innerHTML = 'Branches begin to spread 🌱🌿';
+        } else if (percentage < 70) {
+          treeElement.innerHTML = '🌿🌳';
+          messageElement.innerHTML = 'Leaves unfurl with every donation 🌿🌳';
+        } else if (percentage < 85) {
+          treeElement.innerHTML = '🌳🌳';
+          messageElement.innerHTML = 'Our tree grows strong and tall 🌳🌳';
+        } else if (percentage < 100) {
+          treeElement.innerHTML = '🌳🌸';
+          messageElement.innerHTML = 'The tree begins to bloom 🌳🌸';
+        } else if (percentage < 150) {
+          treeElement.innerHTML = '🌳🌸🌸';
+          messageElement.innerHTML = 'In full bloom! Thank you, kind souls 🌳🌸🌸';
+        } else {
+          treeElement.innerHTML = '🌳🌳🌸🌸🌟';
+          messageElement.innerHTML = 'A mighty forest of compassion! 🌳🌳🌸🌸🌟';
+        }
+
+        // Update growth bar (capped at 100% for bar)
+        growthBar.style.width = Math.min(percentage, 100) + '%';
+
+        // Update stats
+        document.getElementById('total-donors').textContent = donorCount;
+        document.getElementById('growth-percentage').textContent = Math.round(percentage) + '%';
+
+        // Add animation
+        treeElement.style.transform = 'scale(1.1)';
+        setTimeout(() => {
+          treeElement.style.transform = 'scale(1)';
+        }, 200);
+
+      } catch (error) {
+        console.error('Error updating hope tree:', error);
+      }
+    }
+
+    // Update on page load
+    document.addEventListener('DOMContentLoaded', updateHopeTree);
+
+    // Update every 30 seconds
+    setInterval(updateHopeTree, 30000);
+  </script>
+
+  <!-- Daily Wisdom Quote Script -->
+  <script src="/quotes.js"></script>
+  <script>
+    // Display today's quote
+    function displayDailyQuote() {
+      const quote = window.quotesData.getTodaysQuote();
+      document.getElementById('quote-text').textContent = `"${quote.text}"`;
+      document.getElementById('quote-source').textContent = `— ${quote.source}`;
+    }
+
+    // Run when page loads
+    document.addEventListener('DOMContentLoaded', displayDailyQuote);
+  </script>
+
+  <!-- Timeline Script -->
+  <script src="/timeline.js"></script>
+  <script>
+    function renderTimeline() {
+      const container = document.getElementById('timeline-container');
+      const timeline = window.timelineData || [];
+      
+      if (timeline.length === 0) {
+        container.innerHTML = '<p class="empty-state">Timeline coming soon...</p>';
+        return;
+      }
+
+      let html = '<div class="timeline-grid">';
+      
+      timeline.forEach((item, index) => {
+        const isEven = index % 2 === 0;
+        html += `
+          <div class="timeline-item ${isEven ? 'left' : 'right'}">
+            <div class="timeline-badge">${index + 1}</div>
+            <div class="timeline-content">
+              <div class="timeline-date">${item.date}</div>
+              <div class="timeline-phase">${item.phase}</div>
+              <img src="${item.image}" alt="${item.title}" class="timeline-image" loading="lazy"
+                   onerror="this.src='pics/cons1.jpeg'">
+              <h3 class="timeline-title">${item.title}</h3>
+              <p class="timeline-description">${item.description}</p>
+            </div>
+          </div>
+        `;
+      });
+      
+      html += '</div>';
+      container.innerHTML = html;
+    }
+
+    document.addEventListener('DOMContentLoaded', renderTimeline);
+  </script>
+
+  <!-- Volunteer Form Script -->
+  <script>
+    // Volunteer Form Submission
+    const volunteerForm = document.getElementById('volunteerForm');
+    const volunteerFormStatus = document.getElementById('volunteerFormStatus');
+
+    if (volunteerForm) {
+      volunteerForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const name = document.getElementById('volunteer-name').value.trim();
+        const phone = document.getElementById('volunteer-phone').value.trim();
+        const email = document.getElementById('volunteer-email').value.trim();
+        const type = document.getElementById('volunteer-type').value;
+        const message = document.getElementById('volunteer-message').value.trim();
+
+        // Validation
+        if (!name || !phone || !email || !type) {
+          volunteerFormStatus.textContent = 'Please fill all required fields.';
+          volunteerFormStatus.style.color = '#b91c1c';
+          return;
+        }
+
+        // Show sending message
+        volunteerFormStatus.textContent = 'Submitting...';
+        volunteerFormStatus.style.color = '#7c6a5a';
+
+        try {
+          const response = await fetch('/api/volunteer', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              name,
+              phone,
+              email,
+              type,
+              message
+            })
+          });
+
+          const data = await response.json();
+
+          if (data.success) {
+            volunteerFormStatus.textContent = '✅ Thank you for joining! We will contact you soon.';
+            volunteerFormStatus.style.color = '#166534';
+            volunteerForm.reset();
+          } else {
+            volunteerFormStatus.textContent = data.message || 'Something went wrong. Please try again.';
+            volunteerFormStatus.style.color = '#b91c1c';
+          }
+        } catch (error) {
+          console.error('Error:', error);
+          volunteerFormStatus.textContent = 'Server error. Please try again later.';
+          volunteerFormStatus.style.color = '#b91c1c';
+        }
+      });
+    }
+  </script>
+
+  <!-- Floating WhatsApp Button -->
+  <link rel="stylesheet" href="/whatsapp.css">
+  <div class="whatsapp-float saffron" id="whatsapp-float">
+    <div class="whatsapp-tooltip">Chat with us on WhatsApp</div>
+    <a href="https://wa.me/919443791336?text=Hi%21%20I%27m%20interested%20in%20learning%20more%20about%20Sree%20Vidyadhiraja%20Charity." 
+       class="whatsapp-button" 
+       target="_blank"
+       onclick="trackWhatsAppClick()">
+        <svg viewBox="0 0 24 24">
+            <path d="M19.077 4.928C17.191 3.041 14.683 2 12.006 2 6.798 2 2.548 6.193 2.54 11.393c-.003 1.747.456 3.457 1.328 4.985L2.25 21.75l5.4-1.575c1.475.8 3.14 1.225 4.86 1.225h.004c5.2 0 9.456-4.193 9.464-9.393.004-2.514-.975-4.876-2.861-6.764l-.04-.04v-.001zM12.02 20.167h-.003c-1.484 0-2.94-.4-4.204-1.15l-.302-.18-3.255.95.97-3.145-.197-.314c-.797-1.27-1.218-2.73-1.216-4.236.007-4.32 3.52-7.833 7.85-7.833 2.097 0 4.07.82 5.553 2.307 1.48 1.485 2.295 3.458 2.292 5.555-.007 4.322-3.52 7.835-7.85 7.835l.008-.001zm4.323-5.865c-.237-.12-1.404-.693-1.622-.772-.217-.08-.375-.12-.533.12-.158.238-.612.772-.75.93-.14.158-.278.178-.515.06-.237-.12-1.002-.37-1.91-1.18-.706-.63-1.182-1.41-1.32-1.648-.14-.238-.015-.367.105-.486.108-.108.237-.282.356-.423.118-.142.158-.238.237-.397.08-.158.04-.297-.02-.416-.06-.12-.533-1.287-.73-1.762-.193-.467-.388-.396-.533-.404-.14-.008-.3-.01-.46-.01-.16 0-.42.06-.64.298-.22.238-.84.822-.84 2.005 0 1.182.86 2.324.98 2.484.12.16 1.68 2.574 4.07 3.51 2.39.935 2.39.624 2.82.585.43-.04 1.39-.568 1.586-1.116.196-.55.196-1.02.138-1.118-.058-.1-.218-.16-.456-.28l.002-.002z"/>
+        </svg>
+    </a>
+  </div>
+
+  <script>
+    function trackWhatsAppClick() {
+      console.log('📱 WhatsApp clicked at:', new Date().toISOString());
+      fetch('/api/track-whatsapp-click', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          page: window.location.pathname,
+          timestamp: new Date().toISOString()
+        })
+      }).catch(err => console.log('Tracking error:', err));
+    }
+  </script>
+
+</body>
+
+</html>
