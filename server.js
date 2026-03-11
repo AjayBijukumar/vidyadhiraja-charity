@@ -32,9 +32,8 @@ const prayerRoutes = require('./routes/prayer');
 // Import the public WhatsApp routes
 const whatsappRoutes = require('./routes/whatsapp');
 
-// MongoDB connection string
-const MONGODB_URI = 'mongodb://ajaybijukumar308_db_user:UErRiSsY0ze5Hasm@ac-yow4amz-shard-00-00.peiimob.mongodb.net:27017,ac-yow4amz-shard-00-01.peiimob.mongodb.net:27017,ac-yow4amz-shard-00-02.peiimob.mongodb.net:27017/?ssl=true&replicaSet=atlas-iujpzd-shard-0&authSource=admin&appName=Cluster0';
-
+// DB connection string
+const MONGODB_URI = process.env.MONGODB_URI;
 // Connection options
 const connectionOptions = {
   serverSelectionTimeoutMS: 5000,
