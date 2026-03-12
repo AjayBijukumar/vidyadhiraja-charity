@@ -78,7 +78,8 @@ app.use(express.static(__dirname));
 app.use('/admin', adminRoutes);
 
 // Mount prayer wall routes
-app.use('/prayer', prayerRoutes);
+// Mount prayer wall routes
+app.use('/prayer', require('./routes/prayer'));
 
 // Test route
 app.get('/api/test', (req, res) => {

@@ -4,6 +4,105 @@ const express = require('express');
 const router = express.Router();
 const Prayer = require('../models/Prayer');
 
+// ========== API ENDPOINTS (Add these at the top) ==========
+
+// Get approved prayers (for displaying on the wall)
+router.get('/api/prayers', async (req, res) => {
+  try {
+    const prayers = await Prayer.find({ 
+      status: { $in: ['approved', 'featured'] } 
+    })
+    .sort({ featuredAt: -1, createdAt: -1 })
+    .limit(50)
+    .select('name prayer isAnonymous blessCount status');
+    
+    res.json(prayers);
+  } catch (error) {
+    console.error('Error fetching prayers:', error);
+    res.status(500).json({ error: 'Failed to fetch prayers' });
+  }
+});
+
+// Submit a new prayer
+router.post('/api/prayers', async (req, res) => {
+  try {
+    const { name, email, prayer, isAnonymous } = req.body;
+    
+    console.log('📝 Prayer submission received:', { name, email });
+    
+    // Validate required fields
+    if (!name || !email || !prayer) {
+      return res.status(400).json({ 
+        success: false, 
+        error: 'Name, email and prayer are required' 
+      });
+    }
+    
+    // Create new prayer
+    const newPrayer = new Prayer({
+      name,
+      email,
+      prayer,
+      isAnonymous: isAnonymous || false,
+      status: 'pending',
+      createdAt: new Date()
+    });
+    
+    // Save to database
+    await newPrayer.save();
+    console.log('✅ Prayer saved with ID:', newPrayer._id);
+    
+    // Return success
+    res.json({ 
+      success: true, 
+      message: 'Prayer submitted for approval' 
+    });
+    
+  } catch (error) {
+    console.error('❌ Prayer submission error:', error);
+    res.status(500).json({ 
+      success: false, 
+      error: 'Failed to submit prayer: ' + error.message 
+    });
+  }
+});
+
+// Bless a prayer
+router.post('/api/prayers/:id/bless', async (req, res) => {
+  try {
+    const { email } = req.body;
+    const prayerId = req.params.id;
+    const ip = req.ip || req.connection.remoteAddress;
+    
+    if (!email) {
+      return res.status(400).json({ error: 'Email required to bless' });
+    }
+    
+    const prayer = await Prayer.findById(prayerId);
+    if (!prayer) {
+      return res.status(404).json({ error: 'Prayer not found' });
+    }
+    
+    // Check if already blessed
+    const alreadyBlessed = prayer.blessedBy.some(b => b.email === email);
+    if (alreadyBlessed) {
+      return res.status(400).json({ error: 'Already blessed this prayer' });
+    }
+    
+    prayer.blessCount += 1;
+    prayer.blessedBy.push({ email, ip });
+    await prayer.save();
+    
+    res.json({ success: true, blessCount: prayer.blessCount });
+    
+  } catch (error) {
+    console.error('Error blessing prayer:', error);
+    res.status(500).json({ error: 'Failed to bless prayer' });
+  }
+});
+
+// ========== MAIN PRAYER WALL PAGE (Your existing HTML) ==========
+
 // Serve the prayer wall page
 router.get('/', async (req, res) => {
   try {
@@ -304,7 +403,7 @@ router.get('/', async (req, res) => {
           // Load prayers
           async function loadPrayers() {
             try {
-              const response = await fetch('/api/prayers');
+              const response = await fetch('/prayer/api/prayers');
               const prayers = await response.json();
               
               const grid = document.getElementById('prayersGrid');
@@ -348,7 +447,7 @@ router.get('/', async (req, res) => {
             messageDiv.style.display = 'block';
             
             try {
-              const response = await fetch('/api/prayers', {
+              const response = await fetch('/prayer/api/prayers', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData)
@@ -377,7 +476,7 @@ router.get('/', async (req, res) => {
             if (!email) return;
             
             try {
-              const response = await fetch('/api/prayers/' + id + '/bless', {
+              const response = await fetch('/prayer/api/prayers/' + id + '/bless', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email })
