@@ -27,6 +27,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
     rel="stylesheet">
+  
   <!-- Hope Tree Styles -->
   <style>
     .hope-tree-container {
@@ -126,6 +127,115 @@
     .subtitle-icon {
       margin-right: 10px;
       font-size: 2rem;
+    }
+
+    /* Donation Form Styles */
+    .donation-form {
+      background: white;
+      border-radius: 16px;
+      padding: 25px;
+      margin: 25px 0;
+      border: 1px solid #f0d6ac;
+    }
+
+    .donation-form h4 {
+      color: #7c2d12;
+      margin-bottom: 20px;
+      font-size: 1.2rem;
+    }
+
+    .donation-message {
+      margin-top: 15px;
+      padding: 10px;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .bank-details {
+      background: #fff0d9;
+      border-radius: 16px;
+      padding: 20px;
+      margin: 25px 0;
+    }
+
+    .bank-details h4 {
+      color: #7c2d12;
+      margin-bottom: 15px;
+      font-size: 1.1rem;
+    }
+
+    .bank-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .bank-table td {
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(124, 45, 18, 0.1);
+    }
+
+    .bank-table td:first-child {
+      font-weight: 600;
+      color: #7c2d12;
+      width: 40%;
+    }
+
+    .bank-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .donate-methods ul {
+      list-style: none;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .donate-methods li {
+      background: #f9f9f9;
+      padding: 10px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid #f0d6ac;
+    }
+
+    .donate-methods li span {
+      font-size: 1.2rem;
+    }
+
+    /* UPI QR Code Styles */
+    .upi-qr-container {
+      margin-top: 25px;
+      padding: 20px;
+      background: #f9f9f9;
+      border-radius: 12px;
+      text-align: center;
+      border: 1px dashed #d97706;
+    }
+
+    .upi-qr-container h4 {
+      color: #7c2d12;
+      margin-bottom: 15px;
+      font-size: 1.2rem;
+    }
+
+    #upi-qr-code {
+      width: 200px;
+      height: 200px;
+      margin: 0 auto;
+    }
+
+    .upi-qr-container p {
+      color: #7c6a5a;
+      font-size: 0.9rem;
+      margin: 10px 0 0 0;
+    }
+
+    .upi-qr-container p:last-child {
+      margin-top: 5px;
     }
   </style>
 </head>
@@ -245,7 +355,7 @@
     </div>
   </section>
 
-  <!-- MAIN GALLERY SECTION (MERGED) -->
+  <!-- MAIN GALLERY SECTION -->
   <section id="gallery" class="section section-alt">
     <div class="container">
       <div class="section-header">
@@ -344,7 +454,7 @@
   </section>
 
   <!-- Construction Timeline -->
-   <section id="timeline" class="section">
+  <section id="timeline" class="section">
     <div class="container">
       <div class="section-header">
         <span class="section-subtitle">Our Journey</span>
@@ -352,127 +462,8 @@
         <p class="section-description">Watch our elderly home take shape, step by step</p>
       </div>
 
-      <!-- Manual Timeline Grid - You can edit these paths directly -->
-      <div class="timeline-grid">
-        <!-- Timeline Item 1 -->
-        <div class="timeline-item left">
-          <div class="timeline-badge">1</div>
-          <div class="timeline-content">
-            <div class="timeline-date">January 2026</div>
-            <div class="timeline-phase">Phase 0: Foundation</div>
-            <img src="pics/cons1.jpeg" alt="Land Donation Ceremony" class="timeline-image">
-            <h3 class="timeline-title">Land Donation Ceremony</h3>
-            <p class="timeline-description">Two generous sisters, Smt. Kumari Sakuntala Bai and Smt. Satyabhama, donated the land for our elderly home.</p>
-          </div>
-        </div>
-
-        <!-- Timeline Item 2 -->
-        <div class="timeline-item right">
-          <div class="timeline-badge">2</div>
-          <div class="timeline-content">
-            <div class="timeline-date">February 2026</div>
-            <div class="timeline-phase">Phase 1: Preparation</div>
-            <img src="pics/cons1.jpeg" alt="Site Preparation" class="timeline-image">
-            <h3 class="timeline-title">Site Preparation Begins</h3>
-            <p class="timeline-description">Initial clearing and leveling of the land to prepare for construction.</p>
-          </div>
-        </div>
-
-        <!-- Timeline Item 3 -->
-        <div class="timeline-item left">
-          <div class="timeline-badge">3</div>
-          <div class="timeline-content">
-            <div class="timeline-date">March 2026</div>
-            <div class="timeline-phase">Phase 1: Preparation</div>
-            <img src="pics/cons2.jpeg" alt="Foundation Layout" class="timeline-image">
-            <h3 class="timeline-title">Foundation Layout</h3>
-            <p class="timeline-description">Marking the foundation and planning the layout of the building.</p>
-          </div>
-        </div>
-
-        <!-- Timeline Item 4 -->
-        <div class="timeline-item right">
-          <div class="timeline-badge">4</div>
-          <div class="timeline-content">
-            <div class="timeline-date">April 2026</div>
-            <div class="timeline-phase">Phase 2: Foundation</div>
-            <img src="pics/cons2.jpeg" alt="Foundation Work" class="timeline-image">
-            <h3 class="timeline-title">Foundation Work</h3>
-            <p class="timeline-description">Digging and pouring the foundation for the main building.</p>
-          </div>
-        </div>
-
-        <!-- Timeline Item 5 -->
-        <div class="timeline-item left">
-          <div class="timeline-badge">5</div>
-          <div class="timeline-content">
-            <div class="timeline-date">May 2026</div>
-            <div class="timeline-phase">Phase 2: Foundation</div>
-            <img src="pics/cons3.jpeg" alt="Groundbreaking Ceremony" class="timeline-image">
-            <h3 class="timeline-title">Groundbreaking Ceremony</h3>
-            <p class="timeline-description">Official groundbreaking ceremony with foundation members and well-wishers.</p>
-          </div>
-        </div>
-
-        <!-- Timeline Item 6 -->
-        <div class="timeline-item right">
-          <div class="timeline-badge">6</div>
-          <div class="timeline-content">
-            <div class="timeline-date">June 2026</div>
-            <div class="timeline-phase">Phase 3: Structure</div>
-            <img src="pics/cons3.jpeg" alt="Wall Construction" class="timeline-image">
-            <h3 class="timeline-title">Wall Construction Begins</h3>
-            <p class="timeline-description">Starting the construction of walls for the main hall.</p>
-          </div>
-        </div>
-
-        <!-- Timeline Item 7 -->
-        <div class="timeline-item left">
-          <div class="timeline-badge">7</div>
-          <div class="timeline-content">
-            <div class="timeline-date">July 2026</div>
-            <div class="timeline-phase">Phase 3: Structure</div>
-            <img src="pics\logo.png" alt="First Room Completed" class="timeline-image">
-            <h3 class="timeline-title">First Room Completed</h3>
-            <p class="timeline-description">The first resident room structure is completed.</p>
-          </div>
-        </div>
-
-        <!-- Timeline Item 8 -->
-        <div class="timeline-item right">
-          <div class="timeline-badge">8</div>
-          <div class="timeline-content">
-            <div class="timeline-date">August 2026</div>
-            <div class="timeline-phase">Phase 4: Roofing</div>
-            <img src="pics/cons2.jpeg" alt="Roof Work" class="timeline-image">
-            <h3 class="timeline-title">Roof Work</h3>
-            <p class="timeline-description">Beginning the roof construction for the main building.</p>
-          </div>
-        </div>
-        
-
-        <!-- Timeline Item 9 -->
-        <div class="timeline-item left">
-          <div class="timeline-badge">9</div>
-          <div class="timeline-content">
-            <div class="timeline-date">September 2026</div>
-            <div class="timeline-phase">Phase 4: Roofing</div>
-            <img src="pics/temple-placeholder.jpg" alt="Temple Construction" class="timeline-image" onerror="this.src='pics/cons1.jpeg'">
-            <h3 class="timeline-title">Temple Construction</h3>
-            <p class="timeline-description">Starting the construction of the small temple on the premises.</p>
-          </div>
-        </div>
-        <div class="timeline-item right">
-          <div class="timeline-badge">10</div>
-          <div class="timeline-content">
-            <div class="timeline-date">October 2026</div>
-            <div class="timeline-phase">Phase 5: Finishing</div>
-            <img src="pics\logo.png" alt="Description" class="timeline-image">
-            <h3 class="timeline-title">Your Title</h3>
-            <p class="timeline-description">Your description here.</p>
-          </div>
-        </div>
-      </div>
+      <!-- Timeline Container (populated by JavaScript) -->
+      <div id="timeline-container" class="timeline-modern-wrapper"></div>
     </div>
   </section>
 
@@ -868,46 +859,105 @@
         <div class="donate-content">
           <span class="section-subtitle light">Support Us</span>
           <h2>Help Build a Home</h2>
-          <p class="donate-intro">Your contribution helps us provide shelter, food, and dignity to elderly people in
-            need.</p>
+          <p class="donate-intro">Your contribution helps us provide shelter, food, and dignity to elderly people in need.</p>
 
           <div class="tax-info">
             <p class="tax-label">80G Tax Exemption Available</p>
             <p class="tax-number">ABFTS5003BF20231AY2023-26</p>
           </div>
 
+          <!-- Donation Form -->
+          <div class="donation-form">
+            <h4>Make a Donation</h4>
+            <form id="donationForm">
+              <div class="form-group">
+                <label for="donorName">Your Name *</label>
+                <input type="text" id="donorName" name="donorName" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="donorEmail">Email Address *</label>
+                <input type="email" id="donorEmail" name="donorEmail" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="donorPhone">Phone Number *</label>
+                <input type="tel" id="donorPhone" name="donorPhone" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="donationAmount">Donation Amount (₹) *</label>
+                <input type="number" id="donationAmount" name="amount" min="1" step="1" required placeholder="Enter amount">
+              </div>
+              
+              <button type="submit" id="donateButton" class="btn btn-primary btn-large">Donate Now via Razorpay</button>
+            </form>
+            <div id="donationMessage" class="donation-message"></div>
+          </div>
+
           <div class="donate-methods">
             <h4>Ways to Give</h4>
             <ul>
-              <li><span>📱</span> Bank Transfer</li>
+              <li><span>📱</span> UPI: <span id="upi-id-display">vidyadhiraja@okhdfcbank</span></li>
+              <li><span>🏦</span> Bank Transfer</li>
               <li><span>💵</span> Cash Donations</li>
               <li><span>📝</span> Cheque</li>
             </ul>
           </div>
 
-          <a href="#contact" class="btn btn-primary btn-large">Contact Us to Donate</a>
+          <!-- Bank Transfer Details -->
+          <div class="bank-details">
+            <h4>Bank Transfer Details</h4>
+            <table class="bank-table">
+              <tr>
+                <td><strong>Account Name:</strong></td>
+                <td>SRI VIDHYADHI RAJA CHARITIES</td>
+              </tr>
+              <tr>
+                <td><strong>Account Number:</strong></td>
+                <td>7361381788</td>
+              </tr>
+              <tr>
+                <td><strong>IFSC Code:</strong></td>
+                <td>IDIB000V120</td>
+              </tr>
+              <tr>
+                <td><strong>Bank Name:</strong></td>
+                <td>INDIAN BANK</td>
+              </tr>
+              <tr>
+                <td><strong>Branch:</strong></td>
+                <td>VERKILAMBI</td>
+              </tr>
+            </table>
+          </div>
+
+          <!-- UPI QR Code Section (Dynamic) -->
+          <div class="upi-qr-container">
+            <h4>📱 Scan to Pay with UPI</h4>
+            <div id="upi-qr-code"></div>
+            <p><strong>UPI ID:</strong> <span id="upi-id-qr">vidyadhiraja@okhdfcbank</span></p>
+            <p>Scan with any UPI app (Google Pay, PhonePe, Paytm)</p>
+          </div>
         </div>
 
         <div class="donate-message">
           <div class="message-card">
             <p class="message-quote">"Service to humanity is service to the Divine."</p>
-            <p class="message-text">Every contribution — whether financial, material, or through volunteering — helps us
-              provide care to those who have no one.</p>
+            <p class="message-text">Every contribution — whether financial, material, or through volunteering — helps us provide care to those who have no one.</p>
           </div>
         </div>
       </div>
 
-      <!-- 🌳 HOPE TREE SECTION (WORKING VERSION) 🌳 -->
-      <div
-        style="margin:40px auto; max-width:1200px; background:linear-gradient(135deg,#f0f9f0,#fff0d9); padding:30px; border-radius:24px; text-align:center; border:2px solid #2d5a2d;">
+      <!-- 🌳 HOPE TREE SECTION -->
+      <div class="hope-tree-container">
         <h3 style="font-family:Playfair Display; color:#2d5a2d; font-size:2rem; margin-bottom:10px;">🌳 Hope Tree</h3>
         <p style="color:#7c6a5a; margin-bottom:20px;">Watch our tree of compassion grow with every donation</p>
         <div id="hope-tree" style="font-size:8rem; line-height:1; margin:20px 0;">🌱</div>
         <div style="display:flex; justify-content:space-between; align-items:center; margin:20px 0;">
           <span style="font-size:1.5rem;">🌱</span>
           <div style="flex-grow:1; height:8px; background:#e0e0e0; border-radius:4px; margin:0 10px;">
-            <div id="tree-growth-bar" style="width:0%; height:100%; background:linear-gradient(90deg,#2d5a2d,#4caf50);">
-            </div>
+            <div id="tree-growth-bar" style="width:0%; height:100%; background:linear-gradient(90deg,#2d5a2d,#4caf50);"></div>
           </div>
           <span style="font-size:1.5rem;">🌳</span>
         </div>
@@ -921,12 +971,10 @@
             <div style="font-size: 0.9rem; color: #7c6a5a;">Growth</div>
           </div>
         </div>
-        <p id="tree-message" style="margin-top:20px; font-style:italic; color:#2d5a2d;">Every donation plants a seed of
-          hope 🌱</p>
+        <p id="tree-message" style="margin-top:20px; font-style:italic; color:#2d5a2d;">Every donation plants a seed of hope 🌱</p>
       </div>
     </div>
   </section>
-
 
   <!-- Contact Section -->
   <section id="contact" class="section">
@@ -991,45 +1039,44 @@
       </div>
     </div>
   </section>
-
   
- <!-- Footer -->
-<footer class="site-footer">
-  <div class="container">
-    <div class="footer-main">
-      <div class="footer-col">
-        <h4>Sree Vidyadhiraja Charity</h4>
-        <p class="footer-quote">“ജീവകാരുണ്യം ജീവിതത്തിലൂടെ”</p>
-        <p class="footer-quote-en">Charity through Life</p>
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-main">
+        <div class="footer-col">
+          <h4>Sree Vidyadhiraja Charity</h4>
+          <p class="footer-quote">“ജീവകാരുണ്യം ജീവിതത്തിലൂടെ”</p>
+          <p class="footer-quote-en">Charity through Life</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <!-- Broadcast Link - 1st position -->
+            <li><a href="/whatsapp-broadcast.html">📱 WhatsApp Broadcast</a></li>
+            <!-- Social Media Links -->
+            <li><a href="https://instagram.com/sreevidyadhirajacharity" target="_blank">📸 Instagram</a></li>
+            <li><a href="https://youtube.com/@sreevidyadhirajacharity" target="_blank">▶️ YouTube</a></li>
+            <li><a href="https://facebook.com/sreevidyadhirajacharity" target="_blank">📘 Facebook</a></li>
+          </ul>
+          <p style="color: #7c6a5a; font-size: 0.8rem; margin-top: 10px;">(You can update these links in admin)</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <p>Ramachandran - President<br>
+            <a href="tel:+919443559710">+91 94435 59710</a>
+          </p>
+          <p class="footer-80g">80G: ABFTS5003BF20231AY2023-26</p>
+        </div>
       </div>
 
-      <div class="footer-col">
-        <h4>Quick Links</h4>
-        <ul class="footer-links">
-          <!-- Broadcast Link - 1st position -->
-          <li><a href="/whatsapp-broadcast.html">📱 WhatsApp Broadcast</a></li>
-          <!-- Social Media Links -->
-          <li><a href="https://instagram.com/sreevidyadhirajacharity" target="_blank">📸 Instagram</a></li>
-          <li><a href="https://youtube.com/@sreevidyadhirajacharity" target="_blank">▶️ YouTube</a></li>
-          <li><a href="https://facebook.com/sreevidyadhirajacharity" target="_blank">📘 Facebook</a></li>
-        </ul>
-        <p style="color: #7c6a5a; font-size: 0.8rem; margin-top: 10px;">(You can update these links in admin)</p>
-      </div>
-
-      <div class="footer-col">
-        <h4>Connect</h4>
-        <p>Ramachandran - President<br>
-          <a href="tel:+919443559710">+91 94435 59710</a>
-        </p>
-        <p class="footer-80g">80G: ABFTS5003BF20231AY2023-26</p>
+      <div class="footer-bottom">
+        <p>© 2025 Sree Vidyadhiraja Charity. All rights reserved.</p>
       </div>
     </div>
-
-    <div class="footer-bottom">
-      <p>© 2025 Sree Vidyadhiraja Charity. All rights reserved.</p>
-    </div>
-  </div>
-</footer>
+  </footer>
 
   <script src="script.js"></script>
   
@@ -1128,41 +1175,6 @@
 
   <!-- Timeline Script -->
   <script src="/timeline.js"></script>
-  <script>
-    function renderTimeline() {
-      const container = document.getElementById('timeline-container');
-      const timeline = window.timelineData || [];
-      
-      if (timeline.length === 0) {
-        container.innerHTML = '<p class="empty-state">Timeline coming soon...</p>';
-        return;
-      }
-
-      let html = '<div class="timeline-grid">';
-      
-      timeline.forEach((item, index) => {
-        const isEven = index % 2 === 0;
-        html += `
-          <div class="timeline-item ${isEven ? 'left' : 'right'}">
-            <div class="timeline-badge">${index + 1}</div>
-            <div class="timeline-content">
-              <div class="timeline-date">${item.date}</div>
-              <div class="timeline-phase">${item.phase}</div>
-              <img src="${item.image}" alt="${item.title}" class="timeline-image" loading="lazy"
-                   onerror="this.src='pics/cons1.jpeg'">
-              <h3 class="timeline-title">${item.title}</h3>
-              <p class="timeline-description">${item.description}</p>
-            </div>
-          </div>
-        `;
-      });
-      
-      html += '</div>';
-      container.innerHTML = html;
-    }
-
-    document.addEventListener('DOMContentLoaded', renderTimeline);
-  </script>
 
   <!-- Volunteer Form Script -->
   <script>
@@ -1238,6 +1250,42 @@
         </svg>
     </a>
   </div>
+
+  <!-- QR Code Generator for UPI -->
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+  <script>
+    // UPI QR Code Generator
+    document.addEventListener('DOMContentLoaded', function() {
+      // ===== UPDATE THESE WITH YOUR ACTUAL DETAILS WHEN READY =====
+      const upiId = "vidyadhiraja@okhdfcbank";  // Change to your actual UPI ID
+      const payeeName = "Sree Vidyadhiraja Charity";
+      const currency = "INR";
+      
+      // Construct UPI payment URL
+      // Format: upi://pay?pa=UPI_ID&pn=PAYEE_NAME&cu=CURRENCY
+      const upiUrl = `upi://pay?pa=${upiId}&pn=${encodeURIComponent(payeeName)}&cu=${currency}`;
+      
+      // Generate QR code
+      try {
+        new QRCode(document.getElementById("upi-qr-code"), {
+          text: upiUrl,
+          width: 200,
+          height: 200,
+          colorDark: "#2b1810",
+          colorLight: "#ffffff",
+          correctLevel: QRCode.CorrectLevel.H
+        });
+        console.log('✅ UPI QR Code generated successfully');
+      } catch (qrError) {
+        console.error('❌ QR Code generation failed:', qrError);
+        document.getElementById('upi-qr-code').innerHTML = '<div style="width:200px;height:200px;display:flex;align-items:center;justify-content:center;background:#fff0d9;border-radius:16px;">QR Code Error</div>';
+      }
+      
+      // Update UPI ID displays (optional)
+      document.getElementById('upi-id-display').textContent = upiId;
+      document.getElementById('upi-id-qr').textContent = upiId;
+    });
+  </script>
 
   <script>
     function trackWhatsAppClick() {

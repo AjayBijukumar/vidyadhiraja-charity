@@ -13,6 +13,9 @@ const mongoose = require('mongoose');
 const session = require('express-session');
 const path = require('path');
 const cron = require('node-cron'); // For birthday reminders
+const nodemailer = require('nodemailer');
+const Razorpay = require('razorpay');      // ← ONLY ONCE at the top
+const crypto = require('crypto');           // ← ONLY ONCE at the top
 
 // Import routes
 const adminRoutes = require('./routes/admin');
@@ -25,6 +28,7 @@ const Volunteer = require('./models/Volunteer');
 const Prayer = require('./models/Prayer');
 const WhatsAppSubscriber = require('./models/WhatsAppSubscriber'); // NEW
 const BirthdayReminder = require('./models/BirthdayReminder'); // NEW
+const EmailLog = require('./models/EmailLog');
 
 // Import Prayer Wall routes
 const prayerRoutes = require('./routes/prayer');
@@ -78,13 +82,13 @@ app.use(express.static(__dirname));
 app.use('/admin', adminRoutes);
 
 // Mount prayer wall routes
-// Mount prayer wall routes
 app.use('/prayer', require('./routes/prayer'));
 
 // Test route
 app.get('/api/test', (req, res) => {
   res.json({ message: '✅ Server is working!' });
 });
+
 // ========== GALLERY API ENDPOINT ==========
 app.get('/api/gallery', async (req, res) => {
   try {
@@ -584,6 +588,93 @@ cron.schedule('0 8 * * *', async () => {
     
   } catch (error) {
     console.error('Error sending birthday wishes:', error);
+  }
+});
+
+// ========== RAZORPAY DONATION API ==========
+// NOTE: Razorpay and crypto are already declared at the top - DO NOT DECLARE AGAIN!
+
+// Debug - Check if keys are loaded
+console.log('🔑 Razorpay Key ID present:', !!process.env.RAZORPAY_KEY_ID);
+console.log('🔑 Razorpay Key Secret present:', !!process.env.RAZORPAY_KEY_SECRET);
+
+// Initialize Razorpay (lowercase 'r' for instance)
+const razorpay = new Razorpay({
+  key_id: process.env.RAZORPAY_KEY_ID,
+  key_secret: process.env.RAZORPAY_KEY_SECRET
+});
+
+// Create order endpoint
+app.post('/create-order', async (req, res) => {
+  try {
+    const { amount } = req.body;
+    console.log('💰 Donation request received for amount:', amount);
+    
+    if (!amount || amount < 1) {
+      return res.status(400).json({ error: 'Valid amount is required' });
+    }
+
+    const options = {
+      amount: amount * 100, // Razorpay expects amount in paise
+      currency: 'INR',
+      receipt: 'donation_' + Date.now()
+    };
+
+    console.log('📦 Creating Razorpay order with options:', options);
+    const order = await razorpay.orders.create(options);
+    console.log('✅ Razorpay order created:', order.id);
+    
+    res.json({
+      orderId: order.id,
+      amount: order.amount,
+      currency: order.currency
+    });
+    
+  } catch (error) {
+    console.error('❌ Razorpay order error:', error);
+    res.status(500).json({ error: 'Failed to create order' });
+  }
+});
+
+// Verify payment endpoint
+app.post('/verify-payment', async (req, res) => {
+  try {
+    const { razorpay_order_id, razorpay_payment_id, razorpay_signature, name, email, phone, amount } = req.body;
+    console.log('🔐 Verifying payment:', razorpay_payment_id);
+    
+    const body = razorpay_order_id + '|' + razorpay_payment_id;
+    const expectedSignature = crypto
+      .createHmac('sha256', process.env.RAZORPAY_KEY_SECRET)
+      .update(body.toString())
+      .digest('hex');
+    
+    const isValid = expectedSignature === razorpay_signature;
+    console.log('🔐 Signature valid:', isValid);
+    
+    if (isValid) {
+      // Payment is verified - save donation to database
+      const Donation = require('./models/Donation');
+      const donation = new Donation({
+        donorName: name,
+        donorEmail: email,
+        donorPhone: phone,
+        amount: amount / 100, // Convert back from paise
+        razorpayPaymentId: razorpay_payment_id,
+        razorpayOrderId: razorpay_order_id,
+        status: 'completed'
+      });
+      
+      await donation.save();
+      console.log('✅ Donation saved to database with ID:', donation._id);
+      
+      res.json({ success: true, message: 'Payment verified successfully' });
+    } else {
+      console.log('❌ Invalid signature');
+      res.status(400).json({ error: 'Invalid signature' });
+    }
+  } catch (error) {
+    console.error('❌ Payment verification error:', error);
+    res.status(500).json({ error: 'Failed to verify payment' });
   }
 });
 

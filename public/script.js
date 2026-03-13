@@ -47,7 +47,7 @@ if (contactForm && formStatus) {
   contactForm.addEventListener("submit", async (e) => {
     e.preventDefault();
     
-    console.log("📝 Form submitted!"); // Debug log
+    console.log("📝 Form submitted!");
 
     const name = contactForm.name.value.trim();
     const email = contactForm.email.value.trim();
@@ -66,13 +66,8 @@ if (contactForm && formStatus) {
     formStatus.style.color = "#7c6a5a";
 
     try {
-      // Get API endpoint from form attribute or use default
       const apiUrl = contactForm.getAttribute("data-api") || "/api/contact";
       
-      console.log("Sending to:", apiUrl); // Debug log
-      console.log("Data:", { name, email, phone, message }); // Debug log
-      
-      // Send to backend
       const response = await fetch(apiUrl, {
         method: "POST",
         headers: {
@@ -85,11 +80,8 @@ if (contactForm && formStatus) {
           message
         })
       });
-
-      console.log("Response status:", response.status); // Debug log
       
       const data = await response.json();
-      console.log("Response data:", data); // Debug log
 
       if (data.success) {
         formStatus.textContent = "✅ Thank you! Your message has been sent. We will reply soon.";
@@ -102,7 +94,6 @@ if (contactForm && formStatus) {
     } catch (error) {
       console.error("❌ Error:", error);
       
-      // Show error message
       formStatus.textContent = "❌ Server error. Please try again later or call us directly.";
       formStatus.style.color = "#b91c1c";
     }
@@ -110,7 +101,7 @@ if (contactForm && formStatus) {
 }
 
 // ===============================
-// Close mobile menu on resize (if screen becomes large)
+// Close mobile menu on resize
 // ===============================
 window.addEventListener("resize", () => {
   if (window.innerWidth > 900 && mainNav) {
@@ -142,4 +133,160 @@ window.addEventListener("scroll", () => {
       });
     }
   });
+});
+
+// ===============================
+// RAZORPAY DONATION HANDLER
+// ===============================
+const donationForm = document.getElementById('donationForm');
+const donationMessage = document.getElementById('donationMessage');
+const donateButton = document.getElementById('donateButton');
+
+// Load Razorpay script dynamically
+function loadRazorpayScript() {
+  return new Promise((resolve, reject) => {
+    const script = document.createElement('script');
+    script.src = 'https://checkout.razorpay.com/v1/checkout.js';
+    script.onload = resolve;
+    script.onerror = reject;
+    document.head.appendChild(script);
+  });
+}
+
+if (donationForm) {
+  donationForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const name = document.getElementById('donorName').value.trim();
+    const email = document.getElementById('donorEmail').value.trim();
+    const phone = document.getElementById('donorPhone').value.trim();
+    const amount = parseInt(document.getElementById('donationAmount').value);
+    
+    // Validate
+    if (!name || !email || !phone || !amount || amount < 1) {
+      donationMessage.innerHTML = '<span style="color: #b91c1c;">Please fill all fields with valid amount</span>';
+      return;
+    }
+    
+    // Disable button and show loading
+    donateButton.disabled = true;
+    donateButton.textContent = 'Processing...';
+    donationMessage.innerHTML = '<span style="color: #7c6a5a;">Creating order...</span>';
+    
+    try {
+      // Load Razorpay script
+      await loadRazorpayScript();
+      
+      // Create order on backend
+      const orderResponse = await fetch('/create-order', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ amount })
+      });
+      
+      const orderData = await orderResponse.json();
+      
+      if (orderData.error) {
+        throw new Error(orderData.error);
+      }
+      
+      // Razorpay options
+      const options = {
+        key: 'YOUR_RAZORPAY_KEY_ID', // ⚠️ REPLACE WITH YOUR ACTUAL KEY
+        amount: orderData.amount,
+        currency: orderData.currency,
+        name: 'Sree Vidyadhiraja Charity',
+        description: 'Donation for Elderly Home',
+        image: '/pics/logo.png',
+        order_id: orderData.orderId,
+        handler: async function(response) {
+          // Verify payment on backend
+          const verifyResponse = await fetch('/verify-payment', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              ...response,
+              name,
+              email,
+              phone,
+              amount: orderData.amount
+            })
+          });
+          
+          const verifyData = await verifyResponse.json();
+          
+          if (verifyData.success) {
+            donationMessage.innerHTML = '<span style="color: #166534;">✅ Thank you for your donation! You will receive a receipt via email.</span>';
+            donationForm.reset();
+            
+            // Optional: Refresh UPI QR code or update something
+            if (typeof refreshUPIQRCode === 'function') {
+              refreshUPIQRCode();
+            }
+          } else {
+            donationMessage.innerHTML = '<span style="color: #b91c1c;">❌ Payment verification failed. Please contact us.</span>';
+          }
+        },
+        prefill: {
+          name: name,
+          email: email,
+          contact: phone
+        },
+        theme: {
+          color: '#d97706'
+        }
+      };
+      
+      const razorpay = new window.Razorpay(options);
+      razorpay.open();
+      
+    } catch (error) {
+      console.error('Donation error:', error);
+      donationMessage.innerHTML = '<span style="color: #b91c1c;">❌ Failed to process donation. Please try again.</span>';
+    } finally {
+      donateButton.disabled = false;
+      donateButton.textContent = 'Donate Now via Razorpay';
+    }
+  });
+}
+
+// ===============================
+// UPI QR Code Helper (Optional)
+// ===============================
+// This function can be called to refresh or check QR code status
+window.refreshUPIQRCode = function() {
+  const upiQrElement = document.getElementById('upi-qr-code');
+  if (upiQrElement && upiQrElement.children.length === 0) {
+    console.log('🔄 UPI QR code would refresh here');
+    // You could retry QR generation here if needed
+  }
+};
+
+// ===============================
+// WhatsApp Click Tracking (if not already in HTML)
+// ===============================
+if (typeof window.trackWhatsAppClick !== 'function') {
+  window.trackWhatsAppClick = function() {
+    console.log('📱 WhatsApp clicked at:', new Date().toISOString());
+    fetch('/api/track-whatsapp-click', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        page: window.location.pathname,
+        timestamp: new Date().toISOString()
+      })
+    }).catch(err => console.log('Tracking error:', err));
+  };
+}
+
+// ===============================
+// Initialize any on-load functions
+// ===============================
+document.addEventListener('DOMContentLoaded', function() {
+  console.log('✅ Script loaded successfully');
+  
+  // Check if UPI QR code element exists and log
+  if (document.getElementById('upi-qr-code')) {
+    console.log('📱 UPI QR code container found');
+  }
 });

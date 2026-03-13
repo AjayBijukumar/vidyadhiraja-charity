@@ -3,8 +3,9 @@
 const express = require('express');
 const router = express.Router();
 const Prayer = require('../models/Prayer');
+const nodemailer = require('nodemailer'); // Added for email notifications
 
-// ========== API ENDPOINTS (Add these at the top) ==========
+// ========== API ENDPOINTS ==========
 
 // Get approved prayers (for displaying on the wall)
 router.get('/api/prayers', async (req, res) => {
@@ -51,6 +52,61 @@ router.post('/api/prayers', async (req, res) => {
     // Save to database
     await newPrayer.save();
     console.log('✅ Prayer saved with ID:', newPrayer._id);
+    
+    // ===== NEW: Send email notification to admin =====
+    try {
+      const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+          user: process.env.EMAIL_USER,
+          pass: process.env.EMAIL_PASS
+        }
+      });
+      
+      await transporter.sendMail({
+        from: `"Prayer Wall" <${process.env.EMAIL_USER}>`,
+        to: 'ramcatering2011@gmail.com', // Admin email
+        subject: '🙏 New Prayer Submitted for Approval',
+        html: `
+          <div style="font-family: 'Poppins', sans-serif; max-width: 600px; margin: 0 auto; background: #fffaf2; padding: 30px; border-radius: 16px; border: 1px solid #f0d6ac;">
+            <div style="text-align: center; margin-bottom: 25px;">
+              <h2 style="color: #7c2d12; font-family: 'Playfair Display', serif; margin: 0;">Sree Vidyadhiraja Charity</h2>
+              <p style="color: #d97706; margin: 5px 0 0;">New Prayer Needs Approval</p>
+            </div>
+            
+            <div style="background: white; padding: 25px; border-radius: 12px; border: 1px solid #f0d6ac;">
+              <p style="margin: 0 0 15px 0; color: #2b1810;"><strong style="color: #7c2d12;">From:</strong> ${isAnonymous ? 'Anonymous' : name} (${email})</p>
+              
+              <div style="background: #fff0d9; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                <p style="margin: 0; color: #2b1810; font-style: italic;">"${prayer}"</p>
+              </div>
+              
+              <div style="text-align: center; margin-top: 25px;">
+                <a href="https://vidyadhiraja-charity.onrender.com/admin/prayers" 
+                   style="background: #d97706; color: white; padding: 12px 24px; text-decoration: none; border-radius: 40px; display: inline-block; font-weight: 500;">
+                  Review in Admin Dashboard
+                </a>
+              </div>
+              
+              <p style="color: #7c6a5a; font-size: 0.9rem; margin-top: 20px; text-align: center;">
+                This prayer is pending approval and will appear on the prayer wall once approved.
+              </p>
+            </div>
+            
+            <div style="text-align: center; margin-top: 25px; padding-top: 20px; border-top: 1px dashed #f0d6ac;">
+              <p style="color: #7c6a5a; font-size: 0.8rem; margin: 0;">
+                © 2025 Sree Vidyadhiraja Charity
+              </p>
+            </div>
+          </div>
+        `
+      });
+      console.log('✅ Email notification sent to admin');
+    } catch (emailError) {
+      // Log but don't fail - prayer is still saved
+      console.log('⚠️ Email notification failed (non-critical):', emailError.message);
+    }
+    // ===== END NEW CODE =====
     
     // Return success
     res.json({ 
@@ -101,7 +157,7 @@ router.post('/api/prayers/:id/bless', async (req, res) => {
   }
 });
 
-// ========== MAIN PRAYER WALL PAGE (Your existing HTML) ==========
+// ========== MAIN PRAYER WALL PAGE ==========
 
 // Serve the prayer wall page
 router.get('/', async (req, res) => {

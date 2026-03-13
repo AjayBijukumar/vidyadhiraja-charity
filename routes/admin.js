@@ -18,8 +18,9 @@ const nodemailer = require('nodemailer');
 require('dotenv').config();
 
 // Simple admin credentials
-const ADMIN_USERNAME = 'admin';
-const ADMIN_PASSWORD_HASH = bcrypt.hashSync('charity123', 10); // Password: charity123
+const ADMIN_USERNAME = process.env.ADMIN_USERNAME || 'admin';
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'charity123';
+const ADMIN_PASSWORD_HASH = bcrypt.hashSync(ADMIN_PASSWORD, 10);
 
 // Email transporter for replies
 const transporter = nodemailer.createTransport({
@@ -2715,7 +2716,7 @@ router.get('/delete-message/:id', isAuthenticated, async (req, res) => {
   }
 });
 
-// ========== WHATSAPP BROADCAST ADMIN ==========
+
 
 // ========== WHATSAPP BROADCAST ADMIN ==========
 
