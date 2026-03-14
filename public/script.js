@@ -6,7 +6,7 @@ const mainNav = document.getElementById("mainNav");
 
 if (navToggle && mainNav) {
   navToggle.addEventListener("click", () => {
-    mainNav.classList.toggle("open");
+    mainNav.classList.toggle("active"); // CHANGED: 'open' → 'active'
     
     // Accessibility improvement
     const expanded = navToggle.getAttribute("aria-expanded") === "true" || false;
@@ -16,7 +16,7 @@ if (navToggle && mainNav) {
   // Close nav when a link is clicked (mobile)
   mainNav.addEventListener("click", (e) => {
     if (e.target.tagName === "A") {
-      mainNav.classList.remove("open");
+      mainNav.classList.remove("active"); // CHANGED: 'open' → 'active'
       navToggle.setAttribute("aria-expanded", false);
     }
   });
@@ -104,8 +104,8 @@ if (contactForm && formStatus) {
 // Close mobile menu on resize
 // ===============================
 window.addEventListener("resize", () => {
-  if (window.innerWidth > 900 && mainNav) {
-    mainNav.classList.remove("open");
+  if (window.innerWidth > 768 && mainNav) { // CHANGED: 900 → 768 to match CSS
+    mainNav.classList.remove("active"); // CHANGED: 'open' → 'active'
     if (navToggle) {
       navToggle.setAttribute("aria-expanded", false);
     }
@@ -253,17 +253,15 @@ if (donationForm) {
 // ===============================
 // UPI QR Code Helper (Optional)
 // ===============================
-// This function can be called to refresh or check QR code status
 window.refreshUPIQRCode = function() {
   const upiQrElement = document.getElementById('upi-qr-code');
   if (upiQrElement && upiQrElement.children.length === 0) {
     console.log('🔄 UPI QR code would refresh here');
-    // You could retry QR generation here if needed
   }
 };
 
 // ===============================
-// WhatsApp Click Tracking (if not already in HTML)
+// WhatsApp Click Tracking
 // ===============================
 if (typeof window.trackWhatsAppClick !== 'function') {
   window.trackWhatsAppClick = function() {
@@ -285,7 +283,6 @@ if (typeof window.trackWhatsAppClick !== 'function') {
 document.addEventListener('DOMContentLoaded', function() {
   console.log('✅ Script loaded successfully');
   
-  // Check if UPI QR code element exists and log
   if (document.getElementById('upi-qr-code')) {
     console.log('📱 UPI QR code container found');
   }

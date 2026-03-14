@@ -1287,6 +1287,47 @@
     });
   </script>
 
+   <!-- ===== MOBILE NAVIGATION TOGGLE FIX - ADD THIS HERE ===== -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const navToggle = document.getElementById('navToggle');
+      const mainNav = document.getElementById('mainNav');
+
+      if (navToggle && mainNav) {
+        navToggle.addEventListener('click', function() {
+          mainNav.classList.toggle('active');
+          
+          // Update ARIA attribute for accessibility
+          const expanded = navToggle.getAttribute('aria-expanded') === 'true' || false;
+          navToggle.setAttribute('aria-expanded', !expanded);
+          
+          // Animate hamburger (optional)
+          navToggle.classList.toggle('open');
+        });
+
+        // Close menu when a link is clicked
+        mainNav.addEventListener('click', function(e) {
+          if (e.target.tagName === 'A') {
+            mainNav.classList.remove('active');
+            navToggle.setAttribute('aria-expanded', 'false');
+            navToggle.classList.remove('open');
+          }
+        });
+      }
+
+      // Close menu on window resize if screen becomes large
+      window.addEventListener('resize', function() {
+        if (window.innerWidth > 768 && mainNav) {
+          mainNav.classList.remove('active');
+          if (navToggle) {
+            navToggle.setAttribute('aria-expanded', 'false');
+            navToggle.classList.remove('open');
+          }
+        }
+      });
+    });
+  </script>
+
   <script>
     function trackWhatsAppClick() {
       console.log('📱 WhatsApp clicked at:', new Date().toISOString());
