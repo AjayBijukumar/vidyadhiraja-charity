@@ -3,21 +3,28 @@
 // ===============================
 const navToggle = document.getElementById("navToggle");
 const mainNav = document.getElementById("mainNav");
+const body = document.body;
 
 if (navToggle && mainNav) {
   navToggle.addEventListener("click", () => {
     mainNav.classList.toggle("active"); // CHANGED: 'open' → 'active'
+    body.classList.toggle("menu-open"); // ADDED: for overlay
     
-    // Accessibility improvement
+    // Update ARIA attribute for accessibility
     const expanded = navToggle.getAttribute("aria-expanded") === "true" || false;
     navToggle.setAttribute("aria-expanded", !expanded);
+    
+    // Animate hamburger
+    navToggle.classList.toggle("open");
   });
 
   // Close nav when a link is clicked (mobile)
   mainNav.addEventListener("click", (e) => {
     if (e.target.tagName === "A") {
-      mainNav.classList.remove("active"); // CHANGED: 'open' → 'active'
+      mainNav.classList.remove("active");
+      body.classList.remove("menu-open"); // ADDED: remove overlay
       navToggle.setAttribute("aria-expanded", false);
+      navToggle.classList.remove("open");
     }
   });
 }
@@ -104,10 +111,12 @@ if (contactForm && formStatus) {
 // Close mobile menu on resize
 // ===============================
 window.addEventListener("resize", () => {
-  if (window.innerWidth > 768 && mainNav) { // CHANGED: 900 → 768 to match CSS
+  if (window.innerWidth > 768 && mainNav) {
     mainNav.classList.remove("active"); // CHANGED: 'open' → 'active'
+    body.classList.remove("menu-open"); // ADDED: remove overlay
     if (navToggle) {
       navToggle.setAttribute("aria-expanded", false);
+      navToggle.classList.remove("open");
     }
   }
 });

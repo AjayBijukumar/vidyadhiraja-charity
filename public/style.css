@@ -800,7 +800,7 @@ h4 { font-size: 1.25rem; margin-bottom: 0.5rem; }
   letter-spacing: 1px;
 }
 
-/* ===== WAYS TO GIVE SECTION - UPDATED WITH UPI FIX ===== */
+/* ===== WAYS TO GIVE SECTION ===== */
 .donate-methods h4 {
   color: white;
   margin-bottom: 16px;
@@ -826,7 +826,7 @@ h4 { font-size: 1.25rem; margin-bottom: 0.5rem; }
   transition: all 0.3s ease;
   color: #2b1810;
   font-weight: 500;
-  min-height: 70px; /* Consistent height for all cards */
+  min-height: 70px;
 }
 
 .donate-methods li:hover {
@@ -840,19 +840,18 @@ h4 { font-size: 1.25rem; margin-bottom: 0.5rem; }
   min-width: 32px;
   text-align: center;
   color: var(--color-primary);
-  flex-shrink: 0; /* Prevent icon from shrinking */
+  flex-shrink: 0;
 }
 
-/* ===== FIX FOR UPI CARD (First Card) ===== */
+/* UPI Card Fix */
 .donate-methods li:first-child {
   display: flex;
-  flex-wrap: wrap; /* Allow wrapping */
+  flex-wrap: wrap;
   gap: 8px 12px;
   padding: 16px 12px;
   word-break: break-word;
 }
 
-/* Make the UPI ID more compact and visible */
 .donate-methods li:first-child span:last-child {
   font-size: 0.95rem;
   background: rgba(255, 255, 255, 0.2);
@@ -865,10 +864,9 @@ h4 { font-size: 1.25rem; margin-bottom: 0.5rem; }
   border: 1px solid rgba(255, 255, 255, 0.3);
   color: #2b1810;
   margin-left: 0;
-  flex: 1; /* Allow it to take available space */
+  flex: 1;
 }
 
-/* Other cards (Bank Transfer, Cash, Cheque) - keep as single line */
 .donate-methods li:not(:first-child) {
   white-space: nowrap;
 }
@@ -1576,7 +1574,332 @@ h4 { font-size: 1.25rem; margin-bottom: 0.5rem; }
     font-size: 1rem;
 }
 
-/* ===== MOBILE RESPONSIVE ===== */
+/* ===== MOBILE RESPONSIVE (768px and below) ===== */
+@media (max-width: 768px) {
+  /* ----- 1. Header Alignment Fix ----- */
+  .header-inner {
+    padding: 10px 16px;
+  }
+
+  .logo {
+    gap: 8px;
+  }
+
+  .logo-image {
+    height: 40px;
+  }
+
+  .logo-title {
+    font-size: 1rem;
+    line-height: 1.2;
+  }
+
+  .logo-subtitle {
+    font-size: 0.7rem;
+    display: block; /* Override previous display:none if needed */
+  }
+
+  .nav-toggle {
+    display: flex;
+    width: 32px;
+    height: 24px;
+    z-index: 1001;
+  }
+
+  .nav-toggle span {
+    height: 3px;
+    background: #7c2d12;
+    transition: all 0.3s ease;
+  }
+
+  /* Hamburger animation when open */
+  .nav-toggle.open span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .nav-toggle.open span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .nav-toggle.open span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+  }
+
+  /* Mobile menu - slide from right (not full width) */
+  .main-nav {
+    position: fixed;
+    top: 0;
+    right: -70%;
+    width: 70%;
+    height: 100vh;
+    background: white;
+    padding: 80px 20px 30px;
+    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
+    transition: right 0.3s ease;
+    z-index: 1000;
+    overflow-y: auto;
+  }
+
+  .main-nav.active {
+    right: 0;
+  }
+
+  .main-nav ul {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .main-nav a {
+    font-size: 1.1rem;
+    padding: 8px 0;
+    width: 100%;
+    text-align: left;
+  }
+
+  .nav-highlight, .nav-outline {
+    margin-left: 0 !important;
+    display: inline-block;
+    width: auto;
+    padding: 8px 20px !important;
+  }
+
+  /* Overlay when menu is open */
+  body.menu-open {
+    overflow: hidden;
+  }
+
+  body.menu-open::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    pointer-events: none;
+  }
+
+  /* ----- 2. Hero Banner Fix ----- */
+  .hero {
+    padding: 40px 0;
+  }
+
+  .hero-inner {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .hero-image-card {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .hero-image-card img {
+    height: 220px;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .hero-description {
+    font-size: 1rem;
+    margin: 20px 0 25px;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .hero-badge {
+    font-size: 0.85rem;
+    padding: 6px 12px;
+  }
+
+  /* ----- 3. Timeline Mobile Fixes ----- */
+  .timeline-modern {
+    padding: 20px 10px;
+  }
+
+  .timeline-line {
+    width: 2px;
+    left: 20px;
+  }
+
+  .timeline-dot {
+    width: 14px;
+    height: 14px;
+    left: 20px;
+    border-width: 2px;
+  }
+
+  .timeline-item-modern {
+    margin-bottom: 30px;
+  }
+
+  .timeline-item-modern.left,
+  .timeline-item-modern.right {
+    justify-content: flex-start;
+  }
+
+  .timeline-card {
+    width: calc(100% - 45px);
+    margin-left: 45px;
+    padding: 15px;
+  }
+
+  .timeline-date {
+    font-size: 14px;
+  }
+
+  .timeline-phase {
+    font-size: 12px;
+  }
+
+  .timeline-title {
+    font-size: 16px;
+  }
+
+  .timeline-description {
+    font-size: 13px;
+    margin-bottom: 10px;
+  }
+
+  .timeline-image {
+    height: 100px;
+  }
+
+  /* ----- 4. Donate Button Mobile Optimization ----- */
+  .btn-large {
+    padding: 16px 24px;
+    font-size: 1.1rem;
+    width: 100%;
+  }
+
+  .donation-form .btn-primary {
+    width: 100%;
+    padding: 16px 20px;
+    font-size: 1.1rem;
+  }
+
+  /* ----- 5. Mobile Typography Improvements ----- */
+  h1 { 
+    font-size: 2.2rem; 
+  }
+  
+  h2 { 
+    font-size: 1.8rem; 
+  }
+  
+  h3 { 
+    font-size: 1.4rem; 
+  }
+  
+  h4 { 
+    font-size: 1.2rem; 
+  }
+
+  p, .hero-description, .section-description {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .section-header {
+    margin-bottom: 25px;
+  }
+
+  .section-subtitle {
+    font-size: 0.8rem;
+  }
+
+  /* ----- 6. Footer Spacing Fixes ----- */
+  .site-footer {
+    padding: 40px 0 20px;
+  }
+
+  .footer-main {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+  }
+
+  .footer-col {
+    text-align: center;
+  }
+
+  .footer-col h4 {
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+  }
+
+  .footer-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .footer-links li {
+    margin-bottom: 0;
+  }
+
+  .footer-quote {
+    font-size: 1rem;
+  }
+
+  .footer-80g {
+    margin-top: 10px;
+    padding-top: 10px;
+  }
+
+  .footer-bottom {
+    padding-top: 15px;
+    font-size: 0.8rem;
+  }
+}
+
+/* Extra small devices (375px and below) */
+@media (max-width: 375px) {
+  .logo-title {
+    font-size: 0.9rem;
+  }
+
+  .logo-image {
+    height: 35px;
+  }
+
+  .hero-image-card img {
+    height: 180px;
+  }
+
+  .timeline-card {
+    padding: 12px;
+  }
+
+  .timeline-image {
+    height: 80px;
+  }
+
+  .donate-methods ul {
+    grid-template-columns: 1fr;
+  }
+
+  .donate-methods li {
+    padding: 12px 10px;
+  }
+
+  .footer-col h4 {
+    font-size: 1.1rem;
+  }
+}
+
 @media (max-width: 1100px) {
   .team-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -1640,177 +1963,6 @@ h4 { font-size: 1.25rem; margin-bottom: 0.5rem; }
   }
 }
 
-@media (max-width: 768px) {
-  /* Mobile Header */
-  .header-inner {
-    padding: 12px 20px;
-  }
-
-  .logo-image {
-    height: 40px;
-  }
-  
-  .logo-title {
-    font-size: 1rem;
-  }
-  
-  .logo-subtitle {
-    display: none;
-  }
-
-  .nav-toggle {
-    display: flex;
-  }
-
-  .main-nav {
-    position: fixed;
-    top: 78px;
-    left: 0;
-    right: 0;
-    background: white;
-    padding: 20px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    transform: translateY(-150%);
-    opacity: 0;
-    transition: all 0.3s ease;
-    z-index: 999;
-    border-bottom: 1px solid #e5e5e5;
-  }
-
-  .main-nav.active {
-    transform: translateY(0);
-    opacity: 1;
-  }
-
-  .main-nav ul {
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .main-nav a {
-    display: block;
-    text-align: center;
-    font-size: 1.1rem;
-    width: 100%;
-  }
-
-  .nav-highlight, .nav-outline {
-    margin-left: 0 !important;
-    display: inline-block;
-  }
-
-  /* Mobile Timeline */
-  .timeline-line {
-    left: 30px;
-  }
-
-  .timeline-dot {
-    left: 30px;
-  }
-
-  .timeline-item-modern.left,
-  .timeline-item-modern.right {
-    justify-content: flex-end;
-  }
-
-  .timeline-card {
-    width: calc(100% - 70px);
-    margin-left: 70px;
-    padding: 18px;
-  }
-
-  .timeline-image {
-    height: 120px;
-  }
-
-  .cards-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .progress-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .activities-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
-  .volunteer-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
-  .footer-main {
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
-  
-  .quote-card {
-    padding: 30px 20px;
-  }
-  
-  .quote-text {
-    font-size: 1.2rem;
-  }
-  
-  .quote-icon {
-    font-size: 4rem;
-    top: 0;
-    left: 10px;
-  }
-  
-  #hope-tree {
-    font-size: 6rem;
-  }
-  
-  .hope-tree-container {
-    padding: 20px;
-  }
-  
-  /* Mobile Donation */
-  .donate-methods ul {
-    grid-template-columns: 1fr;
-    gap: 10px;
-  }
-  
-  .donate-methods li {
-    padding: 14px 12px;
-    min-height: auto;
-  }
-  
-  /* Stack UPI content vertically on mobile */
-  .donate-methods li:first-child {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-  }
-  
-  .donate-methods li:first-child span:last-child {
-    width: 100%;
-    font-size: 0.85rem;
-    padding: 6px 8px;
-    text-align: center;
-  }
-  
-  .donate-methods li:not(:first-child) {
-    white-space: normal;
-    text-align: left;
-  }
-  
-  .message-card {
-    padding: 30px 24px;
-  }
-  
-  /* Mobile UPI QR */
-  .upi-qr-container {
-    padding: 15px;
-  }
-  
-  #upi-qr-code {
-    width: 160px;
-    height: 160px;
-  }
-}
-
 @media (max-width: 700px) {
   .activities-grid {
     grid-template-columns: 1fr;
@@ -1848,9 +2000,6 @@ h4 { font-size: 1.25rem; margin-bottom: 0.5rem; }
     padding: 40px 0;
   }
   
-  h1 { font-size: 2.2rem; }
-  h2 { font-size: 1.8rem; }
-  
   .hero-actions {
     flex-direction: column;
   }
@@ -1878,18 +2027,6 @@ h4 { font-size: 1.25rem; margin-bottom: 0.5rem; }
   
   .donor-names span {
     text-align: center;
-  }
-  
-  #hope-tree {
-    font-size: 4rem;
-  }
-  
-  .timeline-card {
-    padding: 15px;
-  }
-  
-  .timeline-image {
-    height: 100px;
   }
   
   /* Mobile Bank Details */
