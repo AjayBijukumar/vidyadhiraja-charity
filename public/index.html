@@ -1342,6 +1342,34 @@
     }
   </script>
 
+  <script>
+  // DEBUG: Force menu to work
+  document.addEventListener('DOMContentLoaded', function() {
+    const btn = document.getElementById('navToggle');
+    const menu = document.getElementById('mainNav');
+    
+    if (btn && menu) {
+      console.log('✅ Debug: Found menu elements');
+      
+      btn.addEventListener('click', function() {
+        console.log('🍔 Hamburger clicked!');
+        menu.classList.toggle('active');
+        document.body.classList.toggle('menu-open');
+      });
+      
+      // Close when clicking a link
+      menu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', function() {
+          menu.classList.remove('active');
+          document.body.classList.remove('menu-open');
+        });
+      });
+    } else {
+      console.error('❌ Debug: Menu elements not found!');
+    }
+  });
+</script>
+
 </body>
 
 </html>

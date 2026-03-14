@@ -2046,3 +2046,82 @@ h4 { font-size: 1.25rem; margin-bottom: 0.5rem; }
     margin-bottom: 8px;
   }
 }
+
+/* ===== FORCE MOBILE MENU TO BE VISIBLE ===== */
+@media (max-width: 768px) {
+  /* Make hamburger BIG and visible */
+  .nav-toggle {
+    display: flex !important;
+    width: 40px !important;
+    height: 35px !important;
+    background: #7c2d12 !important;
+    border-radius: 8px !important;
+    padding: 8px !important;
+    z-index: 10000 !important;
+  }
+
+  .nav-toggle span {
+    background: white !important;
+    height: 4px !important;
+    margin: 2px 0 !important;
+  }
+
+  /* Force menu to be visible when active */
+  .main-nav {
+    display: block !important;
+    position: fixed !important;
+    top: 0 !important;
+    right: -100% !important;
+    width: 80% !important;
+    height: 100vh !important;
+    background: #7c2d12 !important; /* Dark background so text is visible */
+    padding: 80px 20px 30px !important;
+    box-shadow: -5px 0 20px rgba(0,0,0,0.3) !important;
+    transition: right 0.3s ease !important;
+    z-index: 9999 !important;
+  }
+
+  .main-nav.active {
+    right: 0 !important;
+  }
+
+  /* Make menu text WHITE and visible */
+  .main-nav ul {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 20px !important;
+  }
+
+  .main-nav a {
+    color: white !important;
+    font-size: 1.2rem !important;
+    font-weight: 500 !important;
+    text-decoration: none !important;
+    padding: 10px 15px !important;
+    display: block !important;
+    background: transparent !important;
+    border-radius: 8px !important;
+  }
+
+  .main-nav a:hover {
+    background: #d97706 !important;
+  }
+
+  .nav-highlight, .nav-outline {
+    background: #d97706 !important;
+    color: white !important;
+    border: none !important;
+  }
+
+  /* Overlay */
+  body.menu-open::after {
+    content: '' !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: rgba(0,0,0,0.7) !important;
+    z-index: 9998 !important;
+  }
+}
