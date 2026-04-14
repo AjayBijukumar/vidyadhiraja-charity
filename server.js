@@ -636,11 +636,31 @@ app.post('/create-order', async (req, res) => {
   }
 });
 
-// Verify payment endpoint
+// Verify payment endpoint - UPDATED with complete donor information
 app.post('/verify-payment', async (req, res) => {
   try {
-    const { razorpay_order_id, razorpay_payment_id, razorpay_signature, name, email, phone, amount } = req.body;
+    const { 
+      razorpay_order_id, 
+      razorpay_payment_id, 
+      razorpay_signature, 
+      // Donor Information from modal
+      title,
+      firstName,
+      lastName,
+      email,
+      phone,
+      address,
+      city,
+      postalCode,
+      pan,
+      amount,
+      paymentMethod,
+      taxExemption,
+      existingDonor
+    } = req.body;
+    
     console.log('🔐 Verifying payment:', razorpay_payment_id);
+    console.log('👤 Donor:', title, firstName, lastName, email);
     
     const body = razorpay_order_id + '|' + razorpay_payment_id;
     const expectedSignature = crypto
@@ -652,13 +672,27 @@ app.post('/verify-payment', async (req, res) => {
     console.log('🔐 Signature valid:', isValid);
     
     if (isValid) {
-      // Payment is verified - save donation to database
+      // Payment is verified - save complete donation to database
       const Donation = require('./models/Donation');
       const donation = new Donation({
-        donorName: name,
+        // Personal Information
+        title: title || 'Mr',
+        firstName: firstName,
+        lastName: lastName,
         donorEmail: email,
         donorPhone: phone,
+        address: address,
+        city: city,
+        postalCode: postalCode,
+        pan: pan || '',
+        
+        // Donation Details
         amount: amount / 100, // Convert back from paise
+        paymentMethod: paymentMethod || 'upi',
+        taxExemption: taxExemption === 'true' || taxExemption === true,
+        existingDonor: existingDonor === 'true' || existingDonor === true,
+        
+        // Razorpay Details
         razorpayPaymentId: razorpay_payment_id,
         razorpayOrderId: razorpay_order_id,
         status: 'completed'
@@ -666,6 +700,37 @@ app.post('/verify-payment', async (req, res) => {
       
       await donation.save();
       console.log('✅ Donation saved to database with ID:', donation._id);
+      console.log('📊 Donor:', firstName, lastName, '| Amount: ₹', amount / 100);
+      
+      // Optional: Send email receipt to donor
+      try {
+        const transporter = nodemailer.createTransport({
+          service: 'gmail',
+          auth: {
+            user: process.env.EMAIL_USER,
+            pass: process.env.EMAIL_PASS
+          }
+        });
+        
+        await transporter.sendMail({
+          from: `"Sri Vidyadhiraja Charities" <${process.env.EMAIL_USER}>`,
+          to: email,
+          subject: 'Thank you for your donation!',
+          html: `
+            <div style="font-family: 'Poppins', sans-serif; max-width: 600px; margin: 0 auto; background: #fffaf2; padding: 30px; border-radius: 24px;">
+              <h2 style="color: #7c2d12;">Thank You, ${title} ${firstName} ${lastName}!</h2>
+              <p>Your generous donation of <strong>₹${amount / 100}</strong> will help us build a home for elderly people in need.</p>
+              <p>Your support truly makes a difference.</p>
+              <hr style="border-color: #f0d6ac; margin: 20px 0;">
+              <p style="color: #7c6a5a; font-size: 0.9rem;">Donation ID: ${donation._id}</p>
+              <p style="color: #7c6a5a; font-size: 0.9rem;">For any questions, contact us at ramcatering2011@gmail.com</p>
+            </div>
+          `
+        });
+        console.log('📧 Donation receipt sent to:', email);
+      } catch (emailError) {
+        console.log('⚠️ Receipt email failed (non-critical):', emailError.message);
+      }
       
       res.json({ success: true, message: 'Payment verified successfully' });
     } else {

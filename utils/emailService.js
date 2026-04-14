@@ -29,7 +29,7 @@ const sendNewMessageNotification = async (formData) => {
     const { subject, html } = templates.newMessageAlert(formData);
     
     const mailOptions = {
-      from: `"Sree Vidyadhiraja Charity" <${process.env.EMAIL_USER}>`,
+      from: `"Sri Vidyadhiraja Charities" <${process.env.EMAIL_USER}>`,
       to: 'ramcatering2011@gmail.com',
       subject: subject,
       html: html
@@ -52,7 +52,7 @@ const sendAutoReplyToUser = async (formData) => {
     const { subject, html } = templates.autoReplyToUser(formData);
     
     const mailOptions = {
-      from: `"Sree Vidyadhiraja Charity" <${process.env.EMAIL_USER}>`,
+      from: `"Sri Vidyadhiraja Charities" <${process.env.EMAIL_USER}>`,
       to: formData.email,
       subject: subject,
       html: html
@@ -77,7 +77,7 @@ const sendNewVolunteerNotification = async (volunteerData) => {
     const { subject, html } = templates.newVolunteerAlert(volunteerData);
     
     const mailOptions = {
-      from: `"Sree Vidyadhiraja Charity" <${process.env.EMAIL_USER}>`,
+      from: `"Sri Vidyadhiraja Charities" <${process.env.EMAIL_USER}>`,
       to: 'ramcatering2011@gmail.com',
       subject: subject,
       html: html
@@ -100,7 +100,7 @@ const sendVolunteerAutoReply = async (volunteerData) => {
     const { subject, html } = templates.volunteerAutoReply(volunteerData);
     
     const mailOptions = {
-      from: `"Sree Vidyadhiraja Charity" <${process.env.EMAIL_USER}>`,
+      from: `"Sri Vidyadhiraja Charities" <${process.env.EMAIL_USER}>`,
       to: volunteerData.email,
       subject: subject,
       html: html

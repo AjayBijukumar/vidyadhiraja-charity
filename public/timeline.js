@@ -1,4 +1,4 @@
-// timeline.js - Modern Timeline Data for Sree Vidyadhiraja Charity
+// timeline.js - Modern Timeline Data for Sri Vidyadhiraja Charities
 
 const timelineData = [
   {

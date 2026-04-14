@@ -70,7 +70,7 @@ router.post('/api/prayers', async (req, res) => {
         html: `
           <div style="font-family: 'Poppins', sans-serif; max-width: 600px; margin: 0 auto; background: #fffaf2; padding: 30px; border-radius: 16px; border: 1px solid #f0d6ac;">
             <div style="text-align: center; margin-bottom: 25px;">
-              <h2 style="color: #7c2d12; font-family: 'Playfair Display', serif; margin: 0;">Sree Vidyadhiraja Charity</h2>
+              <h2 style="color: #7c2d12; font-family: 'Playfair Display', serif; margin: 0;">Sri Vidyadhiraja Charities</h2>
               <p style="color: #d97706; margin: 5px 0 0;">New Prayer Needs Approval</p>
             </div>
             
@@ -95,7 +95,7 @@ router.post('/api/prayers', async (req, res) => {
             
             <div style="text-align: center; margin-top: 25px; padding-top: 20px; border-top: 1px dashed #f0d6ac;">
               <p style="color: #7c6a5a; font-size: 0.8rem; margin: 0;">
-                © 2025 Sree Vidyadhiraja Charity
+                © 2026 Sri Vidyadhiraja Charities. All rights reserved.
               </p>
             </div>
           </div>
@@ -172,7 +172,7 @@ router.get('/', async (req, res) => {
       <!DOCTYPE html>
       <html>
       <head>
-        <title>Prayer Wall - Sree Vidyadhiraja Charity</title>
+        <title>Prayer Wall - Sri Vidyadhiraja Charities</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="/style.css">
         <style>
@@ -395,7 +395,7 @@ router.get('/', async (req, res) => {
       <body>
         <header class="site-header">
           <div class="container">
-            <h1>Sree Vidyadhiraja Charity</h1>
+            <h1>Sri Vidyadhiraja Charities</h1>
             <div class="nav-links">
               <a href="/">Home</a>
               <a href="/#mission">Our Mission</a>
@@ -451,7 +451,7 @@ router.get('/', async (req, res) => {
           <div class="container">
             <p class="footer-quote">"ജീവകാരുണ്യം ജീവിതത്തിലൂടെ"</p>
             <p>Charity through Life</p>
-            <p style="margin-top: 20px;">© 2025 Sree Vidyadhiraja Charity</p>
+            <p style="margin-top: 20px;">© 2026 Sri Vidyadhiraja Charities. All rights reserved.</p>
           </div>
         </footer>
 

@@ -146,7 +146,7 @@ router.get('/login', (req, res) => {
     <body>
       <div class="login-container">
         <h1>Admin Login</h1>
-        <p class="subtitle">Sree Vidyadhiraja Charity</p>
+        <p class="subtitle">Sri Vidyadhiraja Charities</p>
         ${req.query.error ? '<div class="error">Invalid username or password</div>' : ''}
         <form method="POST" action="/admin/login">
           <div class="form-group">
@@ -215,18 +215,41 @@ router.get('/export/messages', isAuthenticated, async (req, res) => {
   }
 });
 
+// ========== EXPORT DONATIONS TO EXCEL ==========
 router.get('/export/donations', isAuthenticated, async (req, res) => {
   try {
     const donations = await Donation.find().sort({ createdAt: -1 });
     
-    const data = donations.map(d => ({
-      Date: new Date(d.createdAt).toLocaleDateString(),
-      Donor: d.donorName,
-      Email: d.donorEmail,
-      Phone: d.donorPhone || '-',
-      Amount: d.amount,
-      'Payment ID': d.razorpayPaymentId || '-'
-    }));
+    const data = donations.map(d => {
+      // Build donor name from new fields
+      let donorName = d.donorName || '';
+      if (d.title && d.firstName && d.lastName) {
+        donorName = `${d.title} ${d.firstName} ${d.lastName}`;
+      }
+      
+      // Payment method display
+      let paymentMethod = d.paymentMethod || '-';
+      if (paymentMethod === 'upi') paymentMethod = 'UPI';
+      else if (paymentMethod === 'card') paymentMethod = 'Card';
+      else if (paymentMethod === 'netbanking') paymentMethod = 'Net Banking';
+      
+      return {
+        Date: new Date(d.createdAt).toLocaleDateString(),
+        'Donor Name': donorName,
+        Email: d.donorEmail,
+        Phone: d.donorPhone || '-',
+        Amount: d.amount,
+        'Payment Method': paymentMethod,
+        'Tax Exemption': d.taxExemption ? 'Yes' : 'No',
+        Address: d.address || '-',
+        City: d.city || '-',
+        'Postal Code': d.postalCode || '-',
+        PAN: d.pan || '-',
+        'Payment ID': d.razorpayPaymentId || '-',
+        'Order ID': d.razorpayOrderId || '-',
+        'Transaction Date': new Date(d.createdAt).toLocaleString()
+      };
+    });
     
     const wb = XLSX.utils.book_new();
     const ws = XLSX.utils.json_to_sheet(data);
@@ -740,7 +763,7 @@ router.post('/send-bulk-email', isAuthenticated, express.json(), async (req, res
       await Promise.all(batch.map(async (volunteer) => {
         try {
           await transporter.sendMail({
-            from: `"Sree Vidyadhiraja Charity" <${process.env.EMAIL_USER}>`,
+            from: `"Sri Vidyadhiraja Charities" <${process.env.EMAIL_USER}>`,
             to: volunteer.email,
             subject: subject,
             html: `
@@ -750,7 +773,7 @@ router.post('/send-bulk-email', isAuthenticated, express.json(), async (req, res
                 <div style="background: #fff0d9; padding: 20px; border-radius: 8px; margin: 20px 0;">
                   ${message.replace(/\n/g, '<br>')}
                 </div>
-                <p>With gratitude,<br><strong>The Sree Vidyadhiraja Charity Team</strong></p>
+                <p>With gratitude,<br><strong>The Sri Vidyadhiraja Charities Team</strong></p>
               </div>
             `
           });
@@ -1204,7 +1227,7 @@ router.get('/events', isAuthenticated, async (req, res) => {
                   <th>Status</th>
                   <th>Registrations</th>
                   <th>Actions</th>
-                </tr>
+                 </tr>
               </thead>
               <tbody id="eventsTableBody">
                 ${events.map(event => `
@@ -1891,17 +1914,17 @@ router.post('/reply-message/:id', isAuthenticated, express.urlencoded({ extended
     }
     
     await transporter.sendMail({
-      from: `"Sree Vidyadhiraja Charity" <${process.env.EMAIL_USER}>`,
+      from: `"Sri Vidyadhiraja Charities" <${process.env.EMAIL_USER}>`,
       to: message.email,
-      subject: `Re: Your message to Sree Vidyadhiraja Charity`,
+      subject: `Re: Your message to Sri Vidyadhiraja Charities`,
       html: `
         <div style="font-family: 'Poppins', sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #7c2d12;">Reply from Sree Vidyadhiraja Charity</h2>
+          <h2 style="color: #7c2d12;">Reply from Sri Vidyadhiraja Charities</h2>
           <p>Dear <strong>${message.name}</strong>,</p>
           <div style="background: #fff0d9; padding: 20px; border-radius: 8px; margin: 20px 0;">
             ${replyMessage.replace(/\n/g, '<br>')}
           </div>
-          <p>With gratitude,<br><strong>The Sree Vidyadhiraja Charity Team</strong></p>
+          <p>With gratitude,<br><strong>The Sri Vidyadhiraja Charities Team</strong></p>
           <hr>
           <p style="color: #7c6a5a; font-size: 0.9rem;">Your original message:</p>
           <p style="color: #7c6a5a; font-style: italic;">"${message.message}"</p>
@@ -2362,7 +2385,7 @@ router.get('/dashboard', isAuthenticated, async (req, res) => {
       <body>
         <div class="header">
           <div class="container">
-            <h1>Admin Dashboard <span>Sree Vidyadhiraja Charity</span></h1>
+            <h1>Admin Dashboard <span>Sri Vidyadhiraja Charities</span></h1>
             <a href="/admin/logout" class="logout-btn">Logout</a>
           </div>
         </div>
@@ -2511,15 +2534,15 @@ router.get('/dashboard', isAuthenticated, async (req, res) => {
             <h2>📬 Contact Messages</h2>
             ${messages.length === 0 ? 
               '<div style="text-align: center; color: #7c6a5a; padding: 40px;">No messages yet</div>' : 
-              '<table><tr><th>Date</th><th>Name</th><th>Email</th><th>Message</th><th>Status</th><th>Actions</th></tr>' + 
+              '表格<thead><tr><th>Date</th><th>Name</th><th>Email</th><th>Message</th><th>Status</th><th>Actions</th></tr></thead><tbody>' + 
               messages.map((m, index) => `
                 <tr>
-                  <td>${new Date(m.createdAt).toLocaleDateString()}</td>
-                  <td>${m.name}</td>
-                  <td>${m.email}</td>
-                  <td>${m.message.substring(0, 50)}${m.message.length > 50 ? '...' : ''}</td>
-                  <td><span class="badge ${m.read ? 'read' : 'unread'}">${m.read ? 'Read' : 'Unread'}</span></td>
-                  <td>
+                  <td style="padding: 12px; border-bottom: 1px solid #f0d6ac;">${new Date(m.createdAt).toLocaleDateString()}</td>
+                  <td style="padding: 12px; border-bottom: 1px solid #f0d6ac;">${m.name}</td>
+                  <td style="padding: 12px; border-bottom: 1px solid #f0d6ac;">${m.email}</td>
+                  <td style="padding: 12px; border-bottom: 1px solid #f0d6ac;">${m.message.substring(0, 50)}${m.message.length > 50 ? '...' : ''}</td>
+                  <td style="padding: 12px; border-bottom: 1px solid #f0d6ac;"><span class="badge ${m.read ? 'read' : 'unread'}">${m.read ? 'Read' : 'Unread'}</span></td>
+                  <td style="padding: 12px; border-bottom: 1px solid #f0d6ac;">
                     <button onclick="toggleReplyForm('reply-${index}')" class="reply-btn">✉️ Reply</button>
                     ${!m.read ? `<a href="/admin/mark-read/${m._id}" class="reply-btn">✓ Mark Read</a>` : ''}
                     <a href="/admin/delete-message/${m._id}" class="reply-btn" style="background:#b91c1c;" onclick="return confirm('Delete this message?')">🗑️ Delete</a>
@@ -2533,7 +2556,7 @@ router.get('/dashboard', isAuthenticated, async (req, res) => {
                     </div>
                   </td>
                 </tr>
-              `).join('') + '</table>'
+              `).join('') + '</tbody></table>'
             }
           </div>
           
@@ -2542,16 +2565,57 @@ router.get('/dashboard', isAuthenticated, async (req, res) => {
             <h2>💰 Donations</h2>
             ${donations.length === 0 ? 
               '<div style="text-align: center; color: #7c6a5a; padding: 40px;">No donations yet</div>' : 
-              '<table><tr><th>Date</th><th>Donor</th><th>Email</th><th>Amount</th><th>Payment ID</th></tr>' + 
-              donations.map(d => `
-                <tr>
-                  <td>${new Date(d.createdAt).toLocaleDateString()}</td>
-                  <td>${d.donorName}</td>
-                  <td>${d.donorEmail}</td>
-                  <td style="font-weight: 600; color: #d97706;">₹${d.amount}</td>
-                  <td><small>${d.razorpayPaymentId ? d.razorpayPaymentId.substring(0, 10) + '...' : '-'}</small></td>
-                </tr>
-              `).join('') + '</table>'
+              `<table style="width:100%; border-collapse: collapse; overflow-x: auto; display: block;">
+                <thead>
+                  <tr>
+                    <th style="text-align: left; padding: 12px; background: #fff0d9; color: #7c2d12;">Date</th>
+                    <th style="text-align: left; padding: 12px; background: #fff0d9; color: #7c2d12;">Donor</th>
+                    <th style="text-align: left; padding: 12px; background: #fff0d9; color: #7c2d12;">Email</th>
+                    <th style="text-align: left; padding: 12px; background: #fff0d9; color: #7c2d12;">Phone</th>
+                    <th style="text-align: left; padding: 12px; background: #fff0d9; color: #7c2d12;">Amount</th>
+                    <th style="text-align: left; padding: 12px; background: #fff0d9; color: #7c2d12;">Payment Method</th>
+                    <th style="text-align: left; padding: 12px; background: #fff0d9; color: #7c2d12;">Tax Exemption</th>
+                    <th style="text-align: left; padding: 12px; background: #fff0d9; color: #7c2d12;">City</th>
+                    <th style="text-align: left; padding: 12px; background: #fff0d9; color: #7c2d12;">PAN</th>
+                    <th style="text-align: left; padding: 12px; background: #fff0d9; color: #7c2d12;">Payment ID</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${donations.map(d => {
+                    let donorName = d.donorName || '';
+                    if (d.title && d.firstName && d.lastName) {
+                      donorName = `${d.title} ${d.firstName} ${d.lastName}`;
+                    }
+                    
+                    let paymentMethod = d.paymentMethod || '-';
+                    if (paymentMethod === 'upi') paymentMethod = '📱 UPI';
+                    else if (paymentMethod === 'card') paymentMethod = '💳 Card';
+                    else if (paymentMethod === 'netbanking') paymentMethod = '🏦 Net Banking';
+                    
+                    let taxExemption = d.taxExemption ? '✅ Yes' : '❌ No';
+                    
+                    let panDisplay = d.pan || '-';
+                    if (panDisplay !== '-' && panDisplay.length > 4) {
+                      panDisplay = panDisplay.substring(0, 4) + '****' + panDisplay.substring(panDisplay.length - 2);
+                    }
+                    
+                    return `
+                      <tr>
+                        <td style="padding: 12px; border-bottom: 1px solid #f0d6ac;">${new Date(d.createdAt).toLocaleDateString()}</td>
+                        <td style="padding: 12px; border-bottom: 1px solid #f0d6ac; font-weight: 500;">${donorName}</td>
+                        <td style="padding: 12px; border-bottom: 1px solid #f0d6ac;"><a href="mailto:${d.donorEmail}" style="color: #d97706;">${d.donorEmail}</a></td>
+                        <td style="padding: 12px; border-bottom: 1px solid #f0d6ac;">${d.donorPhone || '-'}</td>
+                        <td style="padding: 12px; border-bottom: 1px solid #f0d6ac; font-weight: 600; color: #d97706;">₹${d.amount.toLocaleString()}</td>
+                        <td style="padding: 12px; border-bottom: 1px solid #f0d6ac;">${paymentMethod}</td>
+                        <td style="padding: 12px; border-bottom: 1px solid #f0d6ac;">${taxExemption}</td>
+                        <td style="padding: 12px; border-bottom: 1px solid #f0d6ac;">${d.city || '-'}</td>
+                        <td style="padding: 12px; border-bottom: 1px solid #f0d6ac;"><small>${panDisplay}</small></td>
+                        <td style="padding: 12px; border-bottom: 1px solid #f0d6ac;"><small>${d.razorpayPaymentId ? d.razorpayPaymentId.substring(0, 10) + '...' : '-'}</small></td>
+                      </tr>
+                    `;
+                  }).join('')}
+                </tbody>
+              </table>`
             }
           </div>
           
@@ -2560,17 +2624,17 @@ router.get('/dashboard', isAuthenticated, async (req, res) => {
             <h2>🙌 Volunteer Registrations</h2>
             ${volunteers.length === 0 ? 
               '<div style="text-align: center; color: #7c6a5a; padding: 40px;">No volunteers yet</div>' : 
-              '<table><tr><th>Date</th><th>Name</th><th>Phone</th><th>Email</th><th>Type</th><th>Message</th><th>Status</th><th>Actions</th></tr>' + 
+              '<table style="width:100%; border-collapse: collapse;"><thead><tr><th>Date</th><th>Name</th><th>Phone</th><th>Email</th><th>Type</th><th>Message</th><th>Status</th><th>Actions</th></tr></thead><tbody>' + 
               volunteers.map(v => `
                 <tr>
-                  <td>${new Date(v.createdAt).toLocaleDateString()}</td>
-                  <td>${v.name}</td>
-                  <td>${v.phone}</td>
-                  <td><a href="mailto:${v.email}">${v.email}</a></td>
-                  <td><span class="type-badge">${v.type}</span></td>
-                  <td>${v.message ? v.message.substring(0, 30) + (v.message.length > 30 ? '...' : '') : '-'}</td>
-                  <td><span class="badge ${v.status}">${v.status}</span></td>
-                  <td>
+                  <td style="padding: 12px; border-bottom: 1px solid #f0d6ac;">${new Date(v.createdAt).toLocaleDateString()}</td>
+                  <td style="padding: 12px; border-bottom: 1px solid #f0d6ac;">${v.name}</td>
+                  <td style="padding: 12px; border-bottom: 1px solid #f0d6ac;">${v.phone}</td>
+                  <td style="padding: 12px; border-bottom: 1px solid #f0d6ac;"><a href="mailto:${v.email}">${v.email}</a></td>
+                  <td style="padding: 12px; border-bottom: 1px solid #f0d6ac;"><span class="type-badge">${v.type}</span></td>
+                  <td style="padding: 12px; border-bottom: 1px solid #f0d6ac;">${v.message ? v.message.substring(0, 30) + (v.message.length > 30 ? '...' : '') : '-'}</td>
+                  <td style="padding: 12px; border-bottom: 1px solid #f0d6ac;"><span class="badge ${v.status}">${v.status}</span></td>
+                  <td style="padding: 12px; border-bottom: 1px solid #f0d6ac;">
                     <form method="POST" action="/admin/update-volunteer-status/${v._id}" class="status-form">
                       <select name="status" class="status-select" onchange="this.form.submit()">
                         <option value="new" ${v.status === 'new' ? 'selected' : ''}>New</option>
@@ -2580,19 +2644,17 @@ router.get('/dashboard', isAuthenticated, async (req, res) => {
                     </form>
                   </td>
                 </tr>
-              `).join('') + '</table>'
+              `).join('') + '</tbody></table>'
             }
           </div>
         </div>
         
         <script>
-          // Toggle reply form
           function toggleReplyForm(id) {
             const form = document.getElementById(id);
             form.style.display = form.style.display === 'block' ? 'none' : 'block';
           }
           
-          // Daily donation chart
           const ctx = document.getElementById('donationChart').getContext('2d');
           new Chart(ctx, {
             type: 'line',
@@ -2617,7 +2679,6 @@ router.get('/dashboard', isAuthenticated, async (req, res) => {
             }
           });
           
-          // Monthly donation chart
           const monthlyCtx = document.getElementById('monthlyChart').getContext('2d');
           new Chart(monthlyCtx, {
             type: 'bar',
@@ -2640,7 +2701,6 @@ router.get('/dashboard', isAuthenticated, async (req, res) => {
             }
           });
           
-          // Volunteer trend chart
           const volunteerCtx = document.getElementById('volunteerTrendChart').getContext('2d');
           new Chart(volunteerCtx, {
             type: 'line',
@@ -2665,7 +2725,6 @@ router.get('/dashboard', isAuthenticated, async (req, res) => {
             }
           });
           
-          // Volunteer type pie chart
           const typeCtx = document.getElementById('volunteerTypeChart').getContext('2d');
           new Chart(typeCtx, {
             type: 'doughnut',
@@ -2715,8 +2774,6 @@ router.get('/delete-message/:id', isAuthenticated, async (req, res) => {
     res.redirect('/admin/dashboard');
   }
 });
-
-
 
 // ========== WHATSAPP BROADCAST ADMIN ==========
 
@@ -3004,7 +3061,7 @@ router.get('/whatsapp', isAuthenticated, async (req, res) => {
           <!-- Subscribers List -->
           <div class="subscribers-table">
             <h2>📋 Subscribers</h2>
-            <table>
+            表格
               <thead>
                 <tr>
                   <th>Date</th>
@@ -3016,12 +3073,12 @@ router.get('/whatsapp', isAuthenticated, async (req, res) => {
               </thead>
               <tbody>
                 ${subscribers.map(sub => `
-                  <tr>
-                    <td>${new Date(sub.subscribedAt).toLocaleDateString()}</td>
-                    <td>${sub.name}</td>
-                    <td>${sub.phone}</td>
-                    <td><span class="badge ${!sub.consent ? 'inactive' : ''}">${sub.consent ? 'Active' : 'No Consent'}</span></td>
-                    <td>
+                   <tr>
+                    <td style="padding: 12px; border-bottom: 1px solid #f0d6ac;">${new Date(sub.subscribedAt).toLocaleDateString()}</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #f0d6ac;">${sub.name}</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #f0d6ac;">${sub.phone}</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #f0d6ac;"><span class="badge ${!sub.consent ? 'inactive' : ''}">${sub.consent ? 'Active' : 'No Consent'}</span></td>
+                    <td style="padding: 12px; border-bottom: 1px solid #f0d6ac;">
                       <button onclick="deleteSubscriber('${sub._id}')" class="delete-btn">Delete</button>
                     </td>
                   </tr>
@@ -3384,7 +3441,7 @@ router.get('/birthdays', isAuthenticated, async (req, res) => {
           <!-- Birthdays List -->
           <div class="birthdays-table">
             <h2>📅 Birthday Reminders</h2>
-            <table>
+            表格
               <thead>
                 <tr>
                   <th>Name</th>
@@ -3408,17 +3465,17 @@ router.get('/birthdays', isAuthenticated, async (req, res) => {
                   
                   return `
                     <tr>
-                      <td>${b.name}</td>
-                      <td>${b.email}</td>
-                      <td>${birthDate.toLocaleDateString()}</td>
-                      <td>${b.relationship}</td>
-                      <td>
+                      <td style="padding: 12px; border-bottom: 1px solid #f0d6ac;">${b.name}</td>
+                      <td style="padding: 12px; border-bottom: 1px solid #f0d6ac;">${b.email}</td>
+                      <td style="padding: 12px; border-bottom: 1px solid #f0d6ac;">${birthDate.toLocaleDateString()}</td>
+                      <td style="padding: 12px; border-bottom: 1px solid #f0d6ac;">${b.relationship}</td>
+                      <td style="padding: 12px; border-bottom: 1px solid #f0d6ac;">
                         <span class="badge ${b.sendReminder ? 'active' : 'inactive'}">
                           ${b.sendReminder ? 'Active' : 'Paused'}
                         </span>
                         ${daysUntil <= 30 ? `<br><small>${daysUntil} days left</small>` : ''}
                       </td>
-                      <td>
+                      <td style="padding: 12px; border-bottom: 1px solid #f0d6ac;">
                         <button onclick="toggleReminder('${b._id}', ${!b.sendReminder})" class="toggle-btn">
                           ${b.sendReminder ? 'Pause' : 'Activate'}
                         </button>

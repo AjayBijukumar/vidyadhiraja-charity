@@ -5,14 +5,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Sree Vidyadhiraja Charity</title>
+  <title>Sri Vidyadhiraja Charities</title>
 
   <meta name="description"
-    content="Sree Vidyadhiraja Charity  – Compassionate elderly care, shelter, and support. Charity elderly home under construction in Arumanai, Kanyakumari District, Tamil Nadu, India.">
-  <meta name="author" content="Sree Vidyadhiraja Charity">
+    content="Sri Vidyadhiraja Charities – Compassionate elderly care, shelter, and support. Charity elderly home under construction in Arumanai, Kanyakumari District, Tamil Nadu, India.">
+  <meta name="author" content="Sri Vidyadhiraja Charities">
   <meta name="robots" content="index, follow">
 
-  <meta property="og:title" content="Sree Vidyadhiraja Charity">
+  <meta property="og:title" content="Sri Vidyadhiraja Charities">
   <meta property="og:description"
     content="Compassionate elderly care home under construction in Perinchakonam, Kanyakumari District.">
   <meta property="og:type" content="website">
@@ -129,28 +129,7 @@
       font-size: 2rem;
     }
 
-    /* Donation Form Styles */
-    .donation-form {
-      background: white;
-      border-radius: 16px;
-      padding: 25px;
-      margin: 25px 0;
-      border: 1px solid #f0d6ac;
-    }
-
-    .donation-form h4 {
-      color: #7c2d12;
-      margin-bottom: 20px;
-      font-size: 1.2rem;
-    }
-
-    .donation-message {
-      margin-top: 15px;
-      padding: 10px;
-      border-radius: 8px;
-      text-align: center;
-    }
-
+    /* Bank Details Styles */
     .bank-details {
       background: #fff0d9;
       border-radius: 16px;
@@ -242,17 +221,19 @@
 
 <body>
 
-  <!-- Header / Navigation -->
+  <!-- Header / Navigation - New 3-Column Layout -->
   <header class="site-header">
     <div class="container header-inner">
+      <!-- LEFT: Logo + Trust Name -->
       <div class="logo">
-        <img src="pics/logo.png" alt="Sree Vidyadhiraja Charity Logo" class="logo-image">
+        <img src="pics/logo.png" alt="Sri Vidyadhiraja Charities Logo" class="logo-image">
         <div class="logo-text">
-          <span class="logo-title">Sree Vidyadhiraja Charity</span>
+          <span class="logo-title">Sri Vidyadhiraja Charities</span>
           <span class="logo-subtitle"> ജീവകാരുണ്യം ജീവിതത്തിലൂടെ.</span>
         </div>
       </div>
 
+      <!-- CENTER: Navigation Menu -->
       <nav class="main-nav" id="mainNav">
         <ul>
           <li><a href="#home" class="active">Home</a></li>
@@ -265,10 +246,14 @@
           <li><a href="/prayer">Prayer Wall</a></li>
           <li><a href="#donors">Land Donors</a></li>
           <li><a href="#why">Why We Exist</a></li>
-          <li><a href="#donate" class="nav-highlight">Donate</a></li>
-          <li><a href="#contact" class="nav-outline">Contact</a></li>
         </ul>
       </nav>
+
+      <!-- RIGHT: Action Buttons -->
+      <div class="header-actions">
+        <a href="#donate-modal" class="btn btn-primary donate-trigger" id="donateTriggerBtn">Donate Now</a>
+        <a href="#contact" class="btn btn-outline contact-btn">Contact</a>
+      </div>
 
       <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false"
         aria-controls="mainNav">
@@ -293,7 +278,7 @@
           into action.</p>
 
         <div class="hero-actions">
-          <a href="#donate" class="btn btn-primary">Support the Mission</a>
+          <a href="#donate-modal" class="btn btn-primary donate-trigger">Support the Mission</a>
           <a href="#mission" class="btn btn-outline">Learn More</a>
         </div>
       </div>
@@ -521,7 +506,7 @@
       </div>
 
       <div class="progress-message">
-        <p>The Sree Vidyadhiraja Charity stands on land donated by these two sisters. Their generosity
+        <p>The Sri Vidyadhiraja Charities stands on land donated by these two sisters. Their generosity
           reminds us that even a single act of kindness can transform countless lives. We remain forever grateful for
           their vision and compassion.</p>
       </div>
@@ -534,7 +519,7 @@
       <div class="section-header">
         <span class="section-subtitle">Our Inspiration</span>
         <h2>Chattambi Swamigal</h2>
-        <p class="section-description">Known as Sree Vidyadhiraja — The sage who taught compassion through wisdom</p>
+        <p class="section-description">Known as Sri Vidyadhiraja — The sage who taught compassion through wisdom</p>
       </div>
 
       <div class="bio-layout">
@@ -852,49 +837,45 @@
     </div>
   </section>
 
-  <!-- Donation Section -->
+  <!-- ========== NEW DONATION SECTION (SOS STYLE) ========== -->
   <section id="donate" class="section donate-section">
     <div class="container">
       <div class="donate-layout">
         <div class="donate-content">
-          <span class="section-subtitle light">Support Us</span>
-          <h2>Help Build a Home</h2>
-          <p class="donate-intro">Your contribution helps us provide shelter, food, and dignity to elderly people in need.</p>
-
-          <div class="tax-info">
-            <p class="tax-label">80G Tax Exemption Available</p>
-            <p class="tax-number">ABFTS5003BF20231AY2023-26</p>
+          <span class="section-subtitle light">Make a Difference</span>
+          <h2>Make a Donation</h2>
+          
+          <!-- Donation Card -->
+          <div class="donation-card">
+            <div class="donation-card-inner">
+              <div class="donation-card-quote">
+                <p class="quote-text">"Service to humanity is service to the Divine."</p>
+                <p class="quote-source">— Chattambi Swamigal</p>
+              </div>
+              
+              <p class="donation-card-description">
+                Every contribution — whether financial, material, or through volunteering — helps us provide care to those who have no one.
+              </p>
+              
+              <div class="donation-card-impact">
+                <p>Your support helps provide:</p>
+                <ul>
+                  <li>🏠 Safe shelter and nutritious meals</li>
+                  <li>🩺 Medical care and regular check-ups</li>
+                  <li>💝 Dignity and emotional support</li>
+                </ul>
+              </div>
+              
+              <div class="donation-card-message">
+                <p>Even a small contribution can create a big impact.</p>
+                <p>Join us in making lives better.</p>
+              </div>
+              
+              <button class="btn btn-primary btn-large donate-trigger" id="donateCardBtn">Donate Now</button>
+            </div>
           </div>
 
-          <!-- Donation Form -->
-          <div class="donation-form">
-            <h4>Make a Donation</h4>
-            <form id="donationForm">
-              <div class="form-group">
-                <label for="donorName">Your Name *</label>
-                <input type="text" id="donorName" name="donorName" required>
-              </div>
-              
-              <div class="form-group">
-                <label for="donorEmail">Email Address *</label>
-                <input type="email" id="donorEmail" name="donorEmail" required>
-              </div>
-              
-              <div class="form-group">
-                <label for="donorPhone">Phone Number *</label>
-                <input type="tel" id="donorPhone" name="donorPhone" required>
-              </div>
-              
-              <div class="form-group">
-                <label for="donationAmount">Donation Amount (₹) *</label>
-                <input type="number" id="donationAmount" name="amount" min="1" step="1" required placeholder="Enter amount">
-              </div>
-              
-              <button type="submit" id="donateButton" class="btn btn-primary btn-large">Donate Now via Razorpay</button>
-            </form>
-            <div id="donationMessage" class="donation-message"></div>
-          </div>
-
+          <!-- Existing Ways to Give & Bank Details (Kept but styled) -->
           <div class="donate-methods">
             <h4>Ways to Give</h4>
             <ul>
@@ -905,7 +886,6 @@
             </ul>
           </div>
 
-          <!-- Bank Transfer Details -->
           <div class="bank-details">
             <h4>Bank Transfer Details</h4>
             <table class="bank-table">
@@ -932,7 +912,6 @@
             </table>
           </div>
 
-          <!-- UPI QR Code Section (Dynamic) -->
           <div class="upi-qr-container">
             <h4>📱 Scan to Pay with UPI</h4>
             <div id="upi-qr-code"></div>
@@ -976,6 +955,142 @@
     </div>
   </section>
 
+  <!-- ========== DONATION MODAL (Popup Form) ========== -->
+  <div id="donationModal" class="donation-modal">
+    <div class="donation-modal-overlay"></div>
+    <div class="donation-modal-container">
+      <button class="donation-modal-close">&times;</button>
+      <div class="donation-modal-content">
+        <h2>Make a Donation</h2>
+        <p class="modal-subtitle">Your generosity changes lives</p>
+        
+        <form id="donationModalForm" class="donation-modal-form">
+          <!-- Title and Name Fields -->
+          <div class="form-row">
+            <div class="form-group">
+              <label>Title <span class="required">*</span></label>
+              <select id="donorTitle" required>
+                <option value="">Select</option>
+                <option value="Mr">Mr.</option>
+                <option value="Ms">Ms.</option>
+                <option value="Mrs">Mrs.</option>
+                <option value="Dr">Dr.</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>First Name <span class="required">*</span></label>
+              <input type="text" id="donorFirstName" required>
+            </div>
+            <div class="form-group">
+              <label>Last Name <span class="required">*</span></label>
+              <input type="text" id="donorLastName" required>
+            </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label>Email <span class="required">*</span></label>
+              <input type="email" id="donorEmailModal" required>
+            </div>
+            <div class="form-group">
+              <label>Mobile Number <span class="required">*</span></label>
+              <input type="tel" id="donorPhoneModal" required>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label>Address <span class="required">*</span></label>
+            <input type="text" id="donorAddress" required>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label>City <span class="required">*</span></label>
+              <input type="text" id="donorCity" required>
+            </div>
+            <div class="form-group">
+              <label>Postal Code <span class="required">*</span></label>
+              <input type="text" id="donorPostalCode" required>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label>PAN (Optional)</label>
+            <input type="text" id="donorPan" placeholder="ABCDE1234F">
+          </div>
+          
+          <!-- Existing Donor Feature -->
+          <div class="form-group checkbox-group">
+            <input type="checkbox" id="existingDonorCheckbox">
+            <label for="existingDonorCheckbox">I am an existing donor</label>
+          </div>
+          
+          <div id="existingDonorFields" class="existing-donor-fields" style="display: none;">
+            <div class="form-row">
+              <div class="form-group">
+                <label>Email or Mobile</label>
+                <input type="text" id="existingDonorEmail" placeholder="Enter your registered email or mobile">
+              </div>
+              <div class="form-group" style="display: flex; align-items: flex-end;">
+                <button type="button" id="fetchDonorDetailsBtn" class="btn btn-secondary btn-small">Fetch Details</button>
+              </div>
+            </div>
+            <div id="fetchDonorMessage" class="fetch-message"></div>
+          </div>
+          
+          <!-- Tax Exemption -->
+          <div class="form-group checkbox-group">
+            <input type="checkbox" id="taxExemptionCheckbox">
+            <label for="taxExemptionCheckbox">I wish to claim tax exemption under 80G</label>
+          </div>
+          
+          <!-- Amount Field -->
+          <div class="form-group">
+            <label>Donation Amount (₹) <span class="required">*</span></label>
+            <input type="number" id="donationAmountModal" min="1" step="1" required placeholder="Enter amount">
+          </div>
+          
+          <!-- Payment Options -->
+          <div class="form-group">
+            <label>Payment Method <span class="required">*</span></label>
+            <div class="payment-options">
+              <label class="payment-option">
+                <input type="radio" name="paymentMethod" value="upi" checked>
+                <span class="payment-label">📱 UPI</span>
+              </label>
+              <label class="payment-option">
+                <input type="radio" name="paymentMethod" value="card">
+                <span class="payment-label">💳 Card</span>
+              </label>
+              <label class="payment-option">
+                <input type="radio" name="paymentMethod" value="netbanking">
+                <span class="payment-label">🏦 Net Banking</span>
+              </label>
+            </div>
+          </div>
+          
+          <button type="submit" class="btn btn-primary btn-large btn-block" id="payNowBtn">Pay Now</button>
+          
+          <!-- Trust Footer Section -->
+          <div class="donation-footer">
+            <div class="donation-footer-divider"></div>
+            <div class="donation-footer-content">
+              <div class="footer-tax-info">
+                <p>All donations to Sri Vidyadhiraja Charities are eligible for tax exemption under Section 80G of the Income Tax Act.</p>
+              </div>
+              <div class="footer-support-info">
+                <p>For any enquiries/support, kindly contact us at <a href="mailto:ramcatering2011@gmail.com">ramcatering2011@gmail.com</a></p>
+              </div>
+              <div class="footer-privacy-info">
+                <p>We respect your privacy. Your personal information will never be shared or sold. All transactions are secure and processed through trusted payment gateways. We do not store card or bank details.</p>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
   <!-- Contact Section -->
   <section id="contact" class="section">
     <div class="container">
@@ -1003,7 +1118,7 @@
           <div class="info-item">
             <span class="info-icon">📍</span>
             <address>
-              Sree Vidyadhiraja Charity<br>
+              Sri Vidyadhiraja Charities<br>
               Perinchakonam, Kanyakumari District<br>
               Tamil Nadu, India
             </address>
@@ -1045,7 +1160,7 @@
     <div class="container">
       <div class="footer-main">
         <div class="footer-col">
-          <h4>Sree Vidyadhiraja Charity</h4>
+          <h4>Sri Vidyadhiraja Charities</h4>
           <p class="footer-quote">“ജീവകാരുണ്യം ജീവിതത്തിലൂടെ”</p>
           <p class="footer-quote-en">Charity through Life</p>
         </div>
@@ -1053,12 +1168,10 @@
         <div class="footer-col">
           <h4>Quick Links</h4>
           <ul class="footer-links">
-            <!-- Broadcast Link - 1st position -->
             <li><a href="/whatsapp-broadcast.html">📱 WhatsApp Broadcast</a></li>
-            <!-- Social Media Links -->
-            <li><a href="https://instagram.com/sreevidyadhirajacharity" target="_blank">📸 Instagram</a></li>
-            <li><a href="https://youtube.com/@sreevidyadhirajacharity" target="_blank">▶️ YouTube</a></li>
-            <li><a href="https://facebook.com/sreevidyadhirajacharity" target="_blank">📘 Facebook</a></li>
+            <li><a href="https://instagram.com/srividyadhirajacharities" target="_blank">📸 Instagram</a></li>
+            <li><a href="https://www.youtube.com/channel/UCvJV6qvnWLoWrevCy-iMhOw" target="_blank">▶️ YouTube</a></li>
+            <li><a href="https://facebook.com/srividyadhirajacharities" target="_blank">📘 Facebook</a></li>
           </ul>
           <p style="color: #7c6a5a; font-size: 0.8rem; margin-top: 10px;">(You can update these links in admin)</p>
         </div>
@@ -1073,7 +1186,7 @@
       </div>
 
       <div class="footer-bottom">
-        <p>© 2025 Sree Vidyadhiraja Charity. All rights reserved.</p>
+        <p>© 2026 Sri Vidyadhiraja Charities. All rights reserved.</p>
       </div>
     </div>
   </footer>
@@ -1082,29 +1195,23 @@
   
   <!-- Hope Tree JavaScript -->
   <script>
-    // Hope Tree - Dynamic Growth Based on Donations
     async function updateHopeTree() {
       try {
-        // Fetch donation data
         const response = await fetch('/api/donations/total');
         const data = await response.json();
         const totalAmount = data.total || 0;
 
-        // Get donation count for donor numbers
         const countResponse = await fetch('/api/donations/count');
         const countData = await countResponse.json();
         const donorCount = countData.count || 0;
 
-        // Set target amount (adjust based on your construction cost)
-        const targetAmount = 2000000; // ₹20,00,000
+        const targetAmount = 2000000;
         const percentage = Math.min((totalAmount / targetAmount) * 100, 200);
 
-        // Update tree visualization based on percentage
         const treeElement = document.getElementById('hope-tree');
         const messageElement = document.getElementById('tree-message');
         const growthBar = document.getElementById('tree-growth-bar');
 
-        // Tree growth stages
         if (percentage < 10) {
           treeElement.innerHTML = '🌱';
           messageElement.innerHTML = 'A seed of hope has been planted 🌱';
@@ -1134,14 +1241,10 @@
           messageElement.innerHTML = 'A mighty forest of compassion! 🌳🌳🌸🌸🌟';
         }
 
-        // Update growth bar (capped at 100% for bar)
         growthBar.style.width = Math.min(percentage, 100) + '%';
-
-        // Update stats
         document.getElementById('total-donors').textContent = donorCount;
         document.getElementById('growth-percentage').textContent = Math.round(percentage) + '%';
 
-        // Add animation
         treeElement.style.transform = 'scale(1.1)';
         setTimeout(() => {
           treeElement.style.transform = 'scale(1)';
@@ -1152,33 +1255,23 @@
       }
     }
 
-    // Update on page load
     document.addEventListener('DOMContentLoaded', updateHopeTree);
-
-    // Update every 30 seconds
     setInterval(updateHopeTree, 30000);
   </script>
 
-  <!-- Daily Wisdom Quote Script -->
   <script src="/quotes.js"></script>
   <script>
-    // Display today's quote
     function displayDailyQuote() {
       const quote = window.quotesData.getTodaysQuote();
       document.getElementById('quote-text').textContent = `"${quote.text}"`;
       document.getElementById('quote-source').textContent = `— ${quote.source}`;
     }
-
-    // Run when page loads
     document.addEventListener('DOMContentLoaded', displayDailyQuote);
   </script>
 
-  <!-- Timeline Script -->
   <script src="/timeline.js"></script>
 
-  <!-- Volunteer Form Script -->
   <script>
-    // Volunteer Form Submission
     const volunteerForm = document.getElementById('volunteerForm');
     const volunteerFormStatus = document.getElementById('volunteerFormStatus');
 
@@ -1192,30 +1285,20 @@
         const type = document.getElementById('volunteer-type').value;
         const message = document.getElementById('volunteer-message').value.trim();
 
-        // Validation
         if (!name || !phone || !email || !type) {
           volunteerFormStatus.textContent = 'Please fill all required fields.';
           volunteerFormStatus.style.color = '#b91c1c';
           return;
         }
 
-        // Show sending message
         volunteerFormStatus.textContent = 'Submitting...';
         volunteerFormStatus.style.color = '#7c6a5a';
 
         try {
           const response = await fetch('/api/volunteer', {
             method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-              name,
-              phone,
-              email,
-              type,
-              message
-            })
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, phone, email, type, message })
           });
 
           const data = await response.json();
@@ -1237,11 +1320,10 @@
     }
   </script>
 
-  <!-- Floating WhatsApp Button -->
   <link rel="stylesheet" href="/whatsapp.css">
   <div class="whatsapp-float saffron" id="whatsapp-float">
     <div class="whatsapp-tooltip">Chat with us on WhatsApp</div>
-    <a href="https://wa.me/919443791336?text=Hi%21%20I%27m%20interested%20in%20learning%20more%20about%20Sree%20Vidyadhiraja%20Charity." 
+    <a href="https://wa.me/919443791336?text=Hi%21%20I%27m%20interested%20in%20learning%20more%20about%20Sri%20Vidyadhiraja%20Charities." 
        class="whatsapp-button" 
        target="_blank"
        onclick="trackWhatsAppClick()">
@@ -1251,21 +1333,14 @@
     </a>
   </div>
 
-  <!-- QR Code Generator for UPI -->
   <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
   <script>
-    // UPI QR Code Generator
     document.addEventListener('DOMContentLoaded', function() {
-      // ===== UPDATE THESE WITH YOUR ACTUAL DETAILS WHEN READY =====
-      const upiId = "vidyadhiraja@okhdfcbank";  // Change to your actual UPI ID
-      const payeeName = "Sree Vidyadhiraja Charity";
+      const upiId = "vidyadhiraja@okhdfcbank";
+      const payeeName = "Sri Vidyadhiraja Charities";
       const currency = "INR";
-      
-      // Construct UPI payment URL
-      // Format: upi://pay?pa=UPI_ID&pn=PAYEE_NAME&cu=CURRENCY
       const upiUrl = `upi://pay?pa=${upiId}&pn=${encodeURIComponent(payeeName)}&cu=${currency}`;
       
-      // Generate QR code
       try {
         new QRCode(document.getElementById("upi-qr-code"), {
           text: upiUrl,
@@ -1281,13 +1356,11 @@
         document.getElementById('upi-qr-code').innerHTML = '<div style="width:200px;height:200px;display:flex;align-items:center;justify-content:center;background:#fff0d9;border-radius:16px;">QR Code Error</div>';
       }
       
-      // Update UPI ID displays (optional)
       document.getElementById('upi-id-display').textContent = upiId;
       document.getElementById('upi-id-qr').textContent = upiId;
     });
   </script>
 
-   <!-- ===== MOBILE NAVIGATION TOGGLE FIX - ADD THIS HERE ===== -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const navToggle = document.getElementById('navToggle');
@@ -1296,16 +1369,11 @@
       if (navToggle && mainNav) {
         navToggle.addEventListener('click', function() {
           mainNav.classList.toggle('active');
-          
-          // Update ARIA attribute for accessibility
           const expanded = navToggle.getAttribute('aria-expanded') === 'true' || false;
           navToggle.setAttribute('aria-expanded', !expanded);
-          
-          // Animate hamburger (optional)
           navToggle.classList.toggle('open');
         });
 
-        // Close menu when a link is clicked
         mainNav.addEventListener('click', function(e) {
           if (e.target.tagName === 'A') {
             mainNav.classList.remove('active');
@@ -1315,7 +1383,6 @@
         });
       }
 
-      // Close menu on window resize if screen becomes large
       window.addEventListener('resize', function() {
         if (window.innerWidth > 768 && mainNav) {
           mainNav.classList.remove('active');
@@ -1343,32 +1410,135 @@
   </script>
 
   <script>
-  // DEBUG: Force menu to work
-  document.addEventListener('DOMContentLoaded', function() {
-    const btn = document.getElementById('navToggle');
-    const menu = document.getElementById('mainNav');
+    // ========== DONATION MODAL FUNCTIONALITY ==========
+    const modal = document.getElementById('donationModal');
+    const donateTriggers = document.querySelectorAll('.donate-trigger');
+    const closeBtn = document.querySelector('.donation-modal-close');
+    const modalOverlay = document.querySelector('.donation-modal-overlay');
     
-    if (btn && menu) {
-      console.log('✅ Debug: Found menu elements');
-      
-      btn.addEventListener('click', function() {
-        console.log('🍔 Hamburger clicked!');
-        menu.classList.toggle('active');
-        document.body.classList.toggle('menu-open');
-      });
-      
-      // Close when clicking a link
-      menu.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', function() {
-          menu.classList.remove('active');
-          document.body.classList.remove('menu-open');
-        });
-      });
-    } else {
-      console.error('❌ Debug: Menu elements not found!');
+    const existingDonorCheckbox = document.getElementById('existingDonorCheckbox');
+    const existingDonorFields = document.getElementById('existingDonorFields');
+    const taxExemptionCheckbox = document.getElementById('taxExemptionCheckbox');
+    const panInput = document.getElementById('donorPan');
+    
+    // Open modal
+    function openModal() {
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
     }
-  });
-</script>
+    
+    // Close modal
+    function closeModal() {
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+    
+    donateTriggers.forEach(trigger => {
+      trigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        openModal();
+      });
+    });
+    
+    closeBtn.addEventListener('click', closeModal);
+    modalOverlay.addEventListener('click', closeModal);
+    
+    // ESC key to close
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('active')) {
+        closeModal();
+      }
+    });
+    
+    // Existing Donor Toggle
+    existingDonorCheckbox.addEventListener('change', function() {
+      existingDonorFields.style.display = this.checked ? 'block' : 'none';
+    });
+    
+    // Tax Exemption Toggle
+    taxExemptionCheckbox.addEventListener('change', function() {
+      if (this.checked) {
+        panInput.setAttribute('required', 'required');
+        panInput.parentElement.classList.add('required-field');
+      } else {
+        panInput.removeAttribute('required');
+        panInput.parentElement.classList.remove('required-field');
+      }
+    });
+    
+    // Fetch Donor Details (Simulate)
+    document.getElementById('fetchDonorDetailsBtn')?.addEventListener('click', function() {
+      const input = document.getElementById('existingDonorEmail').value;
+      const messageDiv = document.getElementById('fetchDonorMessage');
+      
+      if (!input) {
+        messageDiv.innerHTML = '<span style="color: #b91c1c;">Please enter email or mobile number</span>';
+        return;
+      }
+      
+      messageDiv.innerHTML = '<span style="color: #7c6a5a;">Fetching details...</span>';
+      
+      setTimeout(() => {
+        const dummyData = {
+          title: 'Mr',
+          firstName: 'John',
+          lastName: 'Doe',
+          email: 'john@example.com',
+          phone: '9876543210',
+          address: '123 Main Street',
+          city: 'Mumbai',
+          postalCode: '400001'
+        };
+        
+        document.getElementById('donorTitle').value = dummyData.title;
+        document.getElementById('donorFirstName').value = dummyData.firstName;
+        document.getElementById('donorLastName').value = dummyData.lastName;
+        document.getElementById('donorEmailModal').value = dummyData.email;
+        document.getElementById('donorPhoneModal').value = dummyData.phone;
+        document.getElementById('donorAddress').value = dummyData.address;
+        document.getElementById('donorCity').value = dummyData.city;
+        document.getElementById('donorPostalCode').value = dummyData.postalCode;
+        
+        messageDiv.innerHTML = '<span style="color: #166534;">✅ Details fetched successfully!</span>';
+        
+        setTimeout(() => {
+          messageDiv.innerHTML = '';
+        }, 3000);
+      }, 800);
+    });
+    
+    // Form Submit
+    const modalForm = document.getElementById('donationModalForm');
+    modalForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Basic validation
+      const required = modalForm.querySelectorAll('[required]');
+      let isValid = true;
+      
+      required.forEach(field => {
+        if (!field.value.trim()) {
+          isValid = false;
+          field.style.borderColor = '#b91c1c';
+        } else {
+          field.style.borderColor = '#f0d6ac';
+        }
+      });
+      
+      if (!isValid) {
+        alert('Please fill all required fields');
+        return;
+      }
+      
+      const selectedPayment = document.querySelector('input[name="paymentMethod"]:checked').value;
+      
+      // Show alert for now (will integrate with Razorpay later)
+      alert(`Redirecting to secure payment gateway for ${selectedPayment.toUpperCase()} payment...\n\nAmount: ₹${document.getElementById('donationAmountModal').value}\n\n(Your existing Razorpay integration will handle the payment)`);
+      
+      // Close modal
+      closeModal();
+    });
+  </script>
 
 </body>
 

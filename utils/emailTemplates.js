@@ -10,7 +10,7 @@ const newMessageAlert = (data) => ({
   html: `
     <div style="font-family: 'Poppins', Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #fffaf2; padding: 30px; border-radius: 16px; border: 1px solid #f0d6ac;">
       <div style="text-align: center; margin-bottom: 25px;">
-        <h2 style="color: #7c2d12; font-family: 'Playfair Display', serif; margin: 0;">Sree Vidyadhiraja Charity</h2>
+        <h2 style="color: #7c2d12; font-family: 'Playfair Display', serif; margin: 0;">Sri Vidyadhiraja Charity</h2>
         <p style="color: #d97706; margin: 5px 0 0;">New Contact Form Submission</p>
       </div>
       
@@ -29,7 +29,7 @@ const newMessageAlert = (data) => ({
           View all messages in your <a href="http://localhost:5000/admin/dashboard" style="color: #d97706; text-decoration: none;">Admin Dashboard</a>
         </p>
         <p style="color: #7c6a5a; font-size: 0.8rem; margin: 10px 0 0;">
-          © 2025 Sree Vidyadhiraja Charity 
+          © 2025 Sri Vidyadhiraja Charity 
         </p>
       </div>
     </div>
@@ -42,14 +42,14 @@ const autoReplyToUser = (data) => ({
   html: `
     <div style="font-family: 'Poppins', Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #fffaf2; padding: 30px; border-radius: 16px; border: 1px solid #f0d6ac;">
       <div style="text-align: center; margin-bottom: 25px;">
-        <h2 style="color: #7c2d12; font-family: 'Playfair Display', serif; margin: 0;">Sree Vidyadhiraja Charity</h2>
+        <h2 style="color: #7c2d12; font-family: 'Playfair Display', serif; margin: 0;">Sri Vidyadhiraja Charity</h2>
         <p style="color: #d97706; margin: 5px 0 0;">We Received Your Message</p>
       </div>
       
       <div style="background: white; padding: 25px; border-radius: 12px; border: 1px solid #f0d6ac;">
         <p style="margin: 0 0 20px 0; color: #2b1810;">Dear <strong style="color: #7c2d12;">${data.name}</strong>,</p>
         
-        <p style="margin: 0 0 15px 0; color: #2b1810;">Thank you for reaching out to Sree Vidyadhiraja Charity. We have received your message and will get back to you as soon as possible.</p>
+        <p style="margin: 0 0 15px 0; color: #2b1810;">Thank you for reaching out to Sri Vidyadhiraja Charity. We have received your message and will get back to you as soon as possible.</p>
         
         <div style="background: #fff0d9; padding: 15px; border-radius: 8px; margin: 20px 0;">
           <p style="margin: 0 0 10px 0; color: #7c2d12; font-weight: 600;">Your Message:</p>
@@ -58,7 +58,7 @@ const autoReplyToUser = (data) => ({
         
         <p style="margin: 0 0 15px 0; color: #2b1810;">Your kindness and support mean the world to us. Together, we can build a home for elderly people in need.</p>
         
-        <p style="margin: 0; color: #2b1810;">With gratitude,<br><strong style="color: #7c2d12;">The Sree Vidyadhiraja Charity Team</strong></p>
+        <p style="margin: 0; color: #2b1810;">With gratitude,<br><strong style="color: #7c2d12;">The Sri Vidyadhiraja Charity Team</strong></p>
       </div>
       
       <div style="text-align: center; margin-top: 25px; padding-top: 20px; border-top: 1px dashed #f0d6ac;">
@@ -66,7 +66,7 @@ const autoReplyToUser = (data) => ({
           "ജീവകാരുണ്യം ജീവിതത്തിലൂടെ — Charity through Life"
         </p>
         <p style="color: #7c6a5a; font-size: 0.8rem; margin: 10px 0 0;">
-          © 2025 Sree Vidyadhiraja Charity 
+          © 2025 Sri Vidyadhiraja Charity 
         </p>
       </div>
     </div>
@@ -81,7 +81,7 @@ const newVolunteerAlert = (data) => ({
   html: `
     <div style="font-family: 'Poppins', Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #fffaf2; padding: 30px; border-radius: 16px; border: 1px solid #f0d6ac;">
       <div style="text-align: center; margin-bottom: 25px;">
-        <h2 style="color: #7c2d12; font-family: 'Playfair Display', serif; margin: 0;">Sree Vidyadhiraja Charity</h2>
+        <h2 style="color: #7c2d12; font-family: 'Playfair Display', serif; margin: 0;">Sri Vidyadhiraja Charity</h2>
         <p style="color: #d97706; margin: 5px 0 0;">New Volunteer Registration</p>
       </div>
       
@@ -110,7 +110,7 @@ const volunteerAutoReply = (data) => ({
   html: `
     <div style="font-family: 'Poppins', Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #fffaf2; padding: 30px; border-radius: 16px; border: 1px solid #f0d6ac;">
       <div style="text-align: center; margin-bottom: 25px;">
-        <h2 style="color: #7c2d12; font-family: 'Playfair Display', serif; margin: 0;">Sree Vidyadhiraja Charity</h2>
+        <h2 style="color: #7c2d12; font-family: 'Playfair Display', serif; margin: 0;">Sri Vidyadhiraja Charity</h2>
         <p style="color: #d97706; margin: 5px 0 0;">Welcome to Our Family!</p>
       </div>
       
@@ -131,7 +131,7 @@ const volunteerAutoReply = (data) => ({
         
         <p style="margin: 0 0 15px 0; color: #2b1810;">Together, we can build a home filled with compassion, dignity, and love for our elderly.</p>
         
-        <p style="margin: 0; color: #2b1810;">With gratitude,<br><strong style="color: #7c2d12;">The Sree Vidyadhiraja Charity Team</strong></p>
+        <p style="margin: 0; color: #2b1810;">With gratitude,<br><strong style="color: #7c2d12;">The Sri Vidyadhiraja Charity Team</strong></p>
       </div>
       
       <div style="text-align: center; margin-top: 25px; padding-top: 20px; border-top: 1px dashed #f0d6ac;">
