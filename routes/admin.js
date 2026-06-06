@@ -160,7 +160,7 @@ router.get('/login', (req, res) => {
           <button type="submit">Login to Dashboard</button>
         </form>
         <div class="footer">
-          <p>Default credentials: <strong>admin / charity123</strong></p>
+
           <p><a href="/">← Back to Website</a></p>
         </div>
       </div>
