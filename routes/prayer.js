@@ -3,7 +3,7 @@
 const express = require('express');
 const router = express.Router();
 const Prayer = require('../models/Prayer');
-const nodemailer = require('nodemailer'); // Added for email notifications
+// nodemailer removed - no email notifications to avoid timeout issues
 
 // ========== API ENDPOINTS ==========
 
@@ -24,7 +24,7 @@ router.get('/api/prayers', async (req, res) => {
   }
 });
 
-// Submit a new prayer
+// Submit a new prayer - NO EMAIL, INSTANT RESPONSE
 router.post('/api/prayers', async (req, res) => {
   try {
     const { name, email, prayer, isAnonymous } = req.body;
@@ -53,62 +53,7 @@ router.post('/api/prayers', async (req, res) => {
     await newPrayer.save();
     console.log('✅ Prayer saved with ID:', newPrayer._id);
     
-    // ===== NEW: Send email notification to admin =====
-    try {
-      const transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-          user: process.env.EMAIL_USER,
-          pass: process.env.EMAIL_PASS
-        }
-      });
-      
-      await transporter.sendMail({
-        from: `"Prayer Wall" <${process.env.EMAIL_USER}>`,
-        to: 'ramcatering2011@gmail.com', // Admin email
-        subject: '🙏 New Prayer Submitted for Approval',
-        html: `
-          <div style="font-family: 'Poppins', sans-serif; max-width: 600px; margin: 0 auto; background: #fffaf2; padding: 30px; border-radius: 16px; border: 1px solid #f0d6ac;">
-            <div style="text-align: center; margin-bottom: 25px;">
-              <h2 style="color: #7c2d12; font-family: 'Playfair Display', serif; margin: 0;">Sri Vidyadhiraja Charities</h2>
-              <p style="color: #d97706; margin: 5px 0 0;">New Prayer Needs Approval</p>
-            </div>
-            
-            <div style="background: white; padding: 25px; border-radius: 12px; border: 1px solid #f0d6ac;">
-              <p style="margin: 0 0 15px 0; color: #2b1810;"><strong style="color: #7c2d12;">From:</strong> ${isAnonymous ? 'Anonymous' : name} (${email})</p>
-              
-              <div style="background: #fff0d9; padding: 20px; border-radius: 8px; margin: 20px 0;">
-                <p style="margin: 0; color: #2b1810; font-style: italic;">"${prayer}"</p>
-              </div>
-              
-              <div style="text-align: center; margin-top: 25px;">
-                <a href="https://vidyadhiraja-charity.onrender.com/admin/prayers" 
-                   style="background: #d97706; color: white; padding: 12px 24px; text-decoration: none; border-radius: 40px; display: inline-block; font-weight: 500;">
-                  Review in Admin Dashboard
-                </a>
-              </div>
-              
-              <p style="color: #7c6a5a; font-size: 0.9rem; margin-top: 20px; text-align: center;">
-                This prayer is pending approval and will appear on the prayer wall once approved.
-              </p>
-            </div>
-            
-            <div style="text-align: center; margin-top: 25px; padding-top: 20px; border-top: 1px dashed #f0d6ac;">
-              <p style="color: #7c6a5a; font-size: 0.8rem; margin: 0;">
-                © 2026 Sri Vidyadhiraja Charities. All rights reserved.
-              </p>
-            </div>
-          </div>
-        `
-      });
-      console.log('✅ Email notification sent to admin');
-    } catch (emailError) {
-      // Log but don't fail - prayer is still saved
-      console.log('⚠️ Email notification failed (non-critical):', emailError.message);
-    }
-    // ===== END NEW CODE =====
-    
-    // Return success
+    // Return success IMMEDIATELY (no email delay)
     res.json({ 
       success: true, 
       message: 'Prayer submitted for approval' 
@@ -172,7 +117,7 @@ router.get('/', async (req, res) => {
       <!DOCTYPE html>
       <html>
       <head>
-        <title>Prayer Wall - Sri Vidyadhiraja Charities</title>
+        <title>Prayer Wall - Sree Vidyadhiraja Trust</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="/style.css">
         <style>
@@ -198,11 +143,14 @@ router.get('/', async (req, res) => {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
           }
           .site-header h1 {
             font-family: 'Playfair Display', serif;
             font-size: 1.5rem;
             color: white;
+            margin: 0;
           }
           .nav-links {
             display: flex;
@@ -211,6 +159,9 @@ router.get('/', async (req, res) => {
           .nav-links a {
             color: white;
             text-decoration: none;
+          }
+          .nav-links a:hover {
+            text-decoration: underline;
           }
           .prayer-hero {
             background: linear-gradient(135deg, #7c2d12, #d97706);
@@ -390,12 +341,25 @@ router.get('/', async (req, res) => {
             font-size: 1.2rem;
             margin-bottom: 10px;
           }
+          @media (max-width: 768px) {
+            .site-header .container {
+              flex-direction: column;
+              text-align: center;
+            }
+            .prayer-hero h1 {
+              font-size: 2rem;
+            }
+            .prayer-form-container {
+              padding: 25px;
+              margin-top: -30px;
+            }
+          }
         </style>
       </head>
       <body>
         <header class="site-header">
           <div class="container">
-            <h1>Sri Vidyadhiraja Charities</h1>
+            <h1>Sree Vidyadhiraja Trust</h1>
             <div class="nav-links">
               <a href="/">Home</a>
               <a href="/#mission">Our Mission</a>
@@ -451,7 +415,7 @@ router.get('/', async (req, res) => {
           <div class="container">
             <p class="footer-quote">"ജീവകാരുണ്യം ജീവിതത്തിലൂടെ"</p>
             <p>Charity through Life</p>
-            <p style="margin-top: 20px;">© 2026 Sri Vidyadhiraja Charities. All rights reserved.</p>
+            <p style="margin-top: 20px;">© 2026 Sree Vidyadhiraja Trust. All rights reserved.</p>
           </div>
         </footer>
 
@@ -513,7 +477,7 @@ router.get('/', async (req, res) => {
               
               if (data.success) {
                 messageDiv.className = 'message success';
-                messageDiv.textContent = 'Your prayer has been submitted for approval. Thank you!';
+                messageDiv.textContent = '✅ Your prayer has been submitted for approval. Thank you!';
                 document.getElementById('prayerForm').reset();
                 loadPrayers();
               } else {
@@ -542,7 +506,7 @@ router.get('/', async (req, res) => {
               
               if (data.success) {
                 alert('Thank you for blessing this prayer!');
-                loadPrayers(); // Reload to show updated count
+                loadPrayers();
               } else {
                 alert(data.error || 'Failed to bless prayer');
               }
