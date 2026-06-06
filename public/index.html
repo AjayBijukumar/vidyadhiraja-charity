@@ -5,16 +5,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Sri Vidyadhiraja Charities</title>
+  <title>Sree Vidyadhiraja Trust | Elderly Care Home Perinchakonam</title>
 
   <meta name="description"
-    content="Sri Vidyadhiraja Charities – Compassionate elderly care, shelter, and support. Charity elderly home under construction in Arumanai, Kanyakumari District, Tamil Nadu, India.">
-  <meta name="author" content="Sri Vidyadhiraja Charities">
+    content="Sree Vidyadhiraja Trust - Established in 2022 to care for elderly parents whose children have migrated abroad. Half an acre land at Pulluvilai, Perinchakonam with temple and prayer hall.">
+  <meta name="author" content="Sree Vidyadhiraja Trust">
   <meta name="robots" content="index, follow">
 
-  <meta property="og:title" content="Sri Vidyadhiraja Charities">
+  <meta property="og:title" content="Sree Vidyadhiraja Trust">
   <meta property="og:description"
-    content="Compassionate elderly care home under construction in Perinchakonam, Kanyakumari District.">
+    content="Elderly care home for the Malayali community in Perinchakonam, Kanyakumari District. Support our noble cause.">
   <meta property="og:type" content="website">
   <meta property="og:image"
     content="https://images.unsplash.com/photo-1581090700227-1e37b418190e?auto=format&fit=crop&w=900&q=80">
@@ -28,7 +28,6 @@
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
     rel="stylesheet">
   
-  <!-- Hope Tree Styles -->
   <style>
     .hope-tree-container {
       background: linear-gradient(135deg, #f0f9f0, #fff0d9);
@@ -75,13 +74,8 @@
     }
 
     @keyframes shimmer {
-      0% {
-        transform: translateX(-100%);
-      }
-
-      100% {
-        transform: translateX(100%);
-      }
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
     }
 
     #tree-message {
@@ -93,7 +87,6 @@
       color: #2d5a2d;
     }
 
-    /* Gallery subsection styles */
     .gallery-subsection {
       margin-bottom: 50px;
     }
@@ -129,7 +122,6 @@
       font-size: 2rem;
     }
 
-    /* Bank Details Styles */
     .bank-details {
       background: #fff0d9;
       border-radius: 16px;
@@ -185,7 +177,6 @@
       font-size: 1.2rem;
     }
 
-    /* UPI QR Code Styles */
     .upi-qr-container {
       margin-top: 25px;
       padding: 20px;
@@ -216,47 +207,70 @@
     .upi-qr-container p:last-child {
       margin-top: 5px;
     }
+
+    .request-section {
+      background: linear-gradient(135deg, #fff0d9, #fffaf2);
+    }
+
+    .request-card {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      background: white;
+      padding: 40px;
+      border-radius: 24px;
+      border: 1px solid #f0d6ac;
+    }
+
+    .request-text {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      color: #2b1810;
+      margin-bottom: 20px;
+    }
+
+    .request-closing {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #7c2d12;
+      margin-bottom: 30px;
+    }
   </style>
 </head>
 
 <body>
 
-  <!-- Header / Navigation - New 3-Column Layout -->
+  <!-- Header / Navigation -->
   <header class="site-header">
     <div class="container header-inner">
-      <!-- LEFT: Logo + Trust Name -->
       <div class="logo">
-        <img src="pics/logo.png" alt="Sri Vidyadhiraja Charities Logo" class="logo-image">
+        <img src="pics/logo.png" alt="Sree Vidyadhiraja Trust Logo" class="logo-image">
         <div class="logo-text">
-          <span class="logo-title">Sri Vidyadhiraja Charities</span>
+          <span class="logo-title">Sree Vidyadhiraja Trust</span>
           <span class="logo-subtitle"> ജീവകാരുണ്യം ജീവിതത്തിലൂടെ.</span>
         </div>
       </div>
 
-      <!-- CENTER: Navigation Menu -->
       <nav class="main-nav" id="mainNav">
         <ul>
           <li><a href="#home" class="active">Home</a></li>
-          <li><a href="#biography">Biography</a></li>
-          <li><a href="#mission">Our Mission</a></li>
+          <li><a href="#why">Our Story</a></li>
+          <li><a href="#mission">Mission</a></li>
           <li><a href="#gallery">Gallery</a></li>
           <li><a href="#timeline">Timeline</a></li>
           <li><a href="#activities">Activities</a></li>
-          <li><a href="#volunteer">Volunteer</a></li>
+          <li><a href="#donate-modal">Donate</a></li>
           <li><a href="/prayer">Prayer Wall</a></li>
-          <li><a href="#donors">Land Donors</a></li>
-          <li><a href="#why">Why We Exist</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
 
-      <!-- RIGHT: Action Buttons -->
       <div class="header-actions">
-        <a href="#donate-modal" class="btn btn-primary donate-trigger" id="donateTriggerBtn">Donate Now</a>
+        <a href="#donate-modal" class="btn btn-primary donate-trigger">Donate Now</a>
         <a href="#contact" class="btn btn-outline contact-btn">Contact</a>
       </div>
 
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false"
-        aria-controls="mainNav">
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -268,28 +282,26 @@
       <div class="hero-content">
         <div class="hero-badge">
           <span class="badge-icon">🏠</span>
-          <span class="badge-text">Elderly Care Home · Perinchakonam, Kanyakumari District</span>
+          <span class="badge-text">Sree Vidyadhiraja Trust · Est. 2022 · Perinchakonam</span>
         </div>
 
-        <h1>Serving Humanity with <span class="text-highlight">Compassion</span></h1>
+        <h1>Serving Our Community's <span class="text-highlight">Elders</span></h1>
 
-        <p class="hero-description">We are building a peaceful home for elderly people who need shelter, dignity, and
-          care in their later years. Inspired by the teachings of Chattambi Swamigal, our foundation turns compassion
-          into action.</p>
+        <p class="hero-description">Sree Vidyadhiraja Trust was established in 2022 to care for elderly parents who wish to remain in their native place while their children work abroad. With half an acre of land donated by Ms. Sakundalabai and Mrs. Sathyabhama, we are building a home for our community's elders.</p>
 
         <div class="hero-actions">
-          <a href="#donate-modal" class="btn btn-primary donate-trigger">Support the Mission</a>
-          <a href="#mission" class="btn btn-outline">Learn More</a>
+          <a href="#donate-modal" class="btn btn-primary donate-trigger">Support the Cause</a>
+          <a href="#why" class="btn btn-outline">Read Our Story</a>
         </div>
       </div>
 
       <div class="hero-image-wrapper">
         <div class="hero-image-card">
-          <img src="pics/WhatsApp Image 2026-03-09 at 2.01.18 PM.jpeg" alt="Construction of elderly care home"
-            loading="lazy">
+          <img src="pics/entrance.png"
+           alt="Construction of elderly care home" loading="lazy">
           <div class="hero-image-caption">
             <span class="caption-title">Under Construction</span>
-            <span class="caption-sub">Phase 1 · 20-30 residents capacity</span>
+            <span class="caption-sub">850 sq ft Building · 2,000 sq ft Prayer Hall</span>
           </div>
         </div>
       </div>
@@ -313,29 +325,106 @@
       <div class="section-header">
         <span class="section-subtitle">Our Purpose</span>
         <h2>What We Stand For</h2>
-        <p class="section-description">Guided by the principle "Jeevakaarunyam Jeevithathiloode" — Charity through Life
-        </p>
+        <p class="section-description">Guided by "Jeevakaarunyam Jeevithathiloode" — Charity through Life</p>
       </div>
 
       <div class="cards-grid">
         <div class="mission-card">
-          <div class="card-icon">🕊️</div>
-          <h3>Compassionate Care</h3>
-          <p>Providing shelter, nutritious food, and medical attention to elderly people who have no family support.</p>
+          <div class="card-icon">🏠</div>
+          <h3>Elderly Care Home</h3>
+          <p>A dedicated old-age home for parents whose children have migrated abroad, allowing them to stay in their beloved native place with dignity and care.</p>
         </div>
 
         <div class="mission-card">
-          <div class="card-icon">🌿</div>
-          <h3>Spiritual Environment</h3>
-          <p>Creating a peaceful space for meditation, prayer, and spiritual well-being in the tradition of Chattambi
-            Swamigal.</p>
+          <div class="card-icon">🛕</div>
+          <h3>Temple & Prayer Hall</h3>
+          <p>Chattampi Swami Temple and Sree Krishna Swami Temple with a 2,000 sq ft prayer hall for spiritual activities and Bharani Pooja on Chattambi Swami's birth anniversary.</p>
         </div>
 
         <div class="mission-card">
-          <div class="card-icon">🤝</div>
-          <h3>Community Support</h3>
-          <p>Building a family-like environment where every resident feels valued, respected, and never alone.</p>
+          <div class="card-icon">📚</div>
+          <h3>Educational & Welfare Programs</h3>
+          <p>Ramayana and Mahabharata classes, educational assistance for students, competitive exam coaching, and community welfare initiatives.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why We Exist Section (Trust Story) -->
+  <section id="why" class="section section-alt">
+    <div class="container">
+      <div class="why-layout">
+        <div class="why-content">
+          <span class="section-subtitle">Our Story</span>
+          <h2>Why Sree Vidyadhiraja Trust Exists</h2>
+
+          <p>In this era when many of our young people have migrated to other places and countries to elevate their lives, they are unable to take their aged parents with them. At the same time, the parents are unwilling to leave their native place and are emotionally unable to part from it.</p>
+
+          <p>Taking into consideration the needs and wishes of these concerned young people, respected <strong>Mr. Amsi Madhu, Mr. Vijayakumar, Mr. Rajendran Nair, and Ms. Sakundalabai</strong> felt that a dedicated old-age home should be established for our community to care for such parents.</p>
+
+          <p>As a result, in the year 2022, the Sree Vidyadhiraja Trust was formed and registered at the Verkilambi Sub-Registrar Office under <strong>Registration No. 6/2022</strong>.</p>
+
+          <div class="donor-names">
+            <span>Mr. Amsi Madhu</span>
+            <span>Mr. Vijayakumar</span>
+            <span>Mr. Rajendran Nair</span>
+            <span>Ms. Sakundalabai</span>
+          </div>
+        </div>
+
+        <div class="why-quote-wrapper">
+          <div class="why-quote-card">
+            <div class="quote-marker">"</div>
+            <p class="quote-text">ജീവകാരുണ്യം ജീവിതത്തിലൂടെ</p>
+            <p class="quote-translation">Jeevakaarunyam Jeevithathiloode</p>
+            <p class="quote-meaning">Charity through Life</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Land Donors Section -->
+  <section id="donors" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">Our Generous Donors</span>
+        <h2>Land Donors</h2>
+        <p class="section-description">Two compassionate sisters who made this mission possible</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; margin-bottom: 40px;">
+        <div class="progress-card" style="display: flex; flex-direction: column;">
+          <div style="height: 250px; overflow: hidden; background: linear-gradient(135deg, var(--color-primary-soft), #fff);">
+            <img src="pics/donor-placeholder.jpg" alt="Ms. Sakundalabai" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.style.display='none'; this.parentNode.innerHTML='<div style=\'height:100%; display:flex; align-items:center; justify-content:center; font-size:4rem;\'>👵</div>'">
+          </div>
+          <div class="progress-content">
+            <span class="progress-phase">Founder & Land Donor</span>
+            <h4>Ms. Sakundalabai</h4>
+            <p style="margin: 15px 0; line-height: 1.6;">Half an acre of land was generously donated by Ms. Sakundalabai and her sister Mrs. Sathyabhama from their family property at Pulluvilai, Perinchakonam to establish this old-age home for the Malayali community in Kanyakumari District.</p>
+            <div style="background: var(--color-primary-soft); padding: 15px; border-radius: var(--radius-md); margin-top: 10px; font-style: italic; color: var(--color-secondary);">
+              "May this land become a sanctuary of peace and dignity for those who have no one."
+            </div>
+          </div>
+        </div>
+
+        <div class="progress-card" style="display: flex; flex-direction: column;">
+          <div style="height: 250px; overflow: hidden; background: linear-gradient(135deg, var(--color-primary-soft), #fff);">
+            <img src="pics/donor-placeholder2.jpg" alt="Mrs. Sathyabhama" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.style.display='none'; this.parentNode.innerHTML='<div style=\'height:100%; display:flex; align-items:center; justify-content:center; font-size:4rem;\'>👵</div>'">
+          </div>
+          <div class="progress-content">
+            <span class="progress-phase">Land Donor</span>
+            <h4>Mrs. Sathyabhama</h4>
+            <p style="margin: 15px 0; line-height: 1.6;">Following her sister's noble example, Mrs. Sathyabhama joined in this sacred mission by contributing her share of family land. Her generosity reflects the true spirit of "Jeevakaarunyam Jeevithathiloode" — Charity through Life.</p>
+            <div style="background: var(--color-primary-soft); padding: 15px; border-radius: var(--radius-md); margin-top: 10px; font-style: italic; color: var(--color-secondary);">
+              "True wealth is not what we keep, but what we give for the welfare of others."
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="progress-message">
+        <p>Sree Vidyadhiraja Trust stands on half an acre of land donated by these two sisters. A building of approximately 850 square feet and a prayer hall of about 2,000 square feet have been constructed. The Chattampi Swami Temple and Sree Krishna Swami Temple are in their final stages.</p>
       </div>
     </div>
   </section>
@@ -346,10 +435,9 @@
       <div class="section-header">
         <span class="section-subtitle">Our Journey in Media</span>
         <h2>Construction Gallery</h2>
-        <p class="section-description">Watch our elderly home take shape through photos and videos</p>
+        <p class="section-description">Watch our elderly home and temple take shape</p>
       </div>
 
-      <!-- Photo Gallery Subsection -->
       <div class="gallery-subsection">
         <h3 class="gallery-subtitle">
           <span class="subtitle-icon">📸</span>
@@ -361,7 +449,7 @@
             <div class="progress-content">
               <span class="progress-phase">Phase 1</span>
               <h4>Land Preparation</h4>
-              <p>Initial groundwork completed</p>
+              <p>Half acre land at Pulluvilai, Perinchakonam</p>
             </div>
           </div>
 
@@ -370,27 +458,25 @@
             <div class="progress-content">
               <span class="progress-phase">Phase 2</span>
               <h4>Foundation Work</h4>
-              <p>In progress</p>
+              <p>850 sq ft building foundation</p>
             </div>
           </div>
 
           <div class="progress-card">
-            <img src="pics/cons3.jpeg" alt="Structure planning" loading="lazy">
+            <img src="pics/cons3.jpeg" alt="Temple construction" loading="lazy">
             <div class="progress-content">
               <span class="progress-phase">Phase 3</span>
-              <h4>Structure Planning</h4>
-              <p>Ready to begin</p>
+              <h4>Temple Construction</h4>
+              <p>Chattampi Swami & Sree Krishna Swami Temples</p>
             </div>
           </div>
         </div>
         
         <div class="progress-message">
-          <p>With your continued support, we are moving forward step by step. The first phase will accommodate 20-30
-            residents with dining hall, meditation space, and medical facilities.</p>
+          <p>With your continued support, we are moving forward step by step. The 850 sq ft building and 2,000 sq ft prayer hall are nearing completion, and the temples are in their final stages.</p>
         </div>
       </div>
 
-      <!-- Video Gallery Subsection -->
       <div class="gallery-subsection">
         <h3 class="gallery-subtitle">
           <span class="subtitle-icon">🎥</span>
@@ -406,7 +492,7 @@
             <div class="progress-content">
               <span class="progress-phase">Video 1</span>
               <h4>Site Visit</h4>
-              <p>March 2026</p>
+              <p>Pulluvilai, Perinchakonam</p>
             </div>
           </div>
 
@@ -418,7 +504,7 @@
             <div class="progress-content">
               <span class="progress-phase">Video 2</span>
               <h4>Area Overview</h4>
-              <p>March 2026</p>
+              <p>Half acre property view</p>
             </div>
           </div>
 
@@ -430,7 +516,7 @@
             <div class="progress-content">
               <span class="progress-phase">Video 3</span>
               <h4>Temple Construction</h4>
-              <p>March 2026</p>
+              <p>Chattampi Swami Temple</p>
             </div>
           </div>
         </div>
@@ -447,314 +533,84 @@
         <p class="section-description">Watch our elderly home take shape, step by step</p>
       </div>
 
-      <!-- Timeline Container (populated by JavaScript) -->
       <div id="timeline-container" class="timeline-modern-wrapper"></div>
     </div>
   </section>
 
-  <!-- LAND DONORS SECTION -->
-  <section id="donors" class="section section-alt">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-subtitle">Our Founders</span>
-        <h2>Land Donors</h2>
-        <p class="section-description">Two compassionate sisters who made this mission possible</p>
-      </div>
-
-      <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; margin-bottom: 40px;">
-        <!-- Donor 1 - Sakuntala Bai -->
-        <div class="progress-card" style="display: flex; flex-direction: column;">
-          <div
-            style="height: 250px; overflow: hidden; background: linear-gradient(135deg, var(--color-primary-soft), #fff);">
-            <img src="pics/donor-placeholder.jpg" alt="Smt. Kumari Sakuntala Bai"
-              style="width: 100%; height: 100%; object-fit: cover;"
-              onerror="this.style.display='none'; this.parentNode.innerHTML='<div style=\'height:100%; display:flex; align-items:center; justify-content:center; font-size:4rem;\'>👵</div>'">
-          </div>
-          <div class="progress-content">
-            <span class="progress-phase">Founding Donor</span>
-            <h4>Smt. Kumari Sakuntala Bai</h4>
-            <p style="margin: 15px 0; line-height: 1.6;">With immense generosity and compassion, Smt. Kumari Sakuntala
-              Bai donated her family land to establish a permanent home for elderly people in need. Her selfless act of
-              kindness laid the foundation for this charitable mission.</p>
-            <div
-              style="background: var(--color-primary-soft); padding: 15px; border-radius: var(--radius-md); margin-top: 10px; font-style: italic; color: var(--color-secondary);">
-              "May this land become a sanctuary of peace and dignity for those who have no one."
-            </div>
-          </div>
-        </div>
-
-        <!-- Donor 2 - Satyabhama -->
-        <div class="progress-card" style="display: flex; flex-direction: column;">
-          <div
-            style="height: 250px; overflow: hidden; background: linear-gradient(135deg, var(--color-primary-soft), #fff);">
-            <img src="pics/donor-placeholder2.jpg" alt="Smt. Satyabhama"
-              style="width: 100%; height: 100%; object-fit: cover;"
-              onerror="this.style.display='none'; this.parentNode.innerHTML='<div style=\'height:100%; display:flex; align-items:center; justify-content:center; font-size:4rem;\'>👵</div>'">
-          </div>
-          <div class="progress-content">
-            <span class="progress-phase">Founding Donor</span>
-            <h4>Smt. Satyabhama</h4>
-            <p style="margin: 15px 0; line-height: 1.6;">Following her sister's noble example, Smt. Satyabhama joined in
-              this sacred mission by contributing her share of family land. Her generosity reflects the true spirit of
-              "Jeevakaarunyam Jeevithathiloode" — Charity through Life.</p>
-            <div
-              style="background: var(--color-primary-soft); padding: 15px; border-radius: var(--radius-md); margin-top: 10px; font-style: italic; color: var(--color-secondary);">
-              "True wealth is not what we keep, but what we give for the welfare of others."
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="progress-message">
-        <p>The Sri Vidyadhiraja Charities stands on land donated by these two sisters. Their generosity
-          reminds us that even a single act of kindness can transform countless lives. We remain forever grateful for
-          their vision and compassion.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Biography Section -->
-  <section id="biography" class="section">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-subtitle">Our Inspiration</span>
-        <h2>Chattambi Swamigal</h2>
-        <p class="section-description">Known as Sri Vidyadhiraja — The sage who taught compassion through wisdom</p>
-      </div>
-
-      <div class="bio-layout">
-        <div class="bio-image-wrapper">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a8/Chattampi_Swamikal_2014_stamp_of_India.jpg"
-            alt="Chattambi Swamigal" loading="lazy">
-          <p class="bio-image-caption">Chattambi Swamigal (1853–1924)</p>
-        </div>
-
-        <div class="bio-text-wrapper">
-          <p>Chattambi Swamigal occupies a special place in the spiritual history of Kerala. Emerging at a time when
-            society was weighed down by rigid customs and caste-based divisions, he stood as a powerful voice of inner
-            freedom and spiritual clarity.</p>
-
-          <p>He was not only a saint who immersed himself in meditation and scriptural study, but also a brilliant
-            thinker who questioned blind traditions and encouraged people to use reason in their search for truth. His
-            philosophy was rooted in compassion, equality, and respect for all.</p>
-
-          <p>Through his writings and personal example, he opened a new understanding of spirituality — one that was
-            accessible to ordinary people and expressed through kindness toward all beings.</p>
-
-          <div class="bio-quote-block">
-            <p>"True knowledge softens the heart and leads to service."</p>
-            <cite>— Chattambi Swamigal</cite>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Why We Exist -->
-  <section id="why" class="section section-alt">
-    <div class="container">
-      <div class="why-layout">
-        <div class="why-content">
-          <span class="section-subtitle">Our Reason</span>
-          <h2>Why This Charity Exists</h2>
-
-          <p>In many communities, elderly people who have no family are left without shelter, care, or dignity. They
-            spend their final years in loneliness and struggle.</p>
-
-          <p>We believe that every person who has lived a lifetime deserves peace, respect, and compassion in their
-            later years. Our foundation exists to provide that — a home where they are not forgotten, but cherished.</p>
-
-          <p>The land for this home was donated by two sisters with generous hearts. Now we need your help to build the
-            shelter, dining hall, and medical facilities that will turn this vision into reality.</p>
-
-          <div class="donor-names">
-            <span>Smt. Kumari Sakuntala Bai</span>
-            <span>Smt. Satyabhama</span>
-          </div>
-        </div>
-
-        <div class="why-quote-wrapper">
-          <div class="why-quote-card">
-            <div class="quote-marker">"</div>
-            <p class="quote-text">ജീവകാരുണ്യം ജീവിതത്തിലൂടെ</p>
-            <p class="quote-translation">Jeevakaarunyam Jeevithathiloode</p>
-            <p class="quote-meaning">Charity through Life</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- Activities & Services Section -->
-  <section id="activities" class="section">
+  <section id="activities" class="section section-alt">
     <div class="container">
       <div class="section-header">
         <span class="section-subtitle">What We Do</span>
         <h2>Our Activities & Services</h2>
-        <p class="section-description">Providing a secure, dignified, and nurturing environment for the elderly</p>
+        <p class="section-description">Creating a supportive community for our elders</p>
       </div>
 
       <div class="activities-grid">
-        <!-- Card 1: Residential Care -->
         <div class="activity-card">
           <div class="activity-icon">🏠</div>
-          <h3 class="activity-title">Residential Care & Essential Needs</h3>
+          <h3 class="activity-title">Elderly Care Home</h3>
           <ul class="activity-list">
+            <li>850 sq ft building for residential care</li>
             <li>Safe and comfortable living environment</li>
-            <li>Nutritious home-style meals daily</li>
-            <li>Clothing, blankets, and hygiene kits</li>
-            <li>24/7 security and housekeeping</li>
+            <li>Nutritious meals and medical attention</li>
+            <li>24/7 care for community elders</li>
           </ul>
         </div>
 
-        <!-- Card 2: Medical Care -->
         <div class="activity-card">
-          <div class="activity-icon">🩺</div>
-          <h3 class="activity-title">Medical & Healthcare Services</h3>
+          <div class="activity-icon">🛕</div>
+          <h3 class="activity-title">Temple & Spiritual Activities</h3>
           <ul class="activity-list">
-            <li>Regular health check-ups (BP, sugar, temperature)</li>
-            <li>24/7 bedside nursing care</li>
-            <li>Physiotherapy and geriatric care</li>
-            <li>Medicine distribution and emergency ambulance</li>
+            <li>Chattampi Swami Temple</li>
+            <li>Sree Krishna Swami Temple</li>
+            <li>Bharani Pooja on birth anniversary</li>
+            <li>2,000 sq ft prayer hall</li>
           </ul>
         </div>
 
-        <!-- Card 3: Recreational Activities -->
         <div class="activity-card">
-          <div class="activity-icon">🎨</div>
-          <h3 class="activity-title">Recreational & Social Activities</h3>
+          <div class="activity-icon">📖</div>
+          <h3 class="activity-title">Scriptural Classes</h3>
           <ul class="activity-list">
-            <li>Yoga, meditation, and light exercises</li>
-            <li>Puzzles, chess, and book reading</li>
-            <li>Festival celebrations and cultural events</li>
-            <li>Bhajans, movie nights, and outings</li>
+            <li>Ramayana classes for children</li>
+            <li>Mahabharata classes</li>
+            <li>Spiritual discourses</li>
+            <li>Preserving our cultural heritage</li>
           </ul>
         </div>
 
-        <!-- Card 4: Emotional Support -->
         <div class="activity-card">
-          <div class="activity-icon">💝</div>
-          <h3 class="activity-title">Emotional & Psychological Support</h3>
+          <div class="activity-icon">🎓</div>
+          <h3 class="activity-title">Educational Support</h3>
           <ul class="activity-list">
-            <li>Daily companionship to combat loneliness</li>
-            <li>Mental health counseling</li>
-            <li>Intergenerational activities with children</li>
-            <li>Support for loss and depression</li>
+            <li>Educational assistance for students</li>
+            <li>Competitive exam coaching</li>
+            <li>Scholarship programs</li>
+            <li>Small employment opportunities</li>
           </ul>
         </div>
 
-        <!-- Card 5: Empowerment Programs -->
+        <div class="activity-card">
+          <div class="activity-icon">🏛️</div>
+          <h3 class="activity-title">Government Benefits</h3>
+          <ul class="activity-list">
+            <li>Securing entitled benefits for elders</li>
+            <li>Pension assistance</li>
+            <li>Healthcare scheme enrollment</li>
+            <li>Welfare program coordination</li>
+          </ul>
+        </div>
+
         <div class="activity-card">
           <div class="activity-icon">🤝</div>
-          <h3 class="activity-title">Empowerment & Support Programs</h3>
+          <h3 class="activity-title">Community Welfare</h3>
           <ul class="activity-list">
-            <li>Light vocational training for seniors</li>
-            <li>Awareness about elder rights</li>
-            <li>Community outreach and Annadhanam</li>
-            <li>Dignified last rites for residents</li>
+            <li>Support for dependent elderly</li>
+            <li>Community outreach programs</li>
+            <li>Creating a supportive ecosystem</li>
+            <li>Collective effort for noble goals</li>
           </ul>
-        </div>
-
-        <!-- Card 6: Specialized Care -->
-        <div class="activity-card">
-          <div class="activity-icon">🕊️</div>
-          <h3 class="activity-title">Specialized Care Programs</h3>
-          <ul class="activity-list">
-            <li>Dementia and palliative care</li>
-            <li>Doctor-on-call services</li>
-            <li>Spiritual and bhajan sessions</li>
-            <li>Temple visits and spiritual guidance</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Volunteer Section with Form -->
-  <section id="volunteer" class="section section-alt">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-subtitle">Join Our Cause</span>
-        <h2>Type of Joining</h2>
-        <p class="section-description">Choose how you'd like to contribute to our mission of serving the elderly</p>
-      </div>
-
-      <div class="volunteer-layout">
-        <!-- Left Column: Registration Form -->
-        <div class="volunteer-form-container">
-          <h3 class="form-title">Join Our Team</h3>
-          
-          <form id="volunteerForm" class="volunteer-form">
-            <div class="form-group">
-              <label for="volunteer-name">Your Name *</label>
-              <input type="text" id="volunteer-name" name="name" required>
-            </div>
-
-            <div class="form-group">
-              <label for="volunteer-phone">Phone Number *</label>
-              <input type="tel" id="volunteer-phone" name="phone" required>
-            </div>
-
-            <div class="form-group">
-              <label for="volunteer-email">Email Address *</label>
-              <input type="email" id="volunteer-email" name="email" required>
-            </div>
-
-            <div class="form-group">
-              <label for="volunteer-type">Type of Joining *</label>
-              <select id="volunteer-type" name="type" required>
-                <option value="">Select an option</option>
-                <option value="volunteer">Volunteer</option>
-                <option value="partner">Partner</option>
-                <option value="fundraising">Fundraising Events</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label for="volunteer-message">Message (Optional)</label>
-              <textarea id="volunteer-message" name="message" rows="3" placeholder="Tell us how you'd like to help..."></textarea>
-            </div>
-
-            <button type="submit" class="btn btn-primary btn-full">Submit Application</button>
-            <p id="volunteerFormStatus" class="form-status"></p>
-          </form>
-        </div>
-
-        <!-- Right Column: Information Text -->
-        <div class="volunteer-info-container">
-          <h3 class="info-title">Join Us & Make a Difference</h3>
-          
-          <p class="info-text">We welcome passionate individuals and organizations to join hands with us. Become a volunteer, partner with us in our initiatives, or help us organize fundraising events that bring real change to elderly and marginalized communities. Together, we can build a more compassionate and empowered society.</p>
-          
-          <div class="info-points">
-            <div class="info-point">
-              <span class="info-icon">🤝</span>
-              <div class="info-point-content">
-                <h4>Volunteer with Us</h4>
-                <p>Give your time and skills to empower elderly lives and bring smiles to their faces.</p>
-              </div>
-            </div>
-            
-            <div class="info-point">
-              <span class="info-icon">🌍</span>
-              <div class="info-point-content">
-                <h4>Partner with Us</h4>
-                <p>Collaborate to create sustainable impact and help us reach more elderly in need.</p>
-              </div>
-            </div>
-            
-            <div class="info-point">
-              <span class="info-icon">💙</span>
-              <div class="info-point-content">
-                <h4>Organize Fundraising Events</h4>
-                <p>Help us raise resources to support our elderly home construction and daily care.</p>
-              </div>
-            </div>
-          </div>
-          
-          <div class="info-quote">
-            <p>✨ Be a Changemaker – Together, we can build an equal and empowered society.</p>
-          </div>
         </div>
       </div>
     </div>
@@ -765,15 +621,14 @@
     <div class="container">
       <div class="section-header">
         <span class="section-subtitle">Leadership</span>
-        <h2>Our Team</h2>
-        <p class="section-description">Dedicated individuals serving with compassion</p>
+        <h2>Our Founders</h2>
+        <p class="section-description">The visionaries who started this sacred mission</p>
       </div>
 
       <div class="team-grid">
-        <!-- Team Member 1 - Amsi Madhu -->
         <div class="team-card">
           <div class="team-image-frame">
-            <img src="pics/amsi.jpeg" alt="Amsi Madhu - Founder" class="team-photo">
+            <img src="pics/amsi.jpeg" alt="Amsi Madhu" class="team-photo">
           </div>
           <div class="team-content">
             <h4>Amsi Madhu</h4>
@@ -786,10 +641,9 @@
           </div>
         </div>
 
-        <!-- Team Member 2 - Ramachandran -->
         <div class="team-card">
           <div class="team-image-frame">
-            <img src="pics/ramach.jpeg" alt="Ramachandran - President" class="team-photo">
+            <img src="pics/ramach.jpeg" alt="Ramachandran" class="team-photo">
           </div>
           <div class="team-content">
             <h4>Ramachandran</h4>
@@ -802,10 +656,9 @@
           </div>
         </div>
 
-        <!-- Team Member 3 - K. Surendran -->
         <div class="team-card">
           <div class="team-image-frame">
-            <img src="pics/suren.jpeg" alt="K. Surendran - Secretary" class="team-photo">
+            <img src="pics/suren.jpeg" alt="K. Surendran" class="team-photo">
           </div>
           <div class="team-content">
             <h4>K. Surendran</h4>
@@ -818,10 +671,9 @@
           </div>
         </div>
 
-        <!-- Team Member 4 - M. Rajendran -->
         <div class="team-card">
           <div class="team-image-frame">
-            <img src="pics/raju.jpeg" alt="M. Rajendran - Treasurer" class="team-photo">
+            <img src="pics/raju.jpeg" alt="M. Rajendran" class="team-photo">
           </div>
           <div class="team-content">
             <h4>M. Rajendran</h4>
@@ -837,15 +689,14 @@
     </div>
   </section>
 
-  <!-- ========== NEW DONATION SECTION (SOS STYLE) ========== -->
+  <!-- Donation Section -->
   <section id="donate" class="section donate-section">
     <div class="container">
       <div class="donate-layout">
         <div class="donate-content">
           <span class="section-subtitle light">Make a Difference</span>
-          <h2>Make a Donation</h2>
+          <h2>Support Our Mission</h2>
           
-          <!-- Donation Card -->
           <div class="donation-card">
             <div class="donation-card-inner">
               <div class="donation-card-quote">
@@ -854,28 +705,27 @@
               </div>
               
               <p class="donation-card-description">
-                Every contribution — whether financial, material, or through volunteering — helps us provide care to those who have no one.
+                As we possess only the land, all our goals can be achieved only through collective effort. Your contribution will help us complete the elderly care home and start serving our community.
               </p>
               
               <div class="donation-card-impact">
                 <p>Your support helps provide:</p>
                 <ul>
-                  <li>🏠 Safe shelter and nutritious meals</li>
-                  <li>🩺 Medical care and regular check-ups</li>
-                  <li>💝 Dignity and emotional support</li>
+                  <li>🏠 Complete the 850 sq ft elderly home</li>
+                  <li>🛕 Finish the temple construction</li>
+                  <li>📚 Start educational programs for children</li>
+                  <li>💝 Dignity and care for our elders</li>
                 </ul>
               </div>
               
               <div class="donation-card-message">
-                <p>Even a small contribution can create a big impact.</p>
-                <p>Join us in making lives better.</p>
+                <p>Just as many drops of water together can create a great change, this objective can be attained only through the small contributions and cooperation of each one of you.</p>
               </div>
               
-              <button class="btn btn-primary btn-large donate-trigger" id="donateCardBtn">Donate Now</button>
+              <button class="btn btn-primary btn-large donate-trigger">Contribute Now</button>
             </div>
           </div>
 
-          <!-- Existing Ways to Give & Bank Details (Kept but styled) -->
           <div class="donate-methods">
             <h4>Ways to Give</h4>
             <ul>
@@ -891,7 +741,7 @@
             <table class="bank-table">
               <tr>
                 <td><strong>Account Name:</strong></td>
-                <td>SRI VIDHYADHI RAJA CHARITIES</td>
+                <td>SREE VIDYADHIRAJA TRUST</td>
               </tr>
               <tr>
                 <td><strong>Account Number:</strong></td>
@@ -923,12 +773,12 @@
         <div class="donate-message">
           <div class="message-card">
             <p class="message-quote">"Service to humanity is service to the Divine."</p>
-            <p class="message-text">Every contribution — whether financial, material, or through volunteering — helps us provide care to those who have no one.</p>
+            <p class="message-text">I humbly request every one of you to extend your support and assistance in achieving this noble goal.</p>
           </div>
         </div>
       </div>
 
-      <!-- 🌳 HOPE TREE SECTION -->
+      <!-- Hope Tree -->
       <div class="hope-tree-container">
         <h3 style="font-family:Playfair Display; color:#2d5a2d; font-size:2rem; margin-bottom:10px;">🌳 Hope Tree</h3>
         <p style="color:#7c6a5a; margin-bottom:20px;">Watch our tree of compassion grow with every donation</p>
@@ -955,7 +805,26 @@
     </div>
   </section>
 
-  <!-- ========== DONATION MODAL (Popup Form) ========== -->
+  <!-- Humble Request Section -->
+  <section class="request-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">A Humble Request</span>
+        <h2>Together We Can Achieve</h2>
+      </div>
+      <div class="request-card">
+        <p class="request-text">
+          As we possess only the land, all these goals can be achieved only through collective effort. Just as many drops of water together can create a great change, this objective can be attained only through the small contributions and cooperation of each one of you.
+        </p>
+        <p class="request-closing">
+          I humbly request every one of you to extend your support and assistance in achieving this noble goal.
+        </p>
+        <a href="#donate-modal" class="btn btn-primary donate-trigger" style="padding: 14px 40px;">Support the Cause →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Donation Modal -->
   <div id="donationModal" class="donation-modal">
     <div class="donation-modal-overlay"></div>
     <div class="donation-modal-container">
@@ -965,7 +834,6 @@
         <p class="modal-subtitle">Your generosity changes lives</p>
         
         <form id="donationModalForm" class="donation-modal-form">
-          <!-- Title and Name Fields -->
           <div class="form-row">
             <div class="form-group">
               <label>Title <span class="required">*</span></label>
@@ -1019,7 +887,6 @@
             <input type="text" id="donorPan" placeholder="ABCDE1234F">
           </div>
           
-          <!-- Existing Donor Feature -->
           <div class="form-group checkbox-group">
             <input type="checkbox" id="existingDonorCheckbox">
             <label for="existingDonorCheckbox">I am an existing donor</label>
@@ -1038,19 +905,16 @@
             <div id="fetchDonorMessage" class="fetch-message"></div>
           </div>
           
-          <!-- Tax Exemption -->
           <div class="form-group checkbox-group">
             <input type="checkbox" id="taxExemptionCheckbox">
             <label for="taxExemptionCheckbox">I wish to claim tax exemption under 80G</label>
           </div>
           
-          <!-- Amount Field -->
           <div class="form-group">
             <label>Donation Amount (₹) <span class="required">*</span></label>
             <input type="number" id="donationAmountModal" min="1" step="1" required placeholder="Enter amount">
           </div>
           
-          <!-- Payment Options -->
           <div class="form-group">
             <label>Payment Method <span class="required">*</span></label>
             <div class="payment-options">
@@ -1071,18 +935,17 @@
           
           <button type="submit" class="btn btn-primary btn-large btn-block" id="payNowBtn">Pay Now</button>
           
-          <!-- Trust Footer Section -->
           <div class="donation-footer">
             <div class="donation-footer-divider"></div>
             <div class="donation-footer-content">
               <div class="footer-tax-info">
-                <p>All donations to Sri Vidyadhiraja Charities are eligible for tax exemption under Section 80G of the Income Tax Act.</p>
+                <p>All donations to Sree Vidyadhiraja Trust are eligible for tax exemption under Section 80G of the Income Tax Act.</p>
               </div>
               <div class="footer-support-info">
                 <p>For any enquiries/support, kindly contact us at <a href="mailto:ramcatering2011@gmail.com">ramcatering2011@gmail.com</a></p>
               </div>
               <div class="footer-privacy-info">
-                <p>We respect your privacy. Your personal information will never be shared or sold. All transactions are secure and processed through trusted payment gateways. We do not store card or bank details.</p>
+                <p>We respect your privacy. Your personal information will never be shared or sold. All transactions are secure and processed through trusted payment gateways.</p>
               </div>
             </div>
           </div>
@@ -1104,23 +967,20 @@
         <div class="contact-info-card">
           <h3>Ramachandran</h3>
           <p class="info-role">President</p>
-
           <div class="info-item">
             <span class="info-icon">📞</span>
             <a href="tel:+919443559710">+91 94435 59710</a>
           </div>
-
           <div class="info-item">
             <span class="info-icon">✉️</span>
             <a href="mailto:ramcatering2011@gmail.com">ramcatering2011@gmail.com</a>
           </div>
-
           <div class="info-item">
             <span class="info-icon">📍</span>
             <address>
-              Sri Vidyadhiraja Charities<br>
-              Perinchakonam, Kanyakumari District<br>
-              Tamil Nadu, India
+              Sree Vidyadhiraja Trust<br>
+              Pulluvilai, Perinchakonam<br>
+              Kanyakumari District, Tamil Nadu
             </address>
           </div>
         </div>
@@ -1129,24 +989,20 @@
           <form id="contactForm" class="contact-form" data-api="/contact" novalidate>
             <div class="form-group">
               <label for="name">Full Name *</label>
-              <input type="text" id="name" name="name" autocomplete="name" required>
+              <input type="text" id="name" name="name" required>
             </div>
-
             <div class="form-group">
               <label for="email">Email Address *</label>
-              <input type="email" id="email" name="email" autocomplete="email" required>
+              <input type="email" id="email" name="email" required>
             </div>
-
             <div class="form-group">
               <label for="phone">Phone Number</label>
-              <input type="tel" id="phone" name="phone" autocomplete="tel">
+              <input type="tel" id="phone" name="phone">
             </div>
-
             <div class="form-group">
               <label for="message">Your Message *</label>
-              <textarea id="message" name="message" rows="4" autocomplete="off" required></textarea>
+              <textarea id="message" name="message" rows="4" required></textarea>
             </div>
-
             <button type="submit" class="btn btn-primary btn-full">Send Message</button>
             <p id="formStatus" class="form-status"></p>
           </form>
@@ -1154,26 +1010,28 @@
       </div>
     </div>
   </section>
-  
+
   <!-- Footer -->
   <footer class="site-footer">
     <div class="container">
       <div class="footer-main">
         <div class="footer-col">
-          <h4>Sri Vidyadhiraja Charities</h4>
+          <h4>Sree Vidyadhiraja Trust</h4>
           <p class="footer-quote">“ജീവകാരുണ്യം ജീവിതത്തിലൂടെ”</p>
           <p class="footer-quote-en">Charity through Life</p>
+          <p class="footer-reg">Reg No: 6/2022 · Verkilambi</p>
         </div>
 
         <div class="footer-col">
           <h4>Quick Links</h4>
           <ul class="footer-links">
-            <li><a href="/whatsapp-broadcast.html">📱 WhatsApp Broadcast</a></li>
-            <li><a href="https://instagram.com/srividyadhirajacharities" target="_blank">📸 Instagram</a></li>
-            <li><a href="https://www.youtube.com/channel/UCvJV6qvnWLoWrevCy-iMhOw" target="_blank">▶️ YouTube</a></li>
-            <li><a href="https://facebook.com/srividyadhirajacharities" target="_blank">📘 Facebook</a></li>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#why">Our Story</a></li>
+            <li><a href="#mission">Mission</a></li>
+            <li><a href="#activities">Activities</a></li>
+            <li><a href="#donate-modal">Donate</a></li>
+            <li><a href="/prayer">Prayer Wall</a></li>
           </ul>
-          <p style="color: #7c6a5a; font-size: 0.8rem; margin-top: 10px;">(You can update these links in admin)</p>
         </div>
 
         <div class="footer-col">
@@ -1184,30 +1042,39 @@
           <p class="footer-80g">80G: ABFTS5003BF20231AY2023-26</p>
         </div>
       </div>
-
       <div class="footer-bottom">
-        <p>© 2026 Sri Vidyadhiraja Charities. All rights reserved.</p>
+        <p>© 2026 Sree Vidyadhiraja Trust. All rights reserved. | Reg No: 6/2022</p>
       </div>
     </div>
   </footer>
 
   <script src="script.js"></script>
-  
-  <!-- Hope Tree JavaScript -->
+  <script src="quotes.js"></script>
+  <script src="/timeline.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+  <link rel="stylesheet" href="/whatsapp.css">
+
+  <div class="whatsapp-float saffron" id="whatsapp-float">
+    <div class="whatsapp-tooltip">Chat with us on WhatsApp</div>
+    <a href="https://wa.me/919443791336?text=Hi%21%20I%27m%20interested%20in%20learning%20more%20about%20Sree%20Vidyadhiraja%20Trust." class="whatsapp-button" target="_blank">
+      <svg viewBox="0 0 24 24">
+        <path d="M19.077 4.928C17.191 3.041 14.683 2 12.006 2 6.798 2 2.548 6.193 2.54 11.393c-.003 1.747.456 3.457 1.328 4.985L2.25 21.75l5.4-1.575c1.475.8 3.14 1.225 4.86 1.225h.004c5.2 0 9.456-4.193 9.464-9.393.004-2.514-.975-4.876-2.861-6.764l-.04-.04v-.001zM12.02 20.167h-.003c-1.484 0-2.94-.4-4.204-1.15l-.302-.18-3.255.95.97-3.145-.197-.314c-.797-1.27-1.218-2.73-1.216-4.236.007-4.32 3.52-7.833 7.85-7.833 2.097 0 4.07.82 5.553 2.307 1.48 1.485 2.295 3.458 2.292 5.555-.007 4.322-3.52 7.835-7.85 7.835l.008-.001zm4.323-5.865c-.237-.12-1.404-.693-1.622-.772-.217-.08-.375-.12-.533.12-.158.238-.612.772-.75.93-.14.158-.278.178-.515.06-.237-.12-1.002-.37-1.91-1.18-.706-.63-1.182-1.41-1.32-1.648-.14-.238-.015-.367.105-.486.108-.108.237-.282.356-.423.118-.142.158-.238.237-.397.08-.158.04-.297-.02-.416-.06-.12-.533-1.287-.73-1.762-.193-.467-.388-.396-.533-.404-.14-.008-.3-.01-.46-.01-.16 0-.42.06-.64.298-.22.238-.84.822-.84 2.005 0 1.182.86 2.324.98 2.484.12.16 1.68 2.574 4.07 3.51 2.39.935 2.39.624 2.82.585.43-.04 1.39-.568 1.586-1.116.196-.55.196-1.02.138-1.118-.058-.1-.218-.16-.456-.28l.002-.002z"/>
+      </svg>
+    </a>
+  </div>
+
   <script>
+    // Hope Tree Function
     async function updateHopeTree() {
       try {
         const response = await fetch('/api/donations/total');
         const data = await response.json();
         const totalAmount = data.total || 0;
-
         const countResponse = await fetch('/api/donations/count');
         const countData = await countResponse.json();
         const donorCount = countData.count || 0;
-
         const targetAmount = 2000000;
         const percentage = Math.min((totalAmount / targetAmount) * 100, 200);
-
         const treeElement = document.getElementById('hope-tree');
         const messageElement = document.getElementById('tree-message');
         const growthBar = document.getElementById('tree-growth-bar');
@@ -1244,65 +1111,81 @@
         growthBar.style.width = Math.min(percentage, 100) + '%';
         document.getElementById('total-donors').textContent = donorCount;
         document.getElementById('growth-percentage').textContent = Math.round(percentage) + '%';
-
         treeElement.style.transform = 'scale(1.1)';
-        setTimeout(() => {
-          treeElement.style.transform = 'scale(1)';
-        }, 200);
-
-      } catch (error) {
-        console.error('Error updating hope tree:', error);
-      }
+        setTimeout(() => { treeElement.style.transform = 'scale(1)'; }, 200);
+      } catch (error) { console.error('Error updating hope tree:', error); }
     }
 
     document.addEventListener('DOMContentLoaded', updateHopeTree);
     setInterval(updateHopeTree, 30000);
-  </script>
 
-  <script src="/quotes.js"></script>
-  <script>
-    function displayDailyQuote() {
-      const quote = window.quotesData.getTodaysQuote();
-      document.getElementById('quote-text').textContent = `"${quote.text}"`;
-      document.getElementById('quote-source').textContent = `— ${quote.source}`;
-    }
+    // Display Daily Quote
+    // Display Daily Quote - EMBEDDED VERSION (no external file needed)
+function displayDailyQuote() {
+  // Embedded quotes directly in JavaScript
+  const quotesList = [
+    { text: "True knowledge softens the heart and leads to service.", source: "Chattambi Swamigal" },
+    { text: "The divine exists in every being, regardless of caste or creed.", source: "Chattambi Swamigal" },
+    { text: "Compassion is the highest form of worship.", source: "Chattambi Swamigal" },
+    { text: "Service to humanity is service to the Divine.", source: "Chattambi Swamigal" },
+    { text: "Where there is compassion, there is God.", source: "Chattambi Swamigal" },
+    { text: "The greatest wisdom is knowing that all life is one.", source: "Chattambi Swamigal" },
+    { text: "True spirituality is expressed through kindness toward all beings.", source: "Chattambi Swamigal" },
+    { text: "In serving the elderly, we serve the divine.", source: "Chattambi Swamigal" },
+    { text: "Knowledge without compassion is incomplete.", source: "Chattambi Swamigal" },
+    { text: "True wealth is measured by what we give, not what we keep.", source: "Chattambi Swamigal" },
+    { text: "The sacred is not in temples alone, but in every act of kindness.", source: "Chattambi Swamigal" },
+    { text: "When the heart opens, the mind finds peace.", source: "Chattambi Swamigal" },
+    { text: "In helping others, we help ourselves.", source: "Chattambi Swamigal" },
+    { text: "The wise see the same divine light in all creatures.", source: "Chattambi Swamigal" },
+    { text: "Love is the bridge between the human and the divine.", source: "Chattambi Swamigal" },
+    { text: "Every living being deserves respect and dignity.", source: "Chattambi Swamigal" },
+    { text: "True religion is to practice compassion.", source: "Chattambi Swamigal" },
+    { text: "In giving, we receive the greatest blessings.", source: "Chattambi Swamigal" },
+    { text: "The universe is one family.", source: "Chattambi Swamigal" },
+    { text: "Wisdom begins when we see ourselves in others.", source: "Chattambi Swamigal" }
+  ];
+  
+  // Get today's quote based on date
+  const today = new Date();
+  const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / (1000 * 60 * 60 * 24));
+  const quoteIndex = dayOfYear % quotesList.length;
+  const quote = quotesList[quoteIndex];
+  
+  // Update the HTML
+  document.getElementById('quote-text').textContent = `"${quote.text}"`;
+  document.getElementById('quote-source').textContent = `— ${quote.source}`;
+}
+
+// Run when page loads
+document.addEventListener('DOMContentLoaded', displayDailyQuote);
     document.addEventListener('DOMContentLoaded', displayDailyQuote);
-  </script>
 
-  <script src="/timeline.js"></script>
-
-  <script>
+    // Volunteer Form
     const volunteerForm = document.getElementById('volunteerForm');
     const volunteerFormStatus = document.getElementById('volunteerFormStatus');
-
     if (volunteerForm) {
       volunteerForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-
         const name = document.getElementById('volunteer-name').value.trim();
         const phone = document.getElementById('volunteer-phone').value.trim();
         const email = document.getElementById('volunteer-email').value.trim();
         const type = document.getElementById('volunteer-type').value;
         const message = document.getElementById('volunteer-message').value.trim();
-
         if (!name || !phone || !email || !type) {
           volunteerFormStatus.textContent = 'Please fill all required fields.';
           volunteerFormStatus.style.color = '#b91c1c';
           return;
         }
-
         volunteerFormStatus.textContent = 'Submitting...';
         volunteerFormStatus.style.color = '#7c6a5a';
-
         try {
           const response = await fetch('/api/volunteer', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ name, phone, email, type, message })
           });
-
           const data = await response.json();
-
           if (data.success) {
             volunteerFormStatus.textContent = '✅ Thank you for joining! We will contact you soon.';
             volunteerFormStatus.style.color = '#166534';
@@ -1312,184 +1195,131 @@
             volunteerFormStatus.style.color = '#b91c1c';
           }
         } catch (error) {
-          console.error('Error:', error);
           volunteerFormStatus.textContent = 'Server error. Please try again later.';
           volunteerFormStatus.style.color = '#b91c1c';
         }
       });
     }
-  </script>
 
-  <link rel="stylesheet" href="/whatsapp.css">
-  <div class="whatsapp-float saffron" id="whatsapp-float">
-    <div class="whatsapp-tooltip">Chat with us on WhatsApp</div>
-    <a href="https://wa.me/919443791336?text=Hi%21%20I%27m%20interested%20in%20learning%20more%20about%20Sri%20Vidyadhiraja%20Charities." 
-       class="whatsapp-button" 
-       target="_blank"
-       onclick="trackWhatsAppClick()">
-        <svg viewBox="0 0 24 24">
-            <path d="M19.077 4.928C17.191 3.041 14.683 2 12.006 2 6.798 2 2.548 6.193 2.54 11.393c-.003 1.747.456 3.457 1.328 4.985L2.25 21.75l5.4-1.575c1.475.8 3.14 1.225 4.86 1.225h.004c5.2 0 9.456-4.193 9.464-9.393.004-2.514-.975-4.876-2.861-6.764l-.04-.04v-.001zM12.02 20.167h-.003c-1.484 0-2.94-.4-4.204-1.15l-.302-.18-3.255.95.97-3.145-.197-.314c-.797-1.27-1.218-2.73-1.216-4.236.007-4.32 3.52-7.833 7.85-7.833 2.097 0 4.07.82 5.553 2.307 1.48 1.485 2.295 3.458 2.292 5.555-.007 4.322-3.52 7.835-7.85 7.835l.008-.001zm4.323-5.865c-.237-.12-1.404-.693-1.622-.772-.217-.08-.375-.12-.533.12-.158.238-.612.772-.75.93-.14.158-.278.178-.515.06-.237-.12-1.002-.37-1.91-1.18-.706-.63-1.182-1.41-1.32-1.648-.14-.238-.015-.367.105-.486.108-.108.237-.282.356-.423.118-.142.158-.238.237-.397.08-.158.04-.297-.02-.416-.06-.12-.533-1.287-.73-1.762-.193-.467-.388-.396-.533-.404-.14-.008-.3-.01-.46-.01-.16 0-.42.06-.64.298-.22.238-.84.822-.84 2.005 0 1.182.86 2.324.98 2.484.12.16 1.68 2.574 4.07 3.51 2.39.935 2.39.624 2.82.585.43-.04 1.39-.568 1.586-1.116.196-.55.196-1.02.138-1.118-.058-.1-.218-.16-.456-.28l.002-.002z"/>
-        </svg>
-    </a>
-  </div>
+    // Contact Form
+    const contactForm = document.getElementById('contactForm');
+    const formStatus = document.getElementById('formStatus');
+    if (contactForm && formStatus) {
+      contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const name = contactForm.name.value.trim();
+        const email = contactForm.email.value.trim();
+        const phone = contactForm.phone ? contactForm.phone.value.trim() : "";
+        const message = contactForm.message.value.trim();
+        if (!name || !email || !message) {
+          formStatus.textContent = "Please fill in all required fields.";
+          formStatus.style.color = "#b91c1c";
+          return;
+        }
+        formStatus.textContent = "📤 Sending message...";
+        formStatus.style.color = "#7c6a5a";
+        try {
+          const response = await fetch("/api/contact", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ name, email, phone, message })
+          });
+          const data = await response.json();
+          if (data.success) {
+            formStatus.textContent = "✅ Thank you! Your message has been sent.";
+            formStatus.style.color = "#166534";
+            contactForm.reset();
+          } else {
+            formStatus.textContent = "❌ Something went wrong. Please try again.";
+            formStatus.style.color = "#b91c1c";
+          }
+        } catch (error) {
+          formStatus.textContent = "❌ Server error. Please try again later.";
+          formStatus.style.color = "#b91c1c";
+        }
+      });
+    }
 
-  <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
-  <script>
+    // UPI QR Code
     document.addEventListener('DOMContentLoaded', function() {
       const upiId = "vidyadhiraja@okhdfcbank";
-      const payeeName = "Sri Vidyadhiraja Charities";
-      const currency = "INR";
-      const upiUrl = `upi://pay?pa=${upiId}&pn=${encodeURIComponent(payeeName)}&cu=${currency}`;
-      
+      const payeeName = "Sree Vidyadhiraja Trust";
+      const upiUrl = `upi://pay?pa=${upiId}&pn=${encodeURIComponent(payeeName)}&cu=INR`;
       try {
         new QRCode(document.getElementById("upi-qr-code"), {
-          text: upiUrl,
-          width: 200,
-          height: 200,
-          colorDark: "#2b1810",
-          colorLight: "#ffffff",
-          correctLevel: QRCode.CorrectLevel.H
+          text: upiUrl, width: 200, height: 200,
+          colorDark: "#2b1810", colorLight: "#ffffff", correctLevel: QRCode.CorrectLevel.H
         });
-        console.log('✅ UPI QR Code generated successfully');
       } catch (qrError) {
-        console.error('❌ QR Code generation failed:', qrError);
         document.getElementById('upi-qr-code').innerHTML = '<div style="width:200px;height:200px;display:flex;align-items:center;justify-content:center;background:#fff0d9;border-radius:16px;">QR Code Error</div>';
       }
-      
       document.getElementById('upi-id-display').textContent = upiId;
       document.getElementById('upi-id-qr').textContent = upiId;
     });
-  </script>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const navToggle = document.getElementById('navToggle');
-      const mainNav = document.getElementById('mainNav');
-
-      if (navToggle && mainNav) {
-        navToggle.addEventListener('click', function() {
-          mainNav.classList.toggle('active');
-          const expanded = navToggle.getAttribute('aria-expanded') === 'true' || false;
-          navToggle.setAttribute('aria-expanded', !expanded);
-          navToggle.classList.toggle('open');
-        });
-
-        mainNav.addEventListener('click', function(e) {
-          if (e.target.tagName === 'A') {
-            mainNav.classList.remove('active');
-            navToggle.setAttribute('aria-expanded', 'false');
-            navToggle.classList.remove('open');
-          }
-        });
-      }
-
-      window.addEventListener('resize', function() {
-        if (window.innerWidth > 768 && mainNav) {
+    // Mobile Navigation
+    const navToggle = document.getElementById('navToggle');
+    const mainNav = document.getElementById('mainNav');
+    if (navToggle && mainNav) {
+      navToggle.addEventListener('click', function() {
+        mainNav.classList.toggle('active');
+        const expanded = navToggle.getAttribute('aria-expanded') === 'true' || false;
+        navToggle.setAttribute('aria-expanded', !expanded);
+        navToggle.classList.toggle('open');
+      });
+      mainNav.addEventListener('click', function(e) {
+        if (e.target.tagName === 'A') {
           mainNav.classList.remove('active');
-          if (navToggle) {
-            navToggle.setAttribute('aria-expanded', 'false');
-            navToggle.classList.remove('open');
-          }
+          navToggle.setAttribute('aria-expanded', 'false');
+          navToggle.classList.remove('open');
         }
       });
-    });
-  </script>
+    }
 
-  <script>
+    window.addEventListener('resize', function() {
+      if (window.innerWidth > 768 && mainNav) {
+        mainNav.classList.remove('active');
+        if (navToggle) {
+          navToggle.setAttribute('aria-expanded', 'false');
+          navToggle.classList.remove('open');
+        }
+      }
+    });
+
     function trackWhatsAppClick() {
-      console.log('📱 WhatsApp clicked at:', new Date().toISOString());
       fetch('/api/track-whatsapp-click', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          page: window.location.pathname,
-          timestamp: new Date().toISOString()
-        })
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ page: window.location.pathname, timestamp: new Date().toISOString() })
       }).catch(err => console.log('Tracking error:', err));
     }
-  </script>
 
-  <script>
-    // ========== DONATION MODAL FUNCTIONALITY ==========
+    // Donation Modal
     const modal = document.getElementById('donationModal');
     const donateTriggers = document.querySelectorAll('.donate-trigger');
     const closeBtn = document.querySelector('.donation-modal-close');
     const modalOverlay = document.querySelector('.donation-modal-overlay');
-    
     const existingDonorCheckbox = document.getElementById('existingDonorCheckbox');
     const existingDonorFields = document.getElementById('existingDonorFields');
     const taxExemptionCheckbox = document.getElementById('taxExemptionCheckbox');
     const panInput = document.getElementById('donorPan');
-    
-    // Open modal
-    function openModal() {
-      modal.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
-    
-    // Close modal
-    function closeModal() {
-      modal.classList.remove('active');
-      document.body.style.overflow = '';
-    }
-    
-    donateTriggers.forEach(trigger => {
-      trigger.addEventListener('click', (e) => {
-        e.preventDefault();
-        openModal();
-      });
-    });
-    
+
+    function openModal() { modal.classList.add('active'); document.body.style.overflow = 'hidden'; }
+    function closeModal() { modal.classList.remove('active'); document.body.style.overflow = ''; }
+
+    donateTriggers.forEach(trigger => { trigger.addEventListener('click', (e) => { e.preventDefault(); openModal(); }); });
     closeBtn.addEventListener('click', closeModal);
     modalOverlay.addEventListener('click', closeModal);
-    
-    // ESC key to close
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && modal.classList.contains('active')) {
-        closeModal();
-      }
-    });
-    
-    // Existing Donor Toggle
-    existingDonorCheckbox.addEventListener('change', function() {
-      existingDonorFields.style.display = this.checked ? 'block' : 'none';
-    });
-    
-    // Tax Exemption Toggle
-    taxExemptionCheckbox.addEventListener('change', function() {
-      if (this.checked) {
-        panInput.setAttribute('required', 'required');
-        panInput.parentElement.classList.add('required-field');
-      } else {
-        panInput.removeAttribute('required');
-        panInput.parentElement.classList.remove('required-field');
-      }
-    });
-    
-    // Fetch Donor Details (Simulate)
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.classList.contains('active')) closeModal(); });
+    if (existingDonorCheckbox) { existingDonorCheckbox.addEventListener('change', function() { existingDonorFields.style.display = this.checked ? 'block' : 'none'; }); }
+    if (taxExemptionCheckbox) { taxExemptionCheckbox.addEventListener('change', function() { if (this.checked) { panInput.setAttribute('required', 'required'); } else { panInput.removeAttribute('required'); } }); }
+
     document.getElementById('fetchDonorDetailsBtn')?.addEventListener('click', function() {
       const input = document.getElementById('existingDonorEmail').value;
       const messageDiv = document.getElementById('fetchDonorMessage');
-      
-      if (!input) {
-        messageDiv.innerHTML = '<span style="color: #b91c1c;">Please enter email or mobile number</span>';
-        return;
-      }
-      
+      if (!input) { messageDiv.innerHTML = '<span style="color: #b91c1c;">Please enter email or mobile number</span>'; return; }
       messageDiv.innerHTML = '<span style="color: #7c6a5a;">Fetching details...</span>';
-      
       setTimeout(() => {
-        const dummyData = {
-          title: 'Mr',
-          firstName: 'John',
-          lastName: 'Doe',
-          email: 'john@example.com',
-          phone: '9876543210',
-          address: '123 Main Street',
-          city: 'Mumbai',
-          postalCode: '400001'
-        };
-        
+        const dummyData = { title: 'Mr', firstName: 'John', lastName: 'Doe', email: 'john@example.com', phone: '9876543210', address: '123 Main Street', city: 'Mumbai', postalCode: '400001' };
         document.getElementById('donorTitle').value = dummyData.title;
         document.getElementById('donorFirstName').value = dummyData.firstName;
         document.getElementById('donorLastName').value = dummyData.lastName;
@@ -1498,44 +1328,20 @@
         document.getElementById('donorAddress').value = dummyData.address;
         document.getElementById('donorCity').value = dummyData.city;
         document.getElementById('donorPostalCode').value = dummyData.postalCode;
-        
         messageDiv.innerHTML = '<span style="color: #166534;">✅ Details fetched successfully!</span>';
-        
-        setTimeout(() => {
-          messageDiv.innerHTML = '';
-        }, 3000);
+        setTimeout(() => { messageDiv.innerHTML = ''; }, 3000);
       }, 800);
     });
-    
-    // Form Submit
+
     const modalForm = document.getElementById('donationModalForm');
     modalForm.addEventListener('submit', function(e) {
       e.preventDefault();
-      
-      // Basic validation
       const required = modalForm.querySelectorAll('[required]');
       let isValid = true;
-      
-      required.forEach(field => {
-        if (!field.value.trim()) {
-          isValid = false;
-          field.style.borderColor = '#b91c1c';
-        } else {
-          field.style.borderColor = '#f0d6ac';
-        }
-      });
-      
-      if (!isValid) {
-        alert('Please fill all required fields');
-        return;
-      }
-      
+      required.forEach(field => { if (!field.value.trim()) { isValid = false; field.style.borderColor = '#b91c1c'; } else { field.style.borderColor = '#f0d6ac'; } });
+      if (!isValid) { alert('Please fill all required fields'); return; }
       const selectedPayment = document.querySelector('input[name="paymentMethod"]:checked').value;
-      
-      // Show alert for now (will integrate with Razorpay later)
-      alert(`Redirecting to secure payment gateway for ${selectedPayment.toUpperCase()} payment...\n\nAmount: ₹${document.getElementById('donationAmountModal').value}\n\n(Your existing Razorpay integration will handle the payment)`);
-      
-      // Close modal
+      alert(`Redirecting to secure payment gateway for ${selectedPayment.toUpperCase()} payment...\n\nAmount: ₹${document.getElementById('donationAmountModal').value}`);
       closeModal();
     });
   </script>
