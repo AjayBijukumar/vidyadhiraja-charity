@@ -1063,7 +1063,7 @@
     </a>
   </div>
 
-  <script>
+    <script>
     // Hope Tree Function
     async function updateHopeTree() {
       try {
@@ -1119,46 +1119,40 @@
     document.addEventListener('DOMContentLoaded', updateHopeTree);
     setInterval(updateHopeTree, 30000);
 
-    // Display Daily Quote
     // Display Daily Quote - EMBEDDED VERSION (no external file needed)
-function displayDailyQuote() {
-  // Embedded quotes directly in JavaScript
-  const quotesList = [
-    { text: "True knowledge softens the heart and leads to service.", source: "Chattambi Swamigal" },
-    { text: "The divine exists in every being, regardless of caste or creed.", source: "Chattambi Swamigal" },
-    { text: "Compassion is the highest form of worship.", source: "Chattambi Swamigal" },
-    { text: "Service to humanity is service to the Divine.", source: "Chattambi Swamigal" },
-    { text: "Where there is compassion, there is God.", source: "Chattambi Swamigal" },
-    { text: "The greatest wisdom is knowing that all life is one.", source: "Chattambi Swamigal" },
-    { text: "True spirituality is expressed through kindness toward all beings.", source: "Chattambi Swamigal" },
-    { text: "In serving the elderly, we serve the divine.", source: "Chattambi Swamigal" },
-    { text: "Knowledge without compassion is incomplete.", source: "Chattambi Swamigal" },
-    { text: "True wealth is measured by what we give, not what we keep.", source: "Chattambi Swamigal" },
-    { text: "The sacred is not in temples alone, but in every act of kindness.", source: "Chattambi Swamigal" },
-    { text: "When the heart opens, the mind finds peace.", source: "Chattambi Swamigal" },
-    { text: "In helping others, we help ourselves.", source: "Chattambi Swamigal" },
-    { text: "The wise see the same divine light in all creatures.", source: "Chattambi Swamigal" },
-    { text: "Love is the bridge between the human and the divine.", source: "Chattambi Swamigal" },
-    { text: "Every living being deserves respect and dignity.", source: "Chattambi Swamigal" },
-    { text: "True religion is to practice compassion.", source: "Chattambi Swamigal" },
-    { text: "In giving, we receive the greatest blessings.", source: "Chattambi Swamigal" },
-    { text: "The universe is one family.", source: "Chattambi Swamigal" },
-    { text: "Wisdom begins when we see ourselves in others.", source: "Chattambi Swamigal" }
-  ];
-  
-  // Get today's quote based on date
-  const today = new Date();
-  const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / (1000 * 60 * 60 * 24));
-  const quoteIndex = dayOfYear % quotesList.length;
-  const quote = quotesList[quoteIndex];
-  
-  // Update the HTML
-  document.getElementById('quote-text').textContent = `"${quote.text}"`;
-  document.getElementById('quote-source').textContent = `— ${quote.source}`;
-}
+    function displayDailyQuote() {
+      const quotesList = [
+        { text: "True knowledge softens the heart and leads to service.", source: "Chattambi Swamigal" },
+        { text: "The divine exists in every being, regardless of caste or creed.", source: "Chattambi Swamigal" },
+        { text: "Compassion is the highest form of worship.", source: "Chattambi Swamigal" },
+        { text: "Service to humanity is service to the Divine.", source: "Chattambi Swamigal" },
+        { text: "Where there is compassion, there is God.", source: "Chattambi Swamigal" },
+        { text: "The greatest wisdom is knowing that all life is one.", source: "Chattambi Swamigal" },
+        { text: "True spirituality is expressed through kindness toward all beings.", source: "Chattambi Swamigal" },
+        { text: "In serving the elderly, we serve the divine.", source: "Chattambi Swamigal" },
+        { text: "Knowledge without compassion is incomplete.", source: "Chattambi Swamigal" },
+        { text: "True wealth is measured by what we give, not what we keep.", source: "Chattambi Swamigal" },
+        { text: "The sacred is not in temples alone, but in every act of kindness.", source: "Chattambi Swamigal" },
+        { text: "When the heart opens, the mind finds peace.", source: "Chattambi Swamigal" },
+        { text: "In helping others, we help ourselves.", source: "Chattambi Swamigal" },
+        { text: "The wise see the same divine light in all creatures.", source: "Chattambi Swamigal" },
+        { text: "Love is the bridge between the human and the divine.", source: "Chattambi Swamigal" },
+        { text: "Every living being deserves respect and dignity.", source: "Chattambi Swamigal" },
+        { text: "True religion is to practice compassion.", source: "Chattambi Swamigal" },
+        { text: "In giving, we receive the greatest blessings.", source: "Chattambi Swamigal" },
+        { text: "The universe is one family.", source: "Chattambi Swamigal" },
+        { text: "Wisdom begins when we see ourselves in others.", source: "Chattambi Swamigal" }
+      ];
+      
+      const today = new Date();
+      const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / (1000 * 60 * 60 * 24));
+      const quoteIndex = dayOfYear % quotesList.length;
+      const quote = quotesList[quoteIndex];
+      
+      document.getElementById('quote-text').textContent = `"${quote.text}"`;
+      document.getElementById('quote-source').textContent = `— ${quote.source}`;
+    }
 
-// Run when page loads
-document.addEventListener('DOMContentLoaded', displayDailyQuote);
     document.addEventListener('DOMContentLoaded', displayDailyQuote);
 
     // Volunteer Form
