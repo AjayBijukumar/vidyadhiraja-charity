@@ -1102,4 +1102,6 @@ app.listen(PORT, () => {
   console.log(`📱 WhatsApp Broadcast API: http://localhost:${PORT}/api/whatsapp/subscribe`);
   console.log(`🎂 Birthday Wisher: ACTIVE (daily at 8 AM)`);
   console.log(`📋 Receipt Request API: http://localhost:${PORT}/api/receipt-request`);
+  // After all other model imports
+  console.log('✅ ReceiptRequest model loaded:', typeof ReceiptRequest);
 });

@@ -3,54 +3,49 @@
 const mongoose = require('mongoose');
 
 const receiptRequestSchema = new mongoose.Schema({
-  // Donor Information
   name: {
     type: String,
-    required: true,
+    required: [true, 'Name is required'],
     trim: true
   },
   mobile: {
     type: String,
-    required: true,
-    trim: true
+    required: [true, 'Mobile number is required'],
+    trim: true,
+    match: [/^\d{10}$/, 'Please enter a valid 10-digit mobile number']
   },
   email: {
     type: String,
     trim: true,
     lowercase: true,
-    default: ''
+    default: '',
+    match: [/^\S+@\S+\.\S+$/, 'Please enter a valid email address']
   },
-  
-  // Donation Details
   amount: {
     type: Number,
-    required: true,
-    min: 1
+    required: [true, 'Amount is required'],
+    min: [1, 'Amount must be at least ₹1']
   },
   utr: {
     type: String,
-    required: true,
+    required: [true, 'UTR number is required'],
     trim: true,
     uppercase: true
   },
   donationDate: {
     type: Date,
-    required: true
+    required: [true, 'Donation date is required']
   },
   paymentMode: {
     type: String,
     enum: ['upi', 'netbanking', 'card', 'cash', 'cheque'],
-    required: true
+    required: [true, 'Payment mode is required']
   },
-  
-  // Status Tracking
   status: {
     type: String,
     enum: ['pending', 'verified', 'receipt_sent', 'rejected'],
     default: 'pending'
   },
-  
-  // Receipt Details (generated after verification)
   receiptNumber: {
     type: String,
     default: ''
@@ -63,33 +58,19 @@ const receiptRequestSchema = new mongoose.Schema({
     type: Date,
     default: null
   },
-  
-  // Admin Notes
   notes: {
     type: String,
     default: ''
-  },
-  
-  // Timestamps
-  createdAt: {
-    type: Date,
-    default: Date.now
-  },
-  updatedAt: {
-    type: Date,
-    default: Date.now
   }
-});
-
-// Pre-save middleware to update updatedAt
-receiptRequestSchema.pre('save', function(next) {
-  this.updatedAt = new Date();
-  next();
+}, {
+  timestamps: true // This automatically adds createdAt and updatedAt
 });
 
 // Indexes for faster queries
 receiptRequestSchema.index({ status: 1 });
 receiptRequestSchema.index({ createdAt: -1 });
 receiptRequestSchema.index({ utr: 1 });
+receiptRequestSchema.index({ mobile: 1 });
 
-module.exports = mongoose.model('ReceiptRequest', receiptRequestSchema);
+// Ensure model is not re-compiled
+module.exports = mongoose.models.ReceiptRequest || mongoose.model('ReceiptRequest', receiptRequestSchema);

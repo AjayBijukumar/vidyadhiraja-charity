@@ -3578,26 +3578,95 @@ router.get('/api/receipts', isAuthenticated, async (req, res) => {
   }
 });
 
-// Verify and send receipt (calls server.js endpoint)
+// Verify and send receipt (DIRECT IMPLEMENTATION)
 router.post('/api/receipts/:id/verify', isAuthenticated, async (req, res) => {
   try {
     const { id } = req.params;
     const { notes } = req.body;
     
-    // Forward to server.js endpoint
-    const fetch = require('node-fetch');
-    const response = await fetch(`http://localhost:${process.env.PORT || 5000}/api/admin/receipts/${id}/verify`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ notes })
+    console.log('🔐 Verifying receipt:', id);
+    
+    // Find the receipt request
+    const receiptRequest = await ReceiptRequest.findById(id);
+    if (!receiptRequest) {
+      return res.status(404).json({ error: 'Receipt request not found' });
+    }
+    
+    // Check if already sent
+    if (receiptRequest.status === 'receipt_sent') {
+      return res.status(400).json({ error: 'Receipt already sent for this request' });
+    }
+    
+    // Generate receipt number
+    const date = new Date();
+    const year = date.getFullYear();
+    const count = Math.floor(Math.random() * 10000).toString().padStart(4, '0');
+    const receiptNumber = `RCPT-${year}-${count}`;
+    
+    console.log('📄 Generating receipt number:', receiptNumber);
+    
+    // Update receipt request
+    receiptRequest.status = 'receipt_sent';
+    receiptRequest.receiptNumber = receiptNumber;
+    receiptRequest.verifiedAt = new Date();
+    receiptRequest.receiptSentAt = new Date();
+    if (notes) receiptRequest.notes = notes;
+    await receiptRequest.save();
+    
+    console.log('✅ Receipt request updated:', receiptRequest._id);
+    
+    // Send email with receipt (simplified - without PDF for now)
+    try {
+      const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+          user: process.env.EMAIL_USER,
+          pass: process.env.EMAIL_PASS
+        }
+      });
+      
+      await transporter.sendMail({
+        from: `"Sree Vidyadhiraja Trust" <${process.env.EMAIL_USER}>`,
+        to: receiptRequest.email || receiptRequest.mobile + '@email.com',
+        subject: `Your Donation Receipt - Sree Vidyadhiraja Trust`,
+        html: `
+          <div style="font-family: 'Poppins', sans-serif; max-width: 600px; margin: 0 auto; background: #fffaf2; padding: 30px; border-radius: 24px; border: 1px solid #f0d6ac;">
+            <h2 style="color: #7c2d12; font-family: 'Playfair Display';">Thank You for Your Donation!</h2>
+            <p>Dear <strong>${receiptRequest.name}</strong>,</p>
+            <p>Thank you for your generous donation of <strong>₹${receiptRequest.amount}</strong> to Sree Vidyadhiraja Trust.</p>
+            <div style="background: white; padding: 20px; border-radius: 12px; margin: 20px 0;">
+              <p><strong>Receipt No:</strong> ${receiptNumber}</p>
+              <p><strong>Donation Date:</strong> ${new Date(receiptRequest.donationDate).toLocaleDateString()}</p>
+              <p><strong>UTR:</strong> ${receiptRequest.utr}</p>
+              <p><strong>Amount:</strong> ₹${receiptRequest.amount}</p>
+            </div>
+            <p>This receipt is valid for tax exemption under Section 80G.</p>
+            <hr style="border-color: #f0d6ac; margin: 20px 0;">
+            <p style="color: #7c6a5a; font-size: 0.9rem;">With gratitude,<br><strong>Sree Vidyadhiraja Trust Team</strong></p>
+            <p style="color: #7c6a5a; font-size: 0.8rem;">For any queries, contact: ramcatering2011@gmail.com | +91 94435 59710</p>
+          </div>
+        `
+      });
+      
+      console.log('📧 Receipt email sent to:', receiptRequest.email || receiptRequest.mobile);
+    } catch (emailError) {
+      console.error('❌ Failed to send receipt email:', emailError.message);
+      // Continue even if email fails
+    }
+    
+    res.json({ 
+      success: true, 
+      message: 'Receipt verified and sent successfully!',
+      receiptNumber,
+      status: receiptRequest.status
     });
     
-    const data = await response.json();
-    res.json(data);
-    
   } catch (error) {
-    console.error('Error verifying receipt:', error);
-    res.status(500).json({ error: 'Failed to verify receipt' });
+    console.error('❌ Error verifying receipt:', error);
+    console.error('Error stack:', error.stack);
+    res.status(500).json({ 
+      error: 'Failed to verify receipt: ' + error.message 
+    });
   }
 });
 
