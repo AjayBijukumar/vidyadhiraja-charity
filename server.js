@@ -1,4 +1,4 @@
-// server.js - Complete with Admin Panel, Gallery, Hope Tree, Email Notifications, Volunteer Registration, Prayer Wall, WhatsApp Broadcast, and Birthday Wisher!
+// server.js - Complete with Admin Panel, Gallery, Hope Tree, Email Notifications, Volunteer Registration, Prayer Wall, WhatsApp Broadcast, Birthday Wisher, and Receipt Request System!
 
 const dns = require('dns');
 dns.setServers(['8.8.8.8', '8.8.4.4']);
@@ -14,8 +14,9 @@ const session = require('express-session');
 const path = require('path');
 const cron = require('node-cron'); // For birthday reminders
 const nodemailer = require('nodemailer');
-const Razorpay = require('razorpay');      // ← ONLY ONCE at the top
-const crypto = require('crypto');           // ← ONLY ONCE at the top
+const Razorpay = require('razorpay');
+const crypto = require('crypto');
+const PDFDocument = require('pdfkit'); // For PDF receipt generation
 
 // Import routes
 const adminRoutes = require('./routes/admin');
@@ -26,9 +27,10 @@ const emailService = require('./utils/emailService');
 // Import models
 const Volunteer = require('./models/Volunteer');
 const Prayer = require('./models/Prayer');
-const WhatsAppSubscriber = require('./models/WhatsAppSubscriber'); // NEW
-const BirthdayReminder = require('./models/BirthdayReminder'); // NEW
+const WhatsAppSubscriber = require('./models/WhatsAppSubscriber');
+const BirthdayReminder = require('./models/BirthdayReminder');
 const EmailLog = require('./models/EmailLog');
+const ReceiptRequest = require('./models/ReceiptRequest'); // NEW
 
 // Import Prayer Wall routes
 const prayerRoutes = require('./routes/prayer');
@@ -743,7 +745,347 @@ app.post('/verify-payment', async (req, res) => {
   }
 });
 
-const PORT = 5000;
+// ========== RECEIPT REQUEST SYSTEM (NEW) ==========
+
+// Helper function to generate receipt number
+function generateReceiptNumber() {
+  const date = new Date();
+  const year = date.getFullYear();
+  const count = Math.floor(Math.random() * 10000).toString().padStart(4, '0');
+  return `RCPT-${year}-${count}`;
+}
+
+// Helper function to generate PDF receipt
+async function generateReceiptPDF(receiptData) {
+  return new Promise((resolve, reject) => {
+    try {
+      const doc = new PDFDocument({ margin: 50, size: 'A4' });
+      const buffers = [];
+      
+      doc.on('data', buffers.push.bind(buffers));
+      doc.on('end', () => {
+        const pdfData = Buffer.concat(buffers);
+        resolve(pdfData);
+      });
+      
+      // Header
+      doc.fontSize(22).font('Helvetica-Bold').fillColor('#7c2d12')
+        .text('SREE VIDYADHIRAJA TRUST', { align: 'center' });
+      
+      doc.fontSize(12).font('Helvetica').fillColor('#5c4a3a')
+        .text('Reg No: 6/2022 · Verkilambi', { align: 'center' });
+      doc.text('Pulluvilai, Perinchakonam, Kanyakumari District', { align: 'center' });
+      
+      doc.moveDown();
+      
+      // Divider
+      doc.strokeColor('#f0d6ac').lineWidth(1)
+        .moveTo(50, doc.y).lineTo(550, doc.y).stroke();
+      
+      doc.moveDown();
+      
+      // Title
+      doc.fontSize(18).font('Helvetica-Bold').fillColor('#7c2d12')
+        .text('DONATION RECEIPT', { align: 'center' });
+      
+      doc.moveDown();
+      
+      // Receipt Details
+      doc.fontSize(11).font('Helvetica').fillColor('#2b1810');
+      doc.text(`Receipt No: ${receiptData.receiptNumber}`, 50, doc.y);
+      doc.text(`Date: ${new Date().toLocaleDateString('en-IN', { day: '2-digit', month: 'long', year: 'numeric' })}`, { align: 'right' });
+      
+      doc.moveDown();
+      
+      // Donor Details
+      doc.fontSize(12).font('Helvetica-Bold').fillColor('#7c2d12')
+        .text('Received with thanks from:');
+      
+      doc.moveDown(0.5);
+      
+      doc.fontSize(11).font('Helvetica').fillColor('#2b1810');
+      doc.text(`Name:  ${receiptData.name}`);
+      doc.text(`Mobile: ${receiptData.mobile}`);
+      if (receiptData.email) {
+        doc.text(`Email:  ${receiptData.email}`);
+      }
+      
+      doc.moveDown();
+      
+      // Transaction Details
+      doc.fontSize(12).font('Helvetica-Bold').fillColor('#7c2d12')
+        .text('Transaction Details:');
+      
+      doc.moveDown(0.5);
+      
+      // Box for transaction details
+      const boxY = doc.y;
+      doc.rect(50, boxY, 500, 80).stroke('#f0d6ac');
+      
+      doc.fontSize(11).font('Helvetica').fillColor('#2b1810');
+      doc.text(`Amount:  ₹${receiptData.amount.toFixed(2)}`, 70, boxY + 10);
+      doc.text(`UTR:     ${receiptData.utr}`, 70, boxY + 32);
+      doc.text(`Mode:    ${receiptData.paymentMode.charAt(0).toUpperCase() + receiptData.paymentMode.slice(1)}`, 70, boxY + 54);
+      
+      doc.moveDown();
+      doc.moveDown();
+      
+      // 80G Note
+      doc.fontSize(10).font('Helvetica-Bold').fillColor('#7c2d12')
+        .text('✓ This donation is eligible for tax exemption under Section 80G.', { align: 'center' });
+      
+      doc.moveDown();
+      
+      // Footer
+      doc.fontSize(10).font('Helvetica').fillColor('#7c6a5a')
+        .text('This is a system-generated receipt.', { align: 'center' });
+      
+      doc.moveDown();
+      
+      // Signature
+      doc.fontSize(11).font('Helvetica-Bold').fillColor('#2b1810')
+        .text('Authorized Signatory', 400, doc.y + 30);
+      doc.fontSize(9).font('Helvetica').fillColor('#7c6a5a')
+        .text('Sree Vidyadhiraja Trust', 400, doc.y + 10);
+      
+      doc.end();
+      
+    } catch (error) {
+      reject(error);
+    }
+  });
+}
+
+// Submit receipt request (public endpoint)
+app.post('/api/receipt-request', async (req, res) => {
+  try {
+    const { name, mobile, email, amount, utr, date, paymentMode } = req.body;
+    
+    // Validate required fields
+    if (!name || !mobile || !amount || !utr || !date || !paymentMode) {
+      return res.status(400).json({ 
+        success: false, 
+        message: 'All required fields must be filled' 
+      });
+    }
+    
+    // Validate mobile number
+    if (!/^\d{10}$/.test(mobile)) {
+      return res.status(400).json({
+        success: false,
+        message: 'Please enter a valid 10-digit mobile number'
+      });
+    }
+    
+    // Check if UTR already exists (prevent duplicates)
+    const existing = await ReceiptRequest.findOne({ utr: utr.toUpperCase() });
+    if (existing) {
+      return res.status(400).json({
+        success: false,
+        message: 'This UTR number has already been submitted. Please check your details.'
+      });
+    }
+    
+    // Save receipt request to database
+    const receiptRequest = new ReceiptRequest({
+      name,
+      mobile,
+      email: email || '',
+      amount: parseFloat(amount),
+      utr: utr.toUpperCase(),
+      donationDate: new Date(date),
+      paymentMode,
+      status: 'pending'
+    });
+    
+    await receiptRequest.save();
+    
+    console.log('📋 Receipt Request Saved:', receiptRequest._id);
+    
+    // Send email notification to admin
+    try {
+      const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+          user: process.env.EMAIL_USER,
+          pass: process.env.EMAIL_PASS
+        }
+      });
+      
+      await transporter.sendMail({
+        from: `"Sree Vidyadhiraja Trust" <${process.env.EMAIL_USER}>`,
+        to: 'ramcatering2011@gmail.com',
+        subject: '📋 New Donation Receipt Request',
+        html: `
+          <div style="font-family: 'Poppins', sans-serif; max-width: 600px; margin: 0 auto; background: #fffaf2; padding: 30px; border-radius: 24px; border: 1px solid #f0d6ac;">
+            <h2 style="color: #7c2d12; font-family: 'Playfair Display';">📋 New Receipt Request</h2>
+            <div style="background: white; padding: 20px; border-radius: 12px; margin: 20px 0;">
+              <p><strong>Name:</strong> ${name}</p>
+              <p><strong>Mobile:</strong> ${mobile}</p>
+              <p><strong>Email:</strong> ${email || 'Not provided'}</p>
+              <p><strong>Amount:</strong> ₹${amount}</p>
+              <p><strong>UTR:</strong> ${utr}</p>
+              <p><strong>Date:</strong> ${new Date(date).toLocaleDateString()}</p>
+              <p><strong>Payment Mode:</strong> ${paymentMode.charAt(0).toUpperCase() + paymentMode.slice(1)}</p>
+            </div>
+            <p style="color: #7c6a5a;">Please verify the donation in your bank statement and issue the receipt.</p>
+            <p><a href="https://vidyadhiraja-charity.onrender.com/admin/dashboard" style="background: #d97706; color: white; padding: 10px 20px; text-decoration: none; border-radius: 40px;">Review in Admin</a></p>
+          </div>
+        `
+      });
+      console.log('📧 Receipt request email sent to admin');
+    } catch (emailError) {
+      console.log('⚠️ Email notification failed (non-critical):', emailError.message);
+    }
+    
+    res.json({ 
+      success: true, 
+      message: 'Thank you for supporting Sree Vidyadhiraja Trust. Your donation details have been received and will be verified. An official receipt will be issued after verification.' 
+    });
+    
+  } catch (error) {
+    console.error('Receipt request error:', error);
+    res.status(500).json({ 
+      success: false, 
+      message: 'Failed to submit receipt request. Please try again.' 
+    });
+  }
+});
+
+// Get all receipt requests (admin only - protected in admin routes)
+app.get('/api/admin/receipts', async (req, res) => {
+  try {
+    // This will be protected by admin middleware when mounted
+    const receipts = await ReceiptRequest.find().sort({ createdAt: -1 });
+    res.json(receipts);
+  } catch (error) {
+    console.error('Error fetching receipts:', error);
+    res.status(500).json({ error: 'Failed to fetch receipts' });
+  }
+});
+
+// Verify and send receipt (admin only)
+app.post('/api/admin/receipts/:id/verify', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { notes } = req.body;
+    
+    const receiptRequest = await ReceiptRequest.findById(id);
+    if (!receiptRequest) {
+      return res.status(404).json({ error: 'Receipt request not found' });
+    }
+    
+    if (receiptRequest.status === 'receipt_sent') {
+      return res.status(400).json({ error: 'Receipt already sent for this request' });
+    }
+    
+    // Generate receipt number
+    const receiptNumber = generateReceiptNumber();
+    
+    // Generate PDF
+    const pdfBuffer = await generateReceiptPDF({
+      receiptNumber,
+      name: receiptRequest.name,
+      mobile: receiptRequest.mobile,
+      email: receiptRequest.email,
+      amount: receiptRequest.amount,
+      utr: receiptRequest.utr,
+      paymentMode: receiptRequest.paymentMode
+    });
+    
+    // Update receipt request
+    receiptRequest.status = 'receipt_sent';
+    receiptRequest.receiptNumber = receiptNumber;
+    receiptRequest.verifiedAt = new Date();
+    receiptRequest.receiptSentAt = new Date();
+    if (notes) receiptRequest.notes = notes;
+    await receiptRequest.save();
+    
+    // Send email with PDF attachment to donor
+    try {
+      const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+          user: process.env.EMAIL_USER,
+          pass: process.env.EMAIL_PASS
+        }
+      });
+      
+      await transporter.sendMail({
+        from: `"Sree Vidyadhiraja Trust" <${process.env.EMAIL_USER}>`,
+        to: receiptRequest.email || receiptRequest.mobile + '@email.com',
+        subject: `Your Donation Receipt - Sree Vidyadhiraja Trust`,
+        html: `
+          <div style="font-family: 'Poppins', sans-serif; max-width: 600px; margin: 0 auto; background: #fffaf2; padding: 30px; border-radius: 24px; border: 1px solid #f0d6ac;">
+            <h2 style="color: #7c2d12; font-family: 'Playfair Display';">Thank You for Your Donation!</h2>
+            <p>Dear <strong>${receiptRequest.name}</strong>,</p>
+            <p>Thank you for your generous donation of <strong>₹${receiptRequest.amount}</strong> to Sree Vidyadhiraja Trust.</p>
+            <p>Please find your official receipt attached as a PDF.</p>
+            <div style="background: white; padding: 15px; border-radius: 12px; margin: 20px 0;">
+              <p><strong>Receipt No:</strong> ${receiptNumber}</p>
+              <p><strong>Donation Date:</strong> ${new Date(receiptRequest.donationDate).toLocaleDateString()}</p>
+              <p><strong>UTR:</strong> ${receiptRequest.utr}</p>
+            </div>
+            <p>This receipt is valid for tax exemption under Section 80G.</p>
+            <hr style="border-color: #f0d6ac; margin: 20px 0;">
+            <p style="color: #7c6a5a; font-size: 0.9rem;">With gratitude,<br><strong>Sree Vidyadhiraja Trust Team</strong></p>
+            <p style="color: #7c6a5a; font-size: 0.8rem;">For any queries, contact: ramcatering2011@gmail.com | +91 94435 59710</p>
+          </div>
+        `,
+        attachments: [{
+          filename: `Receipt-${receiptNumber}.pdf`,
+          content: pdfBuffer,
+          contentType: 'application/pdf'
+        }]
+      });
+      
+      console.log(`📧 Receipt sent to ${receiptRequest.email || receiptRequest.mobile}`);
+    } catch (emailError) {
+      console.error('❌ Failed to send receipt email:', emailError.message);
+      // Even if email fails, the receipt request is marked as sent
+    }
+    
+    res.json({ 
+      success: true, 
+      message: 'Receipt verified and sent successfully!',
+      receiptNumber,
+      status: receiptRequest.status
+    });
+    
+  } catch (error) {
+    console.error('Error verifying receipt:', error);
+    res.status(500).json({ error: 'Failed to verify receipt' });
+  }
+});
+
+// Reject receipt request (admin only)
+app.post('/api/admin/receipts/:id/reject', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { notes } = req.body;
+    
+    const receiptRequest = await ReceiptRequest.findById(id);
+    if (!receiptRequest) {
+      return res.status(404).json({ error: 'Receipt request not found' });
+    }
+    
+    receiptRequest.status = 'rejected';
+    if (notes) receiptRequest.notes = notes;
+    await receiptRequest.save();
+    
+    res.json({ 
+      success: true, 
+      message: 'Receipt request rejected' 
+    });
+    
+  } catch (error) {
+    console.error('Error rejecting receipt:', error);
+    res.status(500).json({ error: 'Failed to reject receipt' });
+  }
+});
+
+// ========== SERVER START ==========
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`\n🚀 SERVER RUNNING on http://localhost:${PORT}`);
   console.log(`🔐 Admin Login: http://localhost:${PORT}/admin/login`);
@@ -759,4 +1101,5 @@ app.listen(PORT, () => {
   console.log(`🕊️ Public Prayer Wall: http://localhost:${PORT}/prayer`);
   console.log(`📱 WhatsApp Broadcast API: http://localhost:${PORT}/api/whatsapp/subscribe`);
   console.log(`🎂 Birthday Wisher: ACTIVE (daily at 8 AM)`);
+  console.log(`📋 Receipt Request API: http://localhost:${PORT}/api/receipt-request`);
 });

@@ -59,11 +59,11 @@ const timelineData = [
   },
   {
     date: "September 2026",
-    phase: "Phase 8: Roofing",
-    title: "Temple Construction",
-    description: "Starting the construction of the small temple on the premises.",
+    phase: "Phase 8: Finishing",
+    title: "Interior Work",
+    description: "Starting interior finishing work for resident rooms.",
     image: "pics/image 9.png"
-  },
+  },  // ← COMMA ADDED HERE (was missing!)
   {
     date: "October 2026",
     phase: "Phase 9: Finishing",

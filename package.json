@@ -8,7 +8,11 @@
     "dev": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["charity", "elderly-care", "donations"],
+  "keywords": [
+    "charity",
+    "elderly-care",
+    "donations"
+  ],
   "author": "Sree Vidyadhiraja Charity",
   "license": "ISC",
   "type": "commonjs",

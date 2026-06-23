@@ -1,4 +1,4 @@
-// routes/admin.js - Enhanced Admin Dashboard with Charts, Export, Reply, Volunteers, Donation Reports, Volunteer Analytics, Event Calendar, Prayer Wall, WhatsApp Broadcast, and Birthday Wisher
+// routes/admin.js - Enhanced Admin Dashboard with Charts, Export, Reply, Volunteers, Donation Reports, Volunteer Analytics, Event Calendar, Prayer Wall, WhatsApp Broadcast, Birthday Wisher, and Receipt Requests
 
 const express = require('express');
 const router = express.Router();
@@ -11,6 +11,7 @@ const EventRegistration = require('../models/EventRegistration');
 const Prayer = require('../models/Prayer');
 const WhatsAppSubscriber = require('../models/WhatsAppSubscriber');
 const BirthdayReminder = require('../models/BirthdayReminder');
+const ReceiptRequest = require('../models/ReceiptRequest'); // NEW - Receipt requests model
 const bcrypt = require('bcrypt');
 const XLSX = require('xlsx');
 const PDFDocument = require('pdfkit');
@@ -160,7 +161,6 @@ router.get('/login', (req, res) => {
           <button type="submit">Login to Dashboard</button>
         </form>
         <div class="footer">
-
           <p><a href="/">← Back to Website</a></p>
         </div>
       </div>
@@ -2405,6 +2405,7 @@ router.get('/dashboard', isAuthenticated, async (req, res) => {
             <a href="/admin/prayers" class="btn" style="background: #d97706;">🙏 Prayer Wall</a>
             <a href="/admin/whatsapp" class="btn" style="background: #25D366;">📱 WhatsApp</a>
             <a href="/admin/birthdays" class="btn" style="background: #d4a017;">🎂 Birthdays</a>
+            <a href="/admin/receipts" class="btn" style="background: #d4a017;">📋 Receipt Requests</a> <!-- NEW -->
           </div>
           
           <!-- Stats -->
@@ -3561,6 +3562,404 @@ router.get('/birthdays', isAuthenticated, async (req, res) => {
   } catch (error) {
     console.error('Error loading birthdays page:', error);
     res.status(500).send('Error loading birthdays page');
+  }
+});
+
+// ========== RECEIPT REQUESTS ADMIN (NEW) ==========
+
+// Get all receipt requests
+router.get('/api/receipts', isAuthenticated, async (req, res) => {
+  try {
+    const receipts = await ReceiptRequest.find().sort({ createdAt: -1 });
+    res.json(receipts);
+  } catch (error) {
+    console.error('Error fetching receipts:', error);
+    res.status(500).json({ error: 'Failed to fetch receipts' });
+  }
+});
+
+// Verify and send receipt (calls server.js endpoint)
+router.post('/api/receipts/:id/verify', isAuthenticated, async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { notes } = req.body;
+    
+    // Forward to server.js endpoint
+    const fetch = require('node-fetch');
+    const response = await fetch(`http://localhost:${process.env.PORT || 5000}/api/admin/receipts/${id}/verify`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ notes })
+    });
+    
+    const data = await response.json();
+    res.json(data);
+    
+  } catch (error) {
+    console.error('Error verifying receipt:', error);
+    res.status(500).json({ error: 'Failed to verify receipt' });
+  }
+});
+
+// Reject receipt request
+router.post('/api/receipts/:id/reject', isAuthenticated, async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { notes } = req.body;
+    
+    const receiptRequest = await ReceiptRequest.findById(id);
+    if (!receiptRequest) {
+      return res.status(404).json({ error: 'Receipt request not found' });
+    }
+    
+    receiptRequest.status = 'rejected';
+    if (notes) receiptRequest.notes = notes;
+    await receiptRequest.save();
+    
+    res.json({ success: true, message: 'Receipt request rejected' });
+    
+  } catch (error) {
+    console.error('Error rejecting receipt:', error);
+    res.status(500).json({ error: 'Failed to reject receipt' });
+  }
+});
+
+// Receipt Requests Admin Page
+router.get('/receipts', isAuthenticated, async (req, res) => {
+  try {
+    const receipts = await ReceiptRequest.find().sort({ createdAt: -1 });
+    
+    const stats = {
+      pending: receipts.filter(r => r.status === 'pending').length,
+      verified: receipts.filter(r => r.status === 'verified').length,
+      sent: receipts.filter(r => r.status === 'receipt_sent').length,
+      rejected: receipts.filter(r => r.status === 'rejected').length,
+      total: receipts.length
+    };
+    
+    res.send(`
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <title>Receipt Requests - Admin</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+          * { margin: 0; padding: 0; box-sizing: border-box; }
+          body {
+            font-family: 'Poppins', sans-serif;
+            background: #fffaf2;
+            color: #2b1810;
+          }
+          .header {
+            background: #7c2d12;
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+          }
+          .header .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          }
+          .header h1 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: white; }
+          .nav-links { display: flex; gap: 15px; }
+          .nav-link {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-size: 0.9rem;
+          }
+          .nav-link:hover { background: rgba(255,255,255,0.3); }
+          .container { max-width: 1400px; margin: 0 auto; padding: 40px 20px; }
+          .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+          }
+          .stat-card {
+            background: white;
+            padding: 25px;
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(124,45,18,0.08);
+            border: 1px solid #f0d6ac;
+            text-align: center;
+          }
+          .stat-number { font-size: 2rem; font-weight: 700; color: #7c2d12; }
+          .stat-label { color: #7c6a5a; font-size: 0.9rem; }
+          .stat-number.pending { color: #d97706; }
+          .stat-number.verified { color: #166534; }
+          .stat-number.sent { color: #2563eb; }
+          .stat-number.rejected { color: #b91c1c; }
+          .receipts-table {
+            background: white;
+            border-radius: 16px;
+            padding: 25px;
+            border: 1px solid #f0d6ac;
+            overflow-x: auto;
+          }
+          table { width: 100%; border-collapse: collapse; }
+          th {
+            background: #fff0d9;
+            color: #7c2d12;
+            padding: 12px;
+            text-align: left;
+            font-size: 0.9rem;
+          }
+          td {
+            padding: 12px;
+            border-bottom: 1px solid #f0d6ac;
+            font-size: 0.9rem;
+          }
+          .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+          }
+          .badge.pending { background: #fff0d9; color: #d97706; }
+          .badge.verified { background: #dcfce7; color: #166534; }
+          .badge.sent { background: #dbeafe; color: #2563eb; }
+          .badge.rejected { background: #fee2e2; color: #b91c1c; }
+          .btn {
+            background: #d97706;
+            color: white;
+            padding: 6px 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            text-decoration: none;
+            display: inline-block;
+            margin: 2px;
+          }
+          .btn:hover { background: #b85e00; }
+          .btn-verify { background: #166534; }
+          .btn-verify:hover { background: #0f4224; }
+          .btn-reject { background: #b91c1c; }
+          .btn-reject:hover { background: #7f1d1d; }
+          .btn-small { padding: 4px 12px; font-size: 0.8rem; }
+          .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+          }
+          .modal-overlay.active { display: block; }
+          .modal-content {
+            background: white;
+            max-width: 500px;
+            margin: 100px auto;
+            padding: 30px;
+            border-radius: 16px;
+          }
+          .modal-content h2 { color: #7c2d12; margin-bottom: 20px; }
+          .modal-content textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #f0d6ac;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            min-height: 80px;
+            margin: 10px 0;
+          }
+          .modal-actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 15px; }
+          .btn-close { background: #7c6a5a; }
+          .btn-close:hover { background: #5c4a3a; }
+          .empty-state { text-align: center; padding: 40px; color: #7c6a5a; }
+          @media (max-width: 768px) {
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .receipts-table { padding: 15px; }
+            table { font-size: 0.8rem; }
+            th, td { padding: 8px; }
+          }
+        </style>
+      </head>
+      <body>
+        <div class="header">
+          <div class="container">
+            <h1>📋 Receipt Requests</h1>
+            <div class="nav-links">
+              <a href="/admin/dashboard" class="nav-link">Dashboard</a>
+              <a href="/admin/receipts" class="nav-link">Receipts</a>
+              <a href="/admin/logout" class="nav-link">Logout</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="container">
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-number pending">${stats.pending}</div>
+              <div class="stat-label">Pending</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number verified">${stats.verified}</div>
+              <div class="stat-label">Verified</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number sent">${stats.sent}</div>
+              <div class="stat-label">Receipt Sent</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number rejected">${stats.rejected}</div>
+              <div class="stat-label">Rejected</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">${stats.total}</div>
+              <div class="stat-label">Total Requests</div>
+            </div>
+          </div>
+
+          <div class="receipts-table">
+            <h2 style="margin-bottom: 20px; color: #7c2d12;">All Receipt Requests</h2>
+            ${receipts.length === 0 ? 
+              '<div class="empty-state">No receipt requests yet.</div>' :
+              `<table>
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Donor</th>
+                    <th>Amount</th>
+                    <th>UTR</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${receipts.map(r => `
+                    <tr>
+                      <td>${new Date(r.createdAt).toLocaleDateString()}</td>
+                      <td>${r.name}<br><small style="color:#7c6a5a;">${r.mobile}</small></td>
+                      <td><strong>₹${r.amount}</strong></td>
+                      <td><small>${r.utr}</small></td>
+                      <td><span class="badge ${r.status}">${r.status}</span></td>
+                      <td>
+                        ${r.status === 'pending' ? `
+                          <button class="btn btn-verify btn-small" onclick="verifyReceipt('${r._id}')">✓ Verify</button>
+                          <button class="btn btn-reject btn-small" onclick="rejectReceipt('${r._id}')">✗ Reject</button>
+                        ` : r.status === 'receipt_sent' ? 
+                          `<span style="color:#166534;">✅ Sent</span>` :
+                          r.status === 'rejected' ?
+                          `<span style="color:#b91c1c;">Rejected</span>` :
+                          `<span style="color:#2563eb;">Verified</span>`
+                        }
+                      </td>
+                    </tr>
+                  `).join('')}
+                </tbody>
+              </table>`
+            }
+          </div>
+        </div>
+
+        <!-- Verify Modal -->
+        <div id="verifyModal" class="modal-overlay">
+          <div class="modal-content">
+            <h2>Verify Donation</h2>
+            <p><strong>Donor:</strong> <span id="modalDonor"></span></p>
+            <p><strong>Amount:</strong> ₹<span id="modalAmount"></span></p>
+            <p><strong>UTR:</strong> <span id="modalUtr"></span></p>
+            <div class="form-group">
+              <label>Notes (Optional)</label>
+              <textarea id="modalNotes" placeholder="Add any notes about verification..."></textarea>
+            </div>
+            <p style="color: #7c6a5a; font-size: 0.9rem;">Click verify to generate and send the receipt to the donor.</p>
+            <div class="modal-actions">
+              <button class="btn btn-close" onclick="closeModal()">Cancel</button>
+              <button class="btn btn-verify" onclick="confirmVerify()">✓ Verify & Send Receipt</button>
+            </div>
+          </div>
+        </div>
+
+        <script>
+          let currentReceiptId = null;
+
+          function verifyReceipt(id) {
+            currentReceiptId = id;
+            // Fetch receipt details
+            fetch('/admin/api/receipts')
+              .then(r => r.json())
+              .then(receipts => {
+                const receipt = receipts.find(r => r._id === id);
+                if (receipt) {
+                  document.getElementById('modalDonor').textContent = receipt.name;
+                  document.getElementById('modalAmount').textContent = receipt.amount;
+                  document.getElementById('modalUtr').textContent = receipt.utr;
+                  document.getElementById('modalNotes').value = '';
+                  document.getElementById('verifyModal').classList.add('active');
+                }
+              });
+          }
+
+          function confirmVerify() {
+            const notes = document.getElementById('modalNotes').value;
+            fetch('/admin/api/receipts/' + currentReceiptId + '/verify', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ notes })
+            })
+            .then(r => r.json())
+            .then(data => {
+              if (data.success) {
+                alert('✅ Receipt verified and sent successfully!');
+                location.reload();
+              } else {
+                alert('❌ Error: ' + (data.error || 'Unknown error'));
+              }
+            })
+            .catch(err => {
+              alert('❌ Error processing request');
+              console.error(err);
+            });
+          }
+
+          function rejectReceipt(id) {
+            if (!confirm('Are you sure you want to reject this receipt request?')) return;
+            const notes = prompt('Reason for rejection (optional):');
+            fetch('/admin/api/receipts/' + id + '/reject', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ notes: notes || '' })
+            })
+            .then(r => r.json())
+            .then(data => {
+              if (data.success) {
+                alert('✅ Receipt request rejected');
+                location.reload();
+              } else {
+                alert('❌ Error: ' + (data.error || 'Unknown error'));
+              }
+            })
+            .catch(err => {
+              alert('❌ Error processing request');
+              console.error(err);
+            });
+          }
+
+          function closeModal() {
+            document.getElementById('verifyModal').classList.remove('active');
+            currentReceiptId = null;
+          }
+
+          // Close modal on overlay click
+          document.getElementById('verifyModal').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+          });
+        </script>
+      </body>
+      </html>
+    `);
+  } catch (error) {
+    console.error('Error loading receipts page:', error);
+    res.status(500).send('Error loading receipts page');
   }
 });
 

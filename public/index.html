@@ -208,6 +208,127 @@
       margin-top: 5px;
     }
 
+    /* ===== RECEIPT FORM STYLES ===== */
+    .receipt-toggle-container {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .receipt-toggle-btn {
+      background: transparent;
+      border: 2px solid #d97706;
+      color: #d97706;
+      padding: 10px 24px;
+      border-radius: 40px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: "Poppins", sans-serif;
+    }
+
+    .receipt-toggle-btn:hover {
+      background: #d97706;
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(217, 119, 6, 0.3);
+    }
+
+    .receipt-toggle-btn.active {
+      background: #d97706;
+      color: white;
+    }
+
+    .receipt-form-container {
+      margin-top: 20px;
+      padding: 25px;
+      background: white;
+      border-radius: 16px;
+      border: 1px solid #f0d6ac;
+      text-align: left;
+      display: none;
+    }
+
+    .receipt-form-container h4 {
+      color: #7c2d12;
+      font-size: 1.3rem;
+      margin-bottom: 8px;
+      font-family: 'Playfair Display', serif;
+      text-align: center;
+    }
+
+    .receipt-form-note {
+      color: #7c6a5a;
+      font-size: 0.9rem;
+      text-align: center;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #f0d6ac;
+    }
+
+    .receipt-form .form-group {
+      margin-bottom: 16px;
+    }
+
+    .receipt-form label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #2b1810;
+      margin-bottom: 6px;
+    }
+
+    .receipt-form input,
+    .receipt-form select {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #f0d6ac;
+      border-radius: 8px;
+      font-family: "Poppins", sans-serif;
+      font-size: 0.95rem;
+      transition: all 0.2s ease;
+    }
+
+    .receipt-form input:focus,
+    .receipt-form select:focus {
+      outline: none;
+      border-color: #d97706;
+      box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.1);
+    }
+
+    .receipt-submit-btn {
+      width: 100%;
+      padding: 14px;
+      font-size: 1.1rem;
+      margin-top: 10px;
+    }
+
+    .receipt-form-message {
+      margin-top: 15px;
+      padding: 12px;
+      border-radius: 8px;
+      text-align: center;
+      display: none;
+    }
+
+    .receipt-form-message.success {
+      display: block;
+      background: #dcfce7;
+      color: #166534;
+      border: 1px solid #bbf7d0;
+    }
+
+    .receipt-form-message.error {
+      display: block;
+      background: #fee2e2;
+      color: #b91c1c;
+      border: 1px solid #fecaca;
+    }
+
+    .receipt-form .required {
+      color: #b91c1c;
+    }
+
     .request-section {
       background: linear-gradient(135deg, #fff0d9, #fffaf2);
     }
@@ -410,7 +531,7 @@
 
         <div class="progress-card" style="display: flex; flex-direction: column;">
           <div style="height: 250px; overflow: hidden; background: linear-gradient(135deg, var(--color-primary-soft), #fff);">
-            <img src="pics/donor-placeholder2.jpg" alt="Mrs. Sathyabhama" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.style.display='none'; this.parentNode.innerHTML='<div style=\'height:100%; display:flex; align-items:center; justify-content:center; font-size:4rem;\'>👵</div>'">
+            <img src="pics/donor-placeholder2.jpg" alt="Mrs. Sathyabhama" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.parentNode.innerHTML='<div style=\'height:100%; display:flex; align-items:center; justify-content:center; font-size:4rem;\'>👵</div>'">
           </div>
           <div class="progress-content">
             <span class="progress-phase">Land Donor</span>
@@ -762,11 +883,72 @@
             </table>
           </div>
 
+          <!-- ===== UPI QR CONTAINER WITH RECEIPT FORM ===== -->
           <div class="upi-qr-container">
             <h4>📱 Scan to Pay with UPI</h4>
             <div id="upi-qr-code"></div>
             <p><strong>UPI ID:</strong> <span id="upi-id-qr">vidyadhiraja@okhdfcbank</span></p>
             <p>Scan with any UPI app (Google Pay, PhonePe, Paytm)</p>
+            
+            <!-- Receipt Toggle Button -->
+            <div class="receipt-toggle-container">
+              <button class="receipt-toggle-btn" id="receiptToggleBtn">
+                📋 Need a Donation Receipt?
+              </button>
+            </div>
+            
+            <!-- Receipt Request Form (Hidden by default) -->
+            <div class="receipt-form-container" id="receiptFormContainer">
+              <form id="receiptForm" class="receipt-form">
+                <h4>Request Donation Receipt</h4>
+                <p class="receipt-form-note">Fill this form to request a donation receipt. Your details will be verified before issuing the receipt.</p>
+                
+                <div class="form-group">
+                  <label for="receipt-name">Full Name <span class="required">*</span></label>
+                  <input type="text" id="receipt-name" name="name" required placeholder="Enter your full name">
+                </div>
+                
+                <div class="form-group">
+                  <label for="receipt-mobile">Mobile Number <span class="required">*</span></label>
+                  <input type="tel" id="receipt-mobile" name="mobile" required placeholder="Enter your mobile number">
+                </div>
+                
+                <div class="form-group">
+                  <label for="receipt-email">Email Address</label>
+                  <input type="email" id="receipt-email" name="email" placeholder="Enter your email (optional)">
+                </div>
+                
+                <div class="form-group">
+                  <label for="receipt-amount">Amount Donated (₹) <span class="required">*</span></label>
+                  <input type="number" id="receipt-amount" name="amount" required placeholder="Enter the amount you donated" min="1" step="1">
+                </div>
+                
+                <div class="form-group">
+                  <label for="receipt-utr">UTR / Transaction Reference Number <span class="required">*</span></label>
+                  <input type="text" id="receipt-utr" name="utr" required placeholder="Enter UTR or reference number from your bank app">
+                </div>
+                
+                <div class="form-group">
+                  <label for="receipt-date">Donation Date <span class="required">*</span></label>
+                  <input type="date" id="receipt-date" name="date" required>
+                </div>
+                
+                <div class="form-group">
+                  <label for="receipt-payment-mode">Payment Mode <span class="required">*</span></label>
+                  <select id="receipt-payment-mode" name="paymentMode" required>
+                    <option value="">Select payment mode</option>
+                    <option value="upi">UPI</option>
+                    <option value="netbanking">Net Banking</option>
+                    <option value="card">Card Payment</option>
+                    <option value="cash">Cash</option>
+                    <option value="cheque">Cheque</option>
+                  </select>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-block receipt-submit-btn">Submit Receipt Request</button>
+                <div id="receiptFormMessage" class="receipt-form-message"></div>
+              </form>
+            </div>
           </div>
         </div>
 
@@ -1035,6 +1217,15 @@
         </div>
 
         <div class="footer-col">
+          <h4>Legal</h4>
+          <ul class="footer-links">
+            <li><a href="/privacy.html">Privacy Policy</a></li>
+            <li><a href="/refund.html">Refund & Cancellation Policy</a></li>
+            <li><a href="/terms.html">Terms & Conditions</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
           <h4>Connect</h4>
           <p>Ramachandran - President<br>
             <a href="tel:+919443559710">+91 94435 59710</a>
@@ -1063,7 +1254,7 @@
     </a>
   </div>
 
-    <script>
+  <script>
     // Hope Tree Function
     async function updateHopeTree() {
       try {
@@ -1119,7 +1310,7 @@
     document.addEventListener('DOMContentLoaded', updateHopeTree);
     setInterval(updateHopeTree, 30000);
 
-    // Display Daily Quote - EMBEDDED VERSION (no external file needed)
+    // Display Daily Quote
     function displayDailyQuote() {
       const quotesList = [
         { text: "True knowledge softens the heart and leads to service.", source: "Chattambi Swamigal" },
@@ -1195,90 +1386,104 @@
       });
     }
 
-    // Contact Form
-    const contactForm = document.getElementById('contactForm');
-    const formStatus = document.getElementById('formStatus');
-    if (contactForm && formStatus) {
-      contactForm.addEventListener('submit', async (e) => {
+    // ===== RECEIPT FORM HANDLER =====
+    const receiptToggleBtn = document.getElementById('receiptToggleBtn');
+    const receiptFormContainer = document.getElementById('receiptFormContainer');
+    const receiptForm = document.getElementById('receiptForm');
+    const receiptFormMessage = document.getElementById('receiptFormMessage');
+
+    if (receiptToggleBtn && receiptFormContainer) {
+      receiptToggleBtn.addEventListener('click', function() {
+        const isVisible = receiptFormContainer.style.display === 'block';
+        receiptFormContainer.style.display = isVisible ? 'none' : 'block';
+        this.classList.toggle('active');
+        this.textContent = isVisible ? '📋 Need a Donation Receipt?' : '✕ Close Receipt Form';
+      });
+    }
+
+    if (receiptForm) {
+      receiptForm.addEventListener('submit', async function(e) {
         e.preventDefault();
-        const name = contactForm.name.value.trim();
-        const email = contactForm.email.value.trim();
-        const phone = contactForm.phone ? contactForm.phone.value.trim() : "";
-        const message = contactForm.message.value.trim();
-        if (!name || !email || !message) {
-          formStatus.textContent = "Please fill in all required fields.";
-          formStatus.style.color = "#b91c1c";
+        
+        const name = document.getElementById('receipt-name').value.trim();
+        const mobile = document.getElementById('receipt-mobile').value.trim();
+        const email = document.getElementById('receipt-email').value.trim();
+        const amount = document.getElementById('receipt-amount').value.trim();
+        const utr = document.getElementById('receipt-utr').value.trim();
+        const date = document.getElementById('receipt-date').value;
+        const paymentMode = document.getElementById('receipt-payment-mode').value;
+        
+        if (!name || !mobile || !amount || !utr || !date || !paymentMode) {
+          receiptFormMessage.className = 'receipt-form-message error';
+          receiptFormMessage.textContent = 'Please fill all required fields.';
+          receiptFormMessage.style.display = 'block';
           return;
         }
-        formStatus.textContent = "📤 Sending message...";
-        formStatus.style.color = "#7c6a5a";
+        
+        if (!/^\d{10}$/.test(mobile)) {
+          receiptFormMessage.className = 'receipt-form-message error';
+          receiptFormMessage.textContent = 'Please enter a valid 10-digit mobile number.';
+          receiptFormMessage.style.display = 'block';
+          return;
+        }
+        
+        const submitBtn = receiptForm.querySelector('button[type="submit"]');
+        const originalText = submitBtn.textContent;
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Submitting...';
+        
+        receiptFormMessage.className = 'receipt-form-message';
+        receiptFormMessage.textContent = 'Submitting your request...';
+        receiptFormMessage.style.display = 'block';
+        receiptFormMessage.style.background = '#fff0d9';
+        receiptFormMessage.style.color = '#7c6a5a';
+        
         try {
-          const response = await fetch("/api/contact", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ name, email, phone, message })
+          const response = await fetch('/api/receipt-request', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              name,
+              mobile,
+              email: email || '',
+              amount: parseFloat(amount),
+              utr: utr.toUpperCase(),
+              date,
+              paymentMode
+            })
           });
+          
           const data = await response.json();
+          
           if (data.success) {
-            formStatus.textContent = "✅ Thank you! Your message has been sent.";
-            formStatus.style.color = "#166534";
-            contactForm.reset();
+            receiptFormMessage.className = 'receipt-form-message success';
+            receiptFormMessage.textContent = 'Thank you for supporting Sree Vidyadhiraja Trust. Your donation details have been received and will be verified. An official receipt will be issued after verification.';
+            receiptFormMessage.style.display = 'block';
+            receiptForm.reset();
+            
+            setTimeout(() => {
+              receiptFormContainer.style.display = 'none';
+              if (receiptToggleBtn) {
+                receiptToggleBtn.classList.remove('active');
+                receiptToggleBtn.textContent = '📋 Need a Donation Receipt?';
+              }
+            }, 5000);
           } else {
-            formStatus.textContent = "❌ Something went wrong. Please try again.";
-            formStatus.style.color = "#b91c1c";
+            receiptFormMessage.className = 'receipt-form-message error';
+            receiptFormMessage.textContent = data.message || 'Something went wrong. Please try again.';
+            receiptFormMessage.style.display = 'block';
           }
         } catch (error) {
-          formStatus.textContent = "❌ Server error. Please try again later.";
-          formStatus.style.color = "#b91c1c";
+          console.error('Receipt request error:', error);
+          receiptFormMessage.className = 'receipt-form-message error';
+          receiptFormMessage.textContent = 'Server error. Please try again later or contact us directly.';
+          receiptFormMessage.style.display = 'block';
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalText;
         }
       });
     }
-
-    // UPI QR Code
-    document.addEventListener('DOMContentLoaded', function() {
-      const upiId = "vidyadhiraja@okhdfcbank";
-      const payeeName = "Sree Vidyadhiraja Trust";
-      const upiUrl = `upi://pay?pa=${upiId}&pn=${encodeURIComponent(payeeName)}&cu=INR`;
-      try {
-        new QRCode(document.getElementById("upi-qr-code"), {
-          text: upiUrl, width: 200, height: 200,
-          colorDark: "#2b1810", colorLight: "#ffffff", correctLevel: QRCode.CorrectLevel.H
-        });
-      } catch (qrError) {
-        document.getElementById('upi-qr-code').innerHTML = '<div style="width:200px;height:200px;display:flex;align-items:center;justify-content:center;background:#fff0d9;border-radius:16px;">QR Code Error</div>';
-      }
-      document.getElementById('upi-id-display').textContent = upiId;
-      document.getElementById('upi-id-qr').textContent = upiId;
-    });
-
-    // Mobile Navigation
-    const navToggle = document.getElementById('navToggle');
-    const mainNav = document.getElementById('mainNav');
-    if (navToggle && mainNav) {
-      navToggle.addEventListener('click', function() {
-        mainNav.classList.toggle('active');
-        const expanded = navToggle.getAttribute('aria-expanded') === 'true' || false;
-        navToggle.setAttribute('aria-expanded', !expanded);
-        navToggle.classList.toggle('open');
-      });
-      mainNav.addEventListener('click', function(e) {
-        if (e.target.tagName === 'A') {
-          mainNav.classList.remove('active');
-          navToggle.setAttribute('aria-expanded', 'false');
-          navToggle.classList.remove('open');
-        }
-      });
-    }
-
-    window.addEventListener('resize', function() {
-      if (window.innerWidth > 768 && mainNav) {
-        mainNav.classList.remove('active');
-        if (navToggle) {
-          navToggle.setAttribute('aria-expanded', 'false');
-          navToggle.classList.remove('open');
-        }
-      }
-    });
 
     function trackWhatsAppClick() {
       fetch('/api/track-whatsapp-click', {
@@ -1287,59 +1492,7 @@
       }).catch(err => console.log('Tracking error:', err));
     }
 
-    // Donation Modal
-    const modal = document.getElementById('donationModal');
-    const donateTriggers = document.querySelectorAll('.donate-trigger');
-    const closeBtn = document.querySelector('.donation-modal-close');
-    const modalOverlay = document.querySelector('.donation-modal-overlay');
-    const existingDonorCheckbox = document.getElementById('existingDonorCheckbox');
-    const existingDonorFields = document.getElementById('existingDonorFields');
-    const taxExemptionCheckbox = document.getElementById('taxExemptionCheckbox');
-    const panInput = document.getElementById('donorPan');
-
-    function openModal() { modal.classList.add('active'); document.body.style.overflow = 'hidden'; }
-    function closeModal() { modal.classList.remove('active'); document.body.style.overflow = ''; }
-
-    donateTriggers.forEach(trigger => { trigger.addEventListener('click', (e) => { e.preventDefault(); openModal(); }); });
-    closeBtn.addEventListener('click', closeModal);
-    modalOverlay.addEventListener('click', closeModal);
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.classList.contains('active')) closeModal(); });
-    if (existingDonorCheckbox) { existingDonorCheckbox.addEventListener('change', function() { existingDonorFields.style.display = this.checked ? 'block' : 'none'; }); }
-    if (taxExemptionCheckbox) { taxExemptionCheckbox.addEventListener('change', function() { if (this.checked) { panInput.setAttribute('required', 'required'); } else { panInput.removeAttribute('required'); } }); }
-
-    document.getElementById('fetchDonorDetailsBtn')?.addEventListener('click', function() {
-      const input = document.getElementById('existingDonorEmail').value;
-      const messageDiv = document.getElementById('fetchDonorMessage');
-      if (!input) { messageDiv.innerHTML = '<span style="color: #b91c1c;">Please enter email or mobile number</span>'; return; }
-      messageDiv.innerHTML = '<span style="color: #7c6a5a;">Fetching details...</span>';
-      setTimeout(() => {
-        const dummyData = { title: 'Mr', firstName: 'John', lastName: 'Doe', email: 'john@example.com', phone: '9876543210', address: '123 Main Street', city: 'Mumbai', postalCode: '400001' };
-        document.getElementById('donorTitle').value = dummyData.title;
-        document.getElementById('donorFirstName').value = dummyData.firstName;
-        document.getElementById('donorLastName').value = dummyData.lastName;
-        document.getElementById('donorEmailModal').value = dummyData.email;
-        document.getElementById('donorPhoneModal').value = dummyData.phone;
-        document.getElementById('donorAddress').value = dummyData.address;
-        document.getElementById('donorCity').value = dummyData.city;
-        document.getElementById('donorPostalCode').value = dummyData.postalCode;
-        messageDiv.innerHTML = '<span style="color: #166534;">✅ Details fetched successfully!</span>';
-        setTimeout(() => { messageDiv.innerHTML = ''; }, 3000);
-      }, 800);
-    });
-
-    const modalForm = document.getElementById('donationModalForm');
-    modalForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      const required = modalForm.querySelectorAll('[required]');
-      let isValid = true;
-      required.forEach(field => { if (!field.value.trim()) { isValid = false; field.style.borderColor = '#b91c1c'; } else { field.style.borderColor = '#f0d6ac'; } });
-      if (!isValid) { alert('Please fill all required fields'); return; }
-      const selectedPayment = document.querySelector('input[name="paymentMethod"]:checked').value;
-      alert(`Redirecting to secure payment gateway for ${selectedPayment.toUpperCase()} payment...\n\nAmount: ₹${document.getElementById('donationAmountModal').value}`);
-      closeModal();
-    });
   </script>
 
 </body>
-
 </html>
