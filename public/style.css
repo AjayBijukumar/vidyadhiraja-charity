@@ -2061,7 +2061,50 @@ h4 { font-size: 1.25rem; margin-bottom: 0.5rem; }
     font-size: 1rem;
 }
 
-/* ===== COMPLETE RESPONSIVE BREAKPOINTS ===== */
+/* ========================================
+   DONOR IMAGE FIX - SHOWS FULL IMAGE
+   ======================================== */
+
+/* Fix for donor images - shows full image without cropping */
+.donor-image-wrapper {
+    width: 100%;
+    max-height: 300px;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--color-primary-soft), #fff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.donor-image-wrapper img {
+    width: 100%;
+    height: auto;
+    max-height: 300px;
+    object-fit: contain;
+    display: block;
+}
+
+/* Override for any inline-styled donor images */
+.progress-card > div:first-child img {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 300px !important;
+    object-fit: contain !important;
+    display: block !important;
+}
+
+/* Optional: Smooth hover effect for donor images */
+.progress-card > div:first-child {
+    transition: transform 0.3s ease;
+}
+
+.progress-card:hover > div:first-child {
+    transform: scale(1.02);
+}
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+   ======================================== */
 
 /* Tablet & Small Laptop (768px - 1024px) */
 @media (min-width: 769px) and (max-width: 1024px) {
@@ -2567,6 +2610,19 @@ h4 { font-size: 1.25rem; margin-bottom: 0.5rem; }
   .team-image-frame {
     height: 220px;
   }
+
+  /* Donor Image Mobile Fix */
+  .donor-image-wrapper {
+    max-height: 220px;
+  }
+  
+  .donor-image-wrapper img {
+    max-height: 220px;
+  }
+  
+  .progress-card > div:first-child img {
+    max-height: 220px !important;
+  }
 }
 
 /* Small Mobile (320px - 480px) */
@@ -2671,6 +2727,19 @@ h4 { font-size: 1.25rem; margin-bottom: 0.5rem; }
   .receipt-form-message {
     font-size: 0.85rem;
     padding: 10px;
+  }
+
+  /* Donor Image Small Mobile Fix */
+  .donor-image-wrapper {
+    max-height: 180px;
+  }
+  
+  .donor-image-wrapper img {
+    max-height: 180px;
+  }
+  
+  .progress-card > div:first-child img {
+    max-height: 180px !important;
   }
 }
 
