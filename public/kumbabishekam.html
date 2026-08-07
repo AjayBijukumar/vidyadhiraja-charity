@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🙏 Divine Kumbabishekam Celebration | Sree Vidyadhiraja Trust</title>
+  <meta name="description" content="Witness the sacred Kumbabishekam ceremony conducted at Sree Vidyadhiraja Trust temples - A divine milestone of devotion and blessings.">
+  
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    /* ===== KUMBABISHEKAM PAGE STYLES ===== */
+    :root {
+      --gold: #C9A84C;
+      --gold-light: #F4E4B8;
+      --gold-glow: rgba(201, 168, 76, 0.3);
+      --saffron: #FF9933;
+      --maroon: #8B1A1A;
+      --cream: #FFF8E7;
+      --temple-dark: #4A0E0E;
+      --divine-bg: linear-gradient(135deg, #1a0a0a 0%, #3d1a1a 50%, #1a0a0a 100%);
+    }
+
+    /* ===== HERO ===== */
+    .kumbha-hero {
+      min-height: 100vh;
+      background: var(--divine-bg);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 100px 20px 60px;
+    }
+
+    .kumbha-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: 
+        radial-gradient(ellipse at 30% 50%, rgba(201, 168, 76, 0.15) 0%, transparent 70%),
+        radial-gradient(ellipse at 70% 50%, rgba(255, 153, 51, 0.1) 0%, transparent 70%);
+      z-index: 1;
+    }
+
+    .kumbha-hero-bg-particles {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .kumbha-hero-bg-particles span {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background: var(--gold);
+      border-radius: 50%;
+      animation: floatParticle 20s infinite linear;
+      opacity: 0.3;
+    }
+
+    @keyframes floatParticle {
+      0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+      10% { opacity: 0.3; }
+      90% { opacity: 0.3; }
+      100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
+    }
+
+    .kumbha-hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 900px;
+    }
+
+    .kumbha-hero-content .hero-ornament {
+      font-size: 3rem;
+      color: var(--gold);
+      opacity: 0.6;
+      margin-bottom: 10px;
+    }
+
+    .kumbha-hero-content h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 4.5rem;
+      font-weight: 700;
+      color: #fff;
+      text-shadow: 0 0 60px rgba(201, 168, 76, 0.3);
+      margin-bottom: 10px;
+    }
+
+    .kumbha-hero-content h1 .gold-text {
+      color: var(--gold);
+    }
+
+    .kumbha-hero-content .hero-subtitle {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-style: italic;
+      color: var(--gold-light);
+      margin-bottom: 30px;
+      font-weight: 400;
+    }
+
+    .kumbha-hero-content .hero-details {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
+    .kumbha-hero-content .hero-details span {
+      color: rgba(255,255,255,0.8);
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .kumbha-hero-content .hero-details span i {
+      color: var(--gold);
+    }
+
+    .kumbha-hero-content .hero-scroll {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.9rem;
+      animation: bounceDown 2s infinite;
+    }
+
+    @keyframes bounceDown {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(10px); }
+    }
+
+    /* ===== SECTIONS ===== */
+    .kumbha-section {
+      padding: 80px 0;
+    }
+
+    .kumbha-section-alt {
+      background: var(--cream);
+    }
+
+    .kumbha-section-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .kumbha-section-header .kumbha-subtitle {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    .kumbha-section-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      color: var(--temple-dark);
+      margin-top: 10px;
+    }
+
+    .kumbha-section-header .kumbha-divider {
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--saffron));
+      margin: 15px auto;
+      border-radius: 2px;
+    }
+
+    .kumbha-section-header p {
+      color: #7c6a5a;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* ===== GALLERY MASONRY ===== */
+    .kumbha-masonry {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .kumbha-masonry-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 16px;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      background: #fff;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+
+    .kumbha-masonry-item:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+    }
+
+    .kumbha-masonry-item img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .kumbha-masonry-item:hover img {
+      transform: scale(1.05);
+    }
+
+    .kumbha-masonry-item .item-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 30px 20px 20px;
+      background: linear-gradient(transparent, rgba(0,0,0,0.7));
+      color: #fff;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .kumbha-masonry-item:hover .item-overlay {
+      opacity: 1;
+    }
+
+    .kumbha-masonry-item .item-overlay h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      margin-bottom: 4px;
+    }
+
+    .kumbha-masonry-item .item-overlay p {
+      font-size: 0.85rem;
+      opacity: 0.8;
+    }
+
+    .kumbha-category-label {
+      display: inline-block;
+      background: var(--gold);
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* ===== LIGHTBOX ===== */
+    .kumbha-lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.95);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+    }
+
+    .kumbha-lightbox.active {
+      display: flex;
+    }
+
+    .kumbha-lightbox img {
+      max-width: 90%;
+      max-height: 85vh;
+      border-radius: 12px;
+      object-fit: contain;
+      animation: lightboxFade 0.3s ease;
+    }
+
+    @keyframes lightboxFade {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .kumbha-lightbox .close-lightbox {
+      position: fixed;
+      top: 30px;
+      right: 40px;
+      color: #fff;
+      font-size: 3rem;
+      cursor: pointer;
+      background: none;
+      border: none;
+      transition: transform 0.3s ease;
+      z-index: 10000;
+    }
+
+    .kumbha-lightbox .close-lightbox:hover {
+      transform: rotate(90deg);
+    }
+
+    .kumbha-lightbox .lightbox-caption {
+      position: fixed;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255,255,255,0.7);
+      font-size: 1rem;
+      text-align: center;
+    }
+
+    /* ===== VIDEO GRID ===== */
+    .kumbha-video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 25px;
+    }
+
+    .kumbha-video-card {
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      transition: all 0.4s ease;
+    }
+
+    .kumbha-video-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+    }
+
+    .kumbha-video-card video {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      background: #1a0a0a;
+    }
+
+    .kumbha-video-card .video-info {
+      padding: 18px 20px;
+    }
+
+    .kumbha-video-card .video-info h4 {
+      font-family: 'Playfair Display', serif;
+      color: var(--temple-dark);
+      margin-bottom: 4px;
+    }
+
+    .kumbha-video-card .video-info p {
+      font-size: 0.9rem;
+      color: #7c6a5a;
+    }
+
+    /* ===== TIMELINE ===== */
+    .kumbha-timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px 0;
+    }
+
+    .kumbha-timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: linear-gradient(to bottom, var(--gold), var(--saffron), var(--gold));
+    }
+
+    .kumbha-timeline-item {
+      display: flex;
+      justify-content: flex-end;
+      padding-right: 30px;
+      position: relative;
+      margin-bottom: 50px;
+      width: 50%;
+    }
+
+    .kumbha-timeline-item:nth-child(odd) {
+      align-self: flex-end;
+      justify-content: flex-start;
+      padding-right: 0;
+      padding-left: 30px;
+      margin-left: 50%;
+    }
+
+    .kumbha-timeline-item .timeline-dot {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: var(--gold);
+      border-radius: 50%;
+      border: 4px solid var(--cream);
+      box-shadow: 0 0 20px rgba(201, 168, 76, 0.4);
+      top: 5px;
+    }
+
+    .kumbha-timeline-item:nth-child(even) .timeline-dot {
+      right: -10px;
+    }
+
+    .kumbha-timeline-item:nth-child(odd) .timeline-dot {
+      left: -10px;
+    }
+
+    .kumbha-timeline-item .timeline-content {
+      background: #fff;
+      padding: 20px 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      border-left: 4px solid var(--gold);
+      max-width: 300px;
+    }
+
+    .kumbha-timeline-item:nth-child(odd) .timeline-content {
+      border-left: none;
+      border-right: 4px solid var(--gold);
+    }
+
+    .kumbha-timeline-item .timeline-content .timeline-icon {
+      font-size: 2rem;
+      margin-bottom: 5px;
+    }
+
+    .kumbha-timeline-item .timeline-content h4 {
+      font-family: 'Playfair Display', serif;
+      color: var(--temple-dark);
+      font-size: 1.1rem;
+    }
+
+    .kumbha-timeline-item .timeline-content p {
+      font-size: 0.9rem;
+      color: #7c6a5a;
+      margin: 0;
+    }
+
+    /* ===== GRATITUDE ===== */
+    .kumbha-gratitude {
+      background: linear-gradient(135deg, #1a0a0a, #3d1a1a);
+      padding: 80px 0;
+      text-align: center;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .kumbha-gratitude::before {
+      content: '🙏';
+      position: absolute;
+      font-size: 20rem;
+      opacity: 0.05;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .kumbha-gratitude h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      color: var(--gold);
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .kumbha-gratitude p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto 30px;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.8;
+      position: relative;
+      z-index: 1;
+    }
+
+    .kumbha-gratitude .gratitude-blessing {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-style: italic;
+      color: var(--gold-light);
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn-back-home {
+      display: inline-block;
+      padding: 14px 36px;
+      background: linear-gradient(135deg, #C9A84C, #b8942e);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(201, 168, 76, 0.35);
+      margin-top: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn-back-home:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(201, 168, 76, 0.5);
+      background: linear-gradient(135deg, #d4b85a, #C9A84C);
+      color: white;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .kumbha-hero-content h1 {
+        font-size: 2.8rem;
+      }
+      .kumbha-hero-content .hero-subtitle {
+        font-size: 1.2rem;
+      }
+      .kumbha-hero-content .hero-details {
+        gap: 15px;
+      }
+      .kumbha-hero-content .hero-details span {
+        font-size: 0.85rem;
+      }
+      .kumbha-section-header h2 {
+        font-size: 2rem;
+      }
+      .kumbha-masonry {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      }
+      .kumbha-video-grid {
+        grid-template-columns: 1fr;
+      }
+      .kumbha-timeline::before {
+        left: 20px;
+      }
+      .kumbha-timeline-item {
+        width: 100%;
+        padding-left: 50px;
+        padding-right: 0;
+        justify-content: flex-start;
+      }
+      .kumbha-timeline-item:nth-child(odd) {
+        margin-left: 0;
+        padding-left: 50px;
+        padding-right: 0;
+      }
+      .kumbha-timeline-item .timeline-dot {
+        left: 10px !important;
+        right: auto !important;
+      }
+      .kumbha-timeline-item .timeline-content {
+        border-left: 4px solid var(--gold) !important;
+        border-right: none !important;
+        max-width: 100%;
+      }
+      .kumbha-gratitude h2 {
+        font-size: 2rem;
+      }
+      .kumbha-gratitude p {
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .kumbha-hero-content h1 {
+        font-size: 2rem;
+      }
+      .kumbha-masonry {
+        grid-template-columns: 1fr;
+      }
+      .kumbha-hero-content .hero-details {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER / NAVIGATION ===== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="logo">
+        <img src="pics/logo.png" alt="Sree Vidyadhiraja Trust Logo" class="logo-image">
+        <div class="logo-text">
+          <span class="logo-title">Sree Vidyadhiraja Trust</span>
+          <span class="logo-subtitle"> ജീവകാരുണ്യം ജീവിതത്തിലൂടെ.</span>
+        </div>
+      </div>
+
+      <nav class="main-nav" id="mainNav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#why">Our Story</a></li>
+          <li><a href="index.html#mission">Mission</a></li>
+          <li><a href="index.html#gallery">Gallery</a></li>
+          <li><a href="index.html#timeline">Timeline</a></li>
+          <li><a href="index.html#activities">Activities</a></li>
+          <li><a href="kumbabishekam.html" class="nav-kumbha">🙏 Kumbabishekam</a></li>
+          <li><a href="index.html#donate-modal">Donate</a></li>
+          <li><a href="/prayer">Prayer Wall</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="index.html#donate-modal" class="btn btn-primary donate-trigger">Donate Now</a>
+        <a href="index.html#contact" class="btn btn-outline contact-btn">Contact</a>
+      </div>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===== HERO SECTION ===== -->
+  <section class="kumbha-hero">
+    <div class="kumbha-hero-bg-particles">
+      <span style="left:10%; animation-delay:0s;"></span>
+      <span style="left:20%; animation-delay:2s; width:4px; height:4px;"></span>
+      <span style="left:35%; animation-delay:4s;"></span>
+      <span style="left:50%; animation-delay:1s; width:8px; height:8px;"></span>
+      <span style="left:65%; animation-delay:3s;"></span>
+      <span style="left:80%; animation-delay:5s; width:4px; height:4px;"></span>
+      <span style="left:90%; animation-delay:2.5s;"></span>
+    </div>
+
+    <div class="kumbha-hero-content">
+      <div class="hero-ornament">🪷</div>
+      <h1>🙏 Divine <span class="gold-text">Kumbabishekam</span></h1>
+      <p class="hero-subtitle">"Celebrating Faith, Tradition and Divine Blessings"</p>
+      
+      <div class="hero-details">
+        <span><i class="fas fa-calendar-alt"></i> June 2026</span>
+        <span><i class="fas fa-temple"></i> Chattampi Swami Temple</span>
+        <span><i class="fas fa-map-marker-alt"></i> Perinchakonam, Kanyakumari</span>
+      </div>
+
+      <p class="hero-scroll"><i class="fas fa-chevron-down"></i> Scroll to explore</p>
+    </div>
+  </section>
+
+  <!-- ===== PHOTO GALLERY - SACRED RITUALS ===== -->
+  <section class="kumbha-section kumbha-section-alt">
+    <div class="container">
+      <div class="kumbha-section-header">
+        <span class="kumbha-subtitle">📸 Sacred Moments</span>
+        <h2>🌸 Sacred Rituals</h2>
+        <div class="kumbha-divider"></div>
+        <p>Witness the divine poojas, homams, and sacred ceremonies performed by our priests</p>
+      </div>
+
+      <div class="kumbha-masonry" id="rituals-gallery">
+        <!-- Ritual Photo 1 -->
+        <div class="kumbha-masonry-item" onclick="openLightbox('pics/kumbabishekam/rituals/ritual-1.jpg', 'Sacred Pooja Ceremony')">
+          <img src="pics/cons1.jpeg" alt="Sacred Pooja Ceremony" loading="lazy" 
+               onerror="this.src='pics/cons1.jpeg'">
+          <div class="item-overlay">
+            <h4>🪷 Sacred Pooja Ceremony</h4>
+            <p>Morning rituals and prayers</p>
+          </div>
+        </div>
+
+        <!-- Ritual Photo 2 -->
+        <div class="kumbha-masonry-item" onclick="openLightbox('pics/kumbabishekam/rituals/ritual-2.jpg', 'Homam - Sacred Fire Ritual')">
+          <img src="pics/cons2.jpeg" alt="Homam - Sacred Fire Ritual" loading="lazy"
+               onerror="this.src='pics/cons2.jpeg'">
+          <div class="item-overlay">
+            <h4>🔥 Homam Ceremony</h4>
+            <p>Sacred fire rituals and offerings</p>
+          </div>
+        </div>
+
+        <!-- Ritual Photo 3 -->
+        <div class="kumbha-masonry-item" onclick="openLightbox('pics/kumbabishekam/rituals/ritual-3.jpg', 'Priests Performing Sacred Chants')">
+          <img src="pics/cons3.jpeg" alt="Priests Performing Sacred Chants" loading="lazy"
+               onerror="this.src='pics/cons3.jpeg'">
+          <div class="item-overlay">
+            <h4>📿 Vedic Chants</h4>
+            <p>Priests performing sacred mantras</p>
+          </div>
+        </div>
+
+        <!-- Ritual Photo 4 -->
+        <div class="kumbha-masonry-item" onclick="openLightbox('pics/kumbabishekam/rituals/ritual-4.jpg', 'Abhishekam - Sacred Bathing Ceremony')">
+          <img src="pics/entrance.png" alt="Abhishekam - Sacred Bathing Ceremony" loading="lazy"
+               onerror="this.src='pics/entrance.png'">
+          <div class="item-overlay">
+            <h4>💧 Abhishekam</h4>
+            <p>Sacred bathing ceremony of the deity</p>
+          </div>
+        </div>
+
+        <!-- Ritual Photo 5 -->
+        <div class="kumbha-masonry-item" onclick="openLightbox('pics/kumbabishekam/rituals/ritual-5.jpg', 'Floral Offerings to Deity')">
+          <img src="pics/logo.png" alt="Floral Offerings to Deity" loading="lazy"
+               onerror="this.src='pics/logo.png'">
+          <div class="item-overlay">
+            <h4>🌸 Floral Offerings</h4>
+            <p>Devotees offering flowers to the divine</p>
+          </div>
+        </div>
+
+        <!-- Ritual Photo 6 -->
+        <div class="kumbha-masonry-item" onclick="openLightbox('pics/kumbabishekam/rituals/ritual-6.jpg', 'Evening Aarti Ceremony')">
+          <img src="pics/cons1.jpeg" alt="Evening Aarti Ceremony" loading="lazy"
+               onerror="this.src='pics/cons1.jpeg'">
+          <div class="item-overlay">
+            <h4>🪔 Evening Aarti</h4>
+            <p>Divine aarti with lamps and prayers</p>
+          </div>
+        </div>
+
+        <!-- Ritual Photo 7 -->
+        <div class="kumbha-masonry-item" onclick="openLightbox('pics/kumbabishekam/rituals/ritual-7.jpg', 'Prasadam Distribution')">
+          <img src="pics/cons2.jpeg" alt="Prasadam Distribution" loading="lazy"
+               onerror="this.src='pics/cons2.jpeg'">
+          <div class="item-overlay">
+            <h4>🍚 Prasadam Distribution</h4>
+            <p>Divine food offerings to devotees</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PHOTO GALLERY - TEMPLE BLESSINGS ===== -->
+  <section class="kumbha-section">
+    <div class="container">
+      <div class="kumbha-section-header">
+        <span class="kumbha-subtitle">🛕 Divine Architecture</span>
+        <h2>🛕 Temple Blessings</h2>
+        <div class="kumbha-divider"></div>
+        <p>The magnificent temple adorned with divine decorations and sacred Kumbam</p>
+      </div>
+
+      <div class="kumbha-masonry" id="temple-gallery">
+        <!-- Temple Photo 1 -->
+        <div class="kumbha-masonry-item" onclick="openLightbox('pics/kumbabishekam/temple/temple-1.jpg', 'Temple Gopuram - Main Entrance')">
+          <img src="pics/cons3.jpeg" alt="Temple Gopuram - Main Entrance" loading="lazy"
+               onerror="this.src='pics/cons3.jpeg'">
+          <div class="item-overlay">
+            <h4>🏛️ Temple Gopuram</h4>
+            <p>Majestic main entrance of the temple</p>
+          </div>
+        </div>
+
+        <!-- Temple Photo 2 -->
+        <div class="kumbha-masonry-item" onclick="openLightbox('pics/kumbabishekam/temple/temple-2.jpg', 'Temple Interior - Sanctum Sanctorum')">
+          <img src="pics/entrance.png" alt="Temple Interior - Sanctum Sanctorum" loading="lazy"
+               onerror="this.src='pics/entrance.png'">
+          <div class="item-overlay">
+            <h4>🛕 Sanctum Sanctorum</h4>
+            <p>Divine inner sanctum of the temple</p>
+          </div>
+        </div>
+
+        <!-- Temple Photo 3 -->
+        <div class="kumbha-masonry-item" onclick="openLightbox('pics/kumbabishekam/temple/temple-3.jpg', 'Kumbam - Sacred Vessel Decoration')">
+          <img src="pics/logo.png" alt="Kumbam - Sacred Vessel Decoration" loading="lazy"
+               onerror="this.src='pics/logo.png'">
+          <div class="item-overlay">
+            <h4>🏺 Sacred Kumbam</h4>
+            <p>Decorated sacred vessel for the ceremony</p>
+          </div>
+        </div>
+
+        <!-- Temple Photo 4 -->
+        <div class="kumbha-masonry-item" onclick="openLightbox('pics/kumbabishekam/temple/temple-4.jpg', 'Temple Decoration - Fresh Flowers and Garlands')">
+          <img src="pics/cons1.jpeg" alt="Temple Decoration - Fresh Flowers and Garlands" loading="lazy"
+               onerror="this.src='pics/cons1.jpeg'">
+          <div class="item-overlay">
+            <h4>🌸 Temple Decoration</h4>
+            <p>Fresh flowers and garlands adorning the temple</p>
+          </div>
+        </div>
+
+        <!-- Temple Photo 5 -->
+        <div class="kumbha-masonry-item" onclick="openLightbox('pics/kumbabishekam/temple/temple-5.jpg', 'Temple Sanctum - Divine Idols')">
+          <img src="pics/cons2.jpeg" alt="Temple Sanctum - Divine Idols" loading="lazy"
+               onerror="this.src='pics/cons2.jpeg'">
+          <div class="item-overlay">
+            <h4>🙏 Divine Idols</h4>
+            <p>Beautifully adorned deities in the sanctum</p>
+          </div>
+        </div>
+
+        <!-- Temple Photo 6 -->
+        <div class="kumbha-masonry-item" onclick="openLightbox('pics/kumbabishekam/temple/temple-6.jpg', 'Temple Final View - Complete Structure')">
+          <img src="pics/cons3.jpeg" alt="Temple Final View - Complete Structure" loading="lazy"
+               onerror="this.src='pics/cons3.jpeg'">
+          <div class="item-overlay">
+            <h4>✨ Temple Final View</h4>
+            <p>The complete temple structure in all its glory</p>
+          </div>
+        </div>
+
+        <!-- Temple Photo 7 -->
+        <div class="kumbha-masonry-item" onclick="openLightbox('pics/kumbabishekam/temple/temple-7.jpg', 'Temple Chariot - Procession')">
+          <img src="pics/entrance.png" alt="Temple Chariot - Procession" loading="lazy"
+               onerror="this.src='pics/entrance.png'">
+          <div class="item-overlay">
+            <h4>🚩 Temple Procession</h4>
+            <p>Sacred chariot during the ceremony</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PHOTO GALLERY - DEVOTEE MOMENTS ===== -->
+  <section class="kumbha-section kumbha-section-alt">
+    <div class="container">
+      <div class="kumbha-section-header">
+        <span class="kumbha-subtitle">🙏 Devotee Moments</span>
+        <h2>🙏 Devotee Moments</h2>
+        <div class="kumbha-divider"></div>
+        <p>Beautiful moments of devotion, celebration, and community spirit</p>
+      </div>
+
+      <div class="kumbha-masonry" id="devotee-gallery">
+        <!-- Devotee Photo 1 -->
+        <div class="kumbha-masonry-item" onclick="openLightbox('pics/kumbabishekam/devotees/devotee-1.jpg', 'Devotees Offering Prayers')">
+          <img src="pics/logo.png" alt="Devotees Offering Prayers" loading="lazy"
+               onerror="this.src='pics/logo.png'">
+          <div class="item-overlay">
+            <h4>🙏 Offering Prayers</h4>
+            <p>Devotees in deep prayer and meditation</p>
+          </div>
+        </div>
+
+        <!-- Devotee Photo 2 -->
+        <div class="kumbha-masonry-item" onclick="openLightbox('pics/kumbabishekam/devotees/devotee-2.jpg', 'Community Gathering and Celebration')">
+          <img src="pics/cons1.jpeg" alt="Community Gathering and Celebration" loading="lazy"
+               onerror="this.src='pics/cons1.jpeg'">
+          <div class="item-overlay">
+            <h4>🎉 Community Celebration</h4>
+            <p>Devotees celebrating together</p>
+          </div>
+        </div>
+
+        <!-- Devotee Photo 3 -->
+        <div class="kumbha-masonry-item" onclick="openLightbox('pics/kumbabishekam/devotees/devotee-3.jpg', 'Cultural Performance - Traditional Dance')">
+          <img src="pics/cons2.jpeg" alt="Cultural Performance - Traditional Dance" loading="lazy"
+               onerror="this.src='pics/cons2.jpeg'">
+          <div class="item-overlay">
+            <h4>💃 Cultural Performance</h4>
+            <p>Traditional dance and music</p>
+          </div>
+        </div>
+
+        <!-- Devotee Photo 4 -->
+        <div class="kumbha-masonry-item" onclick="openLightbox('pics/kumbabishekam/devotees/devotee-4.jpg', 'Children Participating in Ceremony')">
+          <img src="pics/cons3.jpeg" alt="Children Participating in Ceremony" loading="lazy"
+               onerror="this.src='pics/cons3.jpeg'">
+          <div class="item-overlay">
+            <h4>👧 Children's Participation</h4>
+            <p>Young devotees taking part in the ceremony</p>
+          </div>
+        </div>
+
+        <!-- Devotee Photo 5 -->
+        <div class="kumbha-masonry-item" onclick="openLightbox('pics/kumbabishekam/devotees/devotee-5.jpg', 'Elderly Devotees Receiving Blessings')">
+          <img src="pics/entrance.png" alt="Elderly Devotees Receiving Blessings" loading="lazy"
+               onerror="this.src='pics/entrance.png'">
+          <div class="item-overlay">
+            <h4>👴 Elderly Blessings</h4>
+            <p>Elders receiving divine blessings</p>
+          </div>
+        </div>
+
+        <!-- Devotee Photo 6 -->
+        <div class="kumbha-masonry-item" onclick="openLightbox('pics/kumbabishekam/devotees/devotee-6.jpg', 'Annadanam - Community Feast')">
+          <img src="pics/logo.png" alt="Annadanam - Community Feast" loading="lazy"
+               onerror="this.src='pics/logo.png'">
+          <div class="item-overlay">
+            <h4>🍛 Annadanam</h4>
+            <p>Community feast for all devotees</p>
+          </div>
+        </div>
+
+        <!-- Devotee Photo 7 -->
+        <div class="kumbha-masonry-item" onclick="openLightbox('pics/kumbabishekam/devotees/devotee-7.jpg', 'Group Photo - Complete Devotee Group')">
+          <img src="pics/cons1.jpeg" alt="Group Photo - Complete Devotee Group" loading="lazy"
+               onerror="this.src='pics/cons1.jpeg'">
+          <div class="item-overlay">
+            <h4>📸 Group Photo</h4>
+            <p>All devotees together in celebration</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== VIDEO GALLERY - RITUALS ===== -->
+  <section class="kumbha-section">
+    <div class="container">
+      <div class="kumbha-section-header">
+        <span class="kumbha-subtitle">🎥 Sacred Videos</span>
+        <h2>🎥 Morning Rituals</h2>
+        <div class="kumbha-divider"></div>
+        <p>Watch the divine morning rituals and ceremonies</p>
+      </div>
+
+      <div class="kumbha-video-grid">
+        <!-- Video 1 -->
+        <div class="kumbha-video-card">
+          <video controls preload="metadata">
+            <!-- REPLACE with your actual video path -->
+            <source src="videos/kumbabishekam/rituals/morning-ritual-1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <div class="video-info">
+            <h4>🌅 Morning Aarti</h4>
+            <p>Opening prayers and aarti ceremony</p>
+          </div>
+        </div>
+
+        <!-- Video 2 -->
+        <div class="kumbha-video-card">
+          <video controls preload="metadata">
+            <!-- REPLACE with your actual video path -->
+            <source src="videos/kumbabishekam/rituals/morning-ritual-2.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <div class="video-info">
+            <h4>📿 Vedic Chanting</h4>
+            <p>Priests chanting sacred mantras</p>
+          </div>
+        </div>
+
+        <!-- Video 3 -->
+        <div class="kumbha-video-card">
+          <video controls preload="metadata">
+            <!-- REPLACE with your actual video path -->
+            <source src="videos/kumbabishekam/rituals/morning-ritual-3.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <div class="video-info">
+            <h4>💧 Abhishekam Ceremony</h4>
+            <p>Sacred bathing of the deity</p>
+          </div>
+        </div>
+
+        <!-- Video 4 -->
+        <div class="kumbha-video-card">
+          <video controls preload="metadata">
+            <!-- REPLACE with your actual video path -->
+            <source src="videos/kumbabishekam/rituals/morning-ritual-4.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <div class="video-info">
+            <h4>🌸 Floral Offerings</h4>
+            <p>Devotees offering flowers to the divine</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== VIDEO GALLERY - CEREMONY ===== -->
+  <section class="kumbha-section kumbha-section-alt">
+    <div class="container">
+      <div class="kumbha-section-header">
+        <span class="kumbha-subtitle">🎥 Ceremony Highlights</span>
+        <h2>🎥 Temple Ceremony</h2>
+        <div class="kumbha-divider"></div>
+        <p>The grand Kumbabishekam ceremony and celebration</p>
+      </div>
+
+      <div class="kumbha-video-grid">
+        <!-- Video 5 -->
+        <div class="kumbha-video-card">
+          <video controls preload="metadata">
+            <!-- REPLACE with your actual video path -->
+            <source src="videos/kumbabishekam/ceremony/ceremony-1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <div class="video-info">
+            <h4>🏛️ Kumbam Procession</h4>
+            <p>The sacred Kumbam being carried in procession</p>
+          </div>
+        </div>
+
+        <!-- Video 6 -->
+        <div class="kumbha-video-card">
+          <video controls preload="metadata">
+            <!-- REPLACE with your actual video path -->
+            <source src="videos/kumbabishekam/ceremony/ceremony-2.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <div class="video-info">
+            <h4>🛕 Temple Consecration</h4>
+            <p>The final consecration ceremony</p>
+          </div>
+        </div>
+
+        <!-- Video 7 -->
+        <div class="kumbha-video-card">
+          <video controls preload="metadata">
+            <!-- REPLACE with your actual video path -->
+            <source src="videos/kumbabishekam/ceremony/ceremony-3.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <div class="video-info">
+            <h4>🙏 Devotee Celebration</h4>
+            <p>Devotees celebrating the divine occasion</p>
+          </div>
+        </div>
+
+        <!-- Video 8 -->
+        <div class="kumbha-video-card">
+          <video controls preload="metadata">
+            <!-- REPLACE with your actual video path -->
+            <source src="videos/kumbabishekam/ceremony/ceremony-4.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <div class="video-info">
+            <h4>🌸 Blessings and Prasadam</h4>
+            <p>Final blessings and prasadam distribution</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CEREMONY TIMELINE ===== -->
+  <section class="kumbha-section">
+    <div class="container">
+      <div class="kumbha-section-header">
+        <span class="kumbha-subtitle">📜 Sacred Journey</span>
+        <h2>Divine Ceremony Timeline</h2>
+        <div class="kumbha-divider"></div>
+        <p>The sacred sequence of events during the Kumbabishekam ceremony</p>
+      </div>
+
+      <div class="kumbha-timeline">
+        <div class="kumbha-timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-icon">🌅</div>
+            <h4>Morning Preparations</h4>
+            <p>Cleansing, decoration, and preparation of the temple</p>
+          </div>
+        </div>
+
+        <div class="kumbha-timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-icon">🔥</div>
+            <h4>Sacred Rituals</h4>
+            <p>Homam, poojas, and sacred chants by the priests</p>
+          </div>
+        </div>
+
+        <div class="kumbha-timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-icon">🚩</div>
+            <h4>Kumbam Procession</h4>
+            <p>The sacred vessel carried in a grand procession</p>
+          </div>
+        </div>
+
+        <div class="kumbha-timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-icon">🛕</div>
+            <h4>Temple Consecration</h4>
+            <p>The final Kumbabishekam ceremony and consecration</p>
+          </div>
+        </div>
+
+        <div class="kumbha-timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-icon">🌸</div>
+            <h4>Blessings and Prasadam</h4>
+            <p>Divine blessings and prasadam distribution to all</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GRATITUDE SECTION ===== -->
+  <section class="kumbha-gratitude">
+    <div class="container">
+      <h2>🙏 With Deep Gratitude</h2>
+      <p>
+        With the blessings of the Almighty and the support of devotees, volunteers and well-wishers, 
+        this sacred Kumbabishekam ceremony was successfully completed. We extend our heartfelt thanks 
+        to everyone who made this divine celebration possible.
+      </p>
+      <p class="gratitude-blessing">
+        "May the divine blessings of the Lord be with you all, today and always."
+      </p>
+      <a href="index.html" class="btn-back-home">
+        <i class="fas fa-home"></i> Return to Home
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== LIGHTBOX ===== -->
+  <div class="kumbha-lightbox" id="kumbhaLightbox" onclick="closeLightbox(event)">
+    <button class="close-lightbox" onclick="closeLightbox(event)">&times;</button>
+    <img id="lightboxImage" src="" alt="Kumbabishekam Gallery">
+    <div class="lightbox-caption" id="lightboxCaption"></div>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-main">
+        <div class="footer-col">
+          <h4>Sree Vidyadhiraja Trust</h4>
+          <p class="footer-quote">“ജീവകാരുണ്യം ജീവിതത്തിലൂടെ”</p>
+          <p class="footer-quote-en">Charity through Life</p>
+          <p class="footer-reg">Reg No: 6/2022 · Verkilambi</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#why">Our Story</a></li>
+            <li><a href="index.html#mission">Mission</a></li>
+            <li><a href="index.html#activities">Activities</a></li>
+            <li><a href="index.html#donate-modal">Donate</a></li>
+            <li><a href="/prayer">Prayer Wall</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul class="footer-links">
+            <li><a href="/privacy.html">Privacy Policy</a></li>
+            <li><a href="/refund.html">Refund & Cancellation Policy</a></li>
+            <li><a href="/terms.html">Terms & Conditions</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <p>Ramachandran - President<br>
+            <a href="tel:+919443559710">+91 94435 59710</a>
+          </p>
+          <p class="footer-80g">80G: ABFTS5003BF20231AY2023-26</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Sree Vidyadhiraja Trust. All rights reserved. | Reg No: 6/2022</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== SCRIPTS ===== -->
+  <script>
+    // ===== LIGHTBOX FUNCTIONALITY =====
+    function openLightbox(imageSrc, caption) {
+      const lightbox = document.getElementById('kumbhaLightbox');
+      const lightboxImage = document.getElementById('lightboxImage');
+      const lightboxCaption = document.getElementById('lightboxCaption');
+      
+      lightboxImage.src = imageSrc;
+      lightboxCaption.textContent = caption || 'Divine Kumbabishekam';
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox(event) {
+      if (event.target === event.currentTarget || event.target.classList.contains('close-lightbox')) {
+        const lightbox = document.getElementById('kumbhaLightbox');
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    }
+
+    // Close lightbox with Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        const lightbox = document.getElementById('kumbhaLightbox');
+        if (lightbox.classList.contains('active')) {
+          lightbox.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+      }
+    });
+
+    // ===== NAVBAR TOGGLE FOR MOBILE =====
+    const navToggle = document.getElementById('navToggle');
+    const mainNav = document.getElementById('mainNav');
+
+    if (navToggle && mainNav) {
+      navToggle.addEventListener('click', function() {
+        mainNav.classList.toggle('active');
+        this.classList.toggle('active');
+      });
+    }
+
+    // ===== SMOOTH SCROLL TO TOP ON LOAD =====
+    window.addEventListener('load', function() {
+      window.scrollTo(0, 0);
+    });
+
+    // ===== VIDEO PLACEHOLDER FALLBACK =====
+    document.querySelectorAll('video').forEach(function(video) {
+      video.addEventListener('error', function() {
+        // If video fails to load, show a fallback message
+        const parent = this.parentElement;
+        const info = parent.querySelector('.video-info');
+        if (info) {
+          const msg = document.createElement('p');
+          msg.style.cssText = 'color: #b91c1c; font-size: 0.85rem; margin-top: 8px;';
+          msg.textContent = '📹 Video coming soon. Please check back later.';
+          info.appendChild(msg);
+        }
+      });
+    });
+
+    console.log('🙏 Divine Kumbabishekam page loaded successfully!');
+    console.log('📸 To add photos: Upload to pics/kumbabishekam/ folders');
+    console.log('🎥 To add videos: Upload to videos/kumbabishekam/ folders');
+  </script>
+
+  <!-- WhatsApp Float -->
+  <div class="whatsapp-float saffron" id="whatsapp-float">
+    <div class="whatsapp-tooltip">Chat with us on WhatsApp</div>
+    <a href="https://wa.me/919443791336?text=Hi%21%20I%20want%20to%20know%20about%20Kumbabishekam%20celebration." class="whatsapp-button" target="_blank">
+      <svg viewBox="0 0 24 24">
+        <path d="M19.077 4.928C17.191 3.041 14.683 2 12.006 2 6.798 2 2.548 6.193 2.54 11.393c-.003 1.747.456 3.457 1.328 4.985L2.25 21.75l5.4-1.575c1.475.8 3.14 1.225 4.86 1.225h.004c5.2 0 9.456-4.193 9.464-9.393.004-2.514-.975-4.876-2.861-6.764l-.04-.04v-.001zM12.02 20.167h-.003c-1.484 0-2.94-.4-4.204-1.15l-.302-.18-3.255.95.97-3.145-.197-.314c-.797-1.27-1.218-2.73-1.216-4.236.007-4.32 3.52-7.833 7.85-7.833 2.097 0 4.07.82 5.553 2.307 1.48 1.485 2.295 3.458 2.292 5.555-.007 4.322-3.52 7.835-7.85 7.835l.008-.001zm4.323-5.865c-.237-.12-1.404-.693-1.622-.772-.217-.08-.375-.12-.533.12-.158.238-.612.772-.75.93-.14.158-.278.178-.515.06-.237-.12-1.002-.37-1.91-1.18-.706-.63-1.182-1.41-1.32-1.648-.14-.238-.015-.367.105-.486.108-.108.237-.282.356-.423.118-.142.158-.238.237-.397.08-.158.04-.297-.02-.416-.06-.12-.533-1.287-.73-1.762-.193-.467-.388-.396-.533-.404-.14-.008-.3-.01-.46-.01-.16 0-.42.06-.64.298-.22.238-.84.822-.84 2.005 0 1.182.86 2.324.98 2.484.12.16 1.68 2.574 4.07 3.51 2.39.935 2.39.624 2.82.585.43-.04 1.39-.568 1.586-1.116.196-.55.196-1.02.138-1.118-.058-.1-.218-.16-.456-.28l.002-.002z"/>
+      </svg>
+    </a>
+  </div>
+
+  <link rel="stylesheet" href="/whatsapp.css">
+</body>
+</html>

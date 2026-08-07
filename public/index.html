@@ -356,6 +356,177 @@
       color: #7c2d12;
       margin-bottom: 30px;
     }
+
+    /* ===== KUMBABISHEKAM HOMEPAGE SECTION ===== */
+    .kumbha-home-section {
+      background: linear-gradient(135deg, #fff8f0, #f5e6d3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .kumbha-home-section::before {
+      content: '🙏';
+      position: absolute;
+      font-size: 15rem;
+      opacity: 0.05;
+      right: -50px;
+      bottom: -50px;
+      transform: rotate(-15deg);
+    }
+
+    .kumbha-home-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .kumbha-home-content .section-subtitle {
+      color: #C9A84C;
+      font-weight: 600;
+      letter-spacing: 2px;
+    }
+
+    .kumbha-home-content h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      color: #4A0E0E;
+      margin: 10px 0 15px;
+      line-height: 1.2;
+    }
+
+    .kumbha-home-content .kumbha-tagline {
+      font-size: 1.2rem;
+      color: #7c6a5a;
+      font-style: italic;
+      margin-bottom: 20px;
+    }
+
+    .kumbha-home-content .kumbha-description {
+      color: #5a4a3a;
+      line-height: 1.8;
+      margin-bottom: 30px;
+      font-size: 1.05rem;
+    }
+
+    .btn-kumbha {
+      display: inline-flex;
+      align-items: center;
+      padding: 14px 36px;
+      background: linear-gradient(135deg, #C9A84C, #b8942e);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(201, 168, 76, 0.35);
+    }
+
+    .btn-kumbha:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(201, 168, 76, 0.5);
+      background: linear-gradient(135deg, #d4b85a, #C9A84C);
+      color: white;
+    }
+
+    .kumbha-home-image {
+      position: relative;
+    }
+
+    .kumbha-image-frame {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(74, 14, 14, 0.2);
+    }
+
+    .kumbha-image-frame img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .kumbha-image-glow {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(201, 168, 76, 0.15), transparent 50%);
+      pointer-events: none;
+    }
+
+    .kumbha-image-badge {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: rgba(74, 14, 14, 0.85);
+      backdrop-filter: blur(10px);
+      padding: 10px 18px;
+      border-radius: 30px;
+      color: #C9A84C;
+      font-size: 0.9rem;
+      font-weight: 500;
+      border: 1px solid rgba(201, 168, 76, 0.3);
+    }
+
+    /* Kumbha Nav Link */
+    .nav-kumbha {
+      color: #C9A84C !important;
+      font-weight: 600 !important;
+      position: relative;
+    }
+
+    .nav-kumbha::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, #C9A84C, #FF9933);
+      border-radius: 2px;
+    }
+
+    .nav-kumbha:hover::after {
+      width: 100%;
+    }
+
+    /* Responsive Kumbha Home */
+    @media (max-width: 968px) {
+      .kumbha-home-wrapper {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .kumbha-home-content h2 {
+        font-size: 2.2rem;
+      }
+
+      .kumbha-image-frame img {
+        height: 300px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .kumbha-home-content h2 {
+        font-size: 1.8rem;
+      }
+
+      .kumbha-image-frame img {
+        height: 220px;
+      }
+
+      .btn-kumbha {
+        padding: 12px 28px;
+        font-size: 0.9rem;
+        width: 100%;
+        justify-content: center;
+      }
+    }
   </style>
 </head>
 
@@ -380,6 +551,7 @@
           <li><a href="#gallery">Gallery</a></li>
           <li><a href="#timeline">Timeline</a></li>
           <li><a href="#activities">Activities</a></li>
+          <li><a href="kumbabishekam.html" class="nav-kumbha">🙏 Kumbabishekam</a></li>
           <li><a href="#donate-modal">Donate</a></li>
           <li><a href="/prayer">Prayer Wall</a></li>
           <li><a href="#contact">Contact</a></li>
@@ -642,6 +814,45 @@
               <span class="progress-phase">Video 3</span>
               <h4>Temple Construction</h4>
               <p>Chattampi Swami Temple</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- NEW: KUMBABISHEKAM CELEBRATION SECTION -->
+  <!-- ============================================ -->
+  <section id="kumbabishekam-home" class="section kumbha-home-section">
+    <div class="container">
+      <div class="kumbha-home-wrapper">
+        <div class="kumbha-home-content" data-aos="fade-right">
+          <span class="section-subtitle" style="color: #C9A84C;">🙏 Divine Celebration</span>
+          <h2 style="font-family: 'Playfair Display', serif;">
+            Kumbabishekam Celebration
+          </h2>
+          <p class="kumbha-tagline">
+            "A sacred milestone filled with devotion, blessings and divine grace"
+          </p>
+          <p class="kumbha-description">
+            Witness the divine Kumbabishekam ceremony conducted at our temples — 
+            a sacred consecration that marks a new chapter of spiritual blessings 
+            for our community.
+          </p>
+          <a href="kumbabishekam.html" class="btn-kumbha">
+            <span>View Divine Gallery</span>
+            <i class="fas fa-arrow-right" style="margin-left: 10px;"></i>
+          </a>
+        </div>
+        <div class="kumbha-home-image" data-aos="fade-left">
+          <div class="kumbha-image-frame">
+            <!-- REPLACE THIS WITH YOUR ACTUAL KUMBABISHEKAM HERO IMAGE -->
+            <img src="pics/cons1.jpeg" alt="Kumbabishekam Celebration" 
+                 onerror="this.src='pics/cons1.jpeg'">
+            <div class="kumbha-image-glow"></div>
+            <div class="kumbha-image-badge">
+              <span>🙏 Divine Ceremony</span>
             </div>
           </div>
         </div>
@@ -1215,6 +1426,7 @@
             <li><a href="#why">Our Story</a></li>
             <li><a href="#mission">Mission</a></li>
             <li><a href="#activities">Activities</a></li>
+            <li><a href="kumbabishekam.html">🙏 Kumbabishekam</a></li>
             <li><a href="#donate-modal">Donate</a></li>
             <li><a href="/prayer">Prayer Wall</a></li>
           </ul>
